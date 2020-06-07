@@ -1,23 +1,47 @@
 *start
 [cm][clearstack]
 
-[load_stage_objects stage="global"]
-[load_stage_objects stage="0"]
+[iscript]
+f.current = 0;
+f.rooms = [0,1];
+[endscript]
 
-[3d_show name="sky" scale="1,1,1" pos="0,50,0" rot="&getRotate(90,0,0)"]
-[3d_show name="front_door" pos="0,0,-10.5" scale="25,25,0.5"]
-[3d_show name="wall_front_door" pos="0,0,-10" scale="20,20,1"]
-[3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1"]
-[3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1"]
-[3d_show name="wall_left" pos="-10,0,0" rot="&getRotate(0,-90,0)" scale="20,20,1"]
-[3d_show name="wall_back" pos="0,0,10" rot="&getRotate(0,0,0)" scale="20,20,1"]
-[3d_show name="ceiling" pos="0,10,0" rot="&getRotate(90,0,0)" scale="20,20,1"]
+; 全体で使う3Dデータをロード
+[load_stage_objects stage="global"]
+
+; 静的3Dデータを表示
+[call storage="box/call/set_room.ks" target="setup"]
+
+*start_room
+; 現在のステージ3Dデータをロード
+[load_stage_objects stage="&f.rooms[f.current]"]
+; 次のステージ3Dデータをロード
+[load_stage_objects stage="&f.rooms[f.current]" cond="f.current < f.rooms.length-1"]
+; 共通3Dデータを表示
+[call storage="box/call/set_room.ks" target="set_room"]
+; ステージ3Dデータを表示
+; [call]
+; ステージシステム読み込み
+; [call]
+[wait time="10"]
 
 *return
+[cm][clearstack]
 [camera_button]
+[mask_off time="500"]
 [s]
+
 
 *control_camera
 [cm]
 [direction_manager]
 [jump target="return"]
+
+
+*next_room
+[mask]
+; ステージ3Dデータを削除
+[delete_stage_objects stage="&f.rooms[f.current]"]
+; 現在のルームを一つ進める
+[eval exp="f.current++"]
+[jump target="start_room"]
