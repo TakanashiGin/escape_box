@@ -1,5 +1,8 @@
 *setup
-[3d_show name="sky" scale="1,1,1" pos="0,50,0" rot="&getRotate(90,0,0)" time="10" wait="false"]
+[eval exp="tf.sky = getRand(0,2)"]
+[3d_show name="sky_day"    scale="1,1,1" pos="0,400,0" rot="&getRotate(90,0,0)" time="10" wait="false" cond="tf.sky == 0"]
+[3d_show name="sky_sunset" scale="1,1,1" pos="0,400,0" rot="&getRotate(90,0,0)" time="10" wait="false" cond="tf.sky == 1"]
+[3d_show name="sky_night"  scale="1,1,1" pos="0,400,0" rot="&getRotate(90,0,0)" time="10" wait="false" cond="tf.sky == 2"]
 [3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_left" pos="-10,0,0" rot="&getRotate(0,-90,0)" scale="20,20,1" time="10" wait="false"]
