@@ -27,4 +27,11 @@ sf.title = 'Escape Box';
 @call storage="setup/loadcsv.ks"
 @call storage="setup/macro/macro_main.ks"
 
+[load_stage_objects stage="0"]
+
+[l]
+[3d_show name="s0board"]
+
+[s]
+
 @jump storage="main.ks"

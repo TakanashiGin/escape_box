@@ -23,7 +23,7 @@ class TyranoThreeImage extends TyranoThreeObject {
 
 class TyranoThreeSprite extends TyranoThreeObject {
     constructor(stage,name,storage,folder,pos,rot,scale,tonemap){
-        super(name,storage,folder,pos,rot,scale,tonemap);
+        super(stage,name,storage,folder,pos,rot,scale,tonemap);
     }
 }
 

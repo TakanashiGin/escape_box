@@ -8,7 +8,7 @@ function getCenter(coordinate, val){
   }
 }
 
-function randNum(min,max){
+function getRand(min,max){
     max = Number(max)
     min = Number(min)
     var rand = min + Math.floor(Math.random() * (max - min + 1))
