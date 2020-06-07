@@ -1,0 +1,1 @@
+tyrano.plugin.kag.event={tyrano:null,init:function(){},addEventElement:function(t){var a=t.j_target;a.addClass("event-setting-element"),a.attr("data-event-target",t.target),a.attr("data-event-storage",t.storage),a.attr("data-event-tag",t.tag),a.attr("data-event-pm",JSON.stringify(t.pm))}};

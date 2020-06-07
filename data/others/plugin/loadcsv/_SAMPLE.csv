@@ -1,0 +1,4 @@
+name,attack,stamina,alive
+キャラ１,100,90,TRUE
+キャラ２,90,100,FALSE
+ATRUE,TRUEB,CFALSE,FALSED

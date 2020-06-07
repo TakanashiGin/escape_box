@@ -1,0 +1,30 @@
+{
+    "akane": {
+        "param": {
+            "jname": "アカネ",
+            "storage": "chara/akane/normal.png",
+            "width": "none",
+            "height": "none",
+            "reflect": false,
+            "color": "none"
+        },
+        "face": {
+            "happy": "chara/akane/happy.png",
+            "sad": "chara/akane/sad.png"
+        }
+    },
+    "yamato": {
+        "param": {
+            "jname": "ヤマト",
+            "storage": "chara/yamato/normal.png",
+            "width": "none",
+            "height": "none",
+            "reflect": false,
+            "color": "none"
+        },
+        "face": {
+            "happy": "chara/yamato/happy.png",
+            "sad": "chara/yamato/sad.png"
+        }
+    }
+}

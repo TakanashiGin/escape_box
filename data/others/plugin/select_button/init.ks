@@ -1,0 +1,8 @@
+[macro name="set_select_button"]
+  [loadjs storage="plugin/select_button/set_select_button.js"]
+[endmacro]
+[macro name="select_button"]
+  [loadjs storage="plugin/select_button/select_button.js"]
+  [glink color="&mp.color" font_color="&mp.font_color" storage="&mp.storage" target="&mp.storage" name="&mp.name" text="&mp.text" x="&mp.x" y="&mp.y" width="&mp.width" height="&mp.height" size="&mp.size" face="&mp.face" graphic="&mp.graphic" enterimg="&mp.enterimg" clickse="&mp.clickse" enterse="&mp.enterse" leavese="&mp.leavese"]
+[endmacro]
+[return]

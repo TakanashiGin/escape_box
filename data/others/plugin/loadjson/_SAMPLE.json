@@ -1,0 +1,12 @@
+{
+  "akane": {
+    "default": "chara/akane/normal.png",
+    "happy": "chara/akane/happy.png",
+    "sad": "chara/akane/sad.png"
+  },
+  "yamato": {
+    "default": "chara/yamato/normal.png",
+    "happy": "chara/yamato/happy.png",
+    "sad": "chara/yamato/sad.png"
+  }
+}

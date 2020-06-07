@@ -1,0 +1,26 @@
+(function(){
+  var that = TYRANO.kag.variable.sf.set_select_button;
+  var tmp = TYRANO.kag.stat.mp;
+  tmp.num = (tmp.num-1) || 0;
+  var num = tmp.num;
+  tmp.color = tmp.color || that.color;
+  tmp.font_color = tmp.font_color || that.font_color;
+  tmp.storage = tmp.storage || that.storage[num];
+  tmp.target = tmp.target || that.target[num];
+  tmp.name = tmp.name || that.name[num];
+  tmp.text = tmp.text || that.text[num];
+  tmp.x = tmp.x || that.x[num];
+  if (tmp.dx) tmp.x += tmp.dx;
+  tmp.y = tmp.y || that.y[num];
+  if (tmp.dy) tmp.y += tmp.dy;
+  tmp.width = tmp.width || that.width;
+  tmp.height = tmp.height || that.height;
+  tmp.size = tmp.size || that.size;
+  tmp.face = tmp.face || that.face;
+  tmp.graphic = tmp.graphic || that.graphic;
+  tmp.enterimg = tmp.enterimg || that.enterimg;
+  tmp.clickse = tmp.clickse || that.clickse;
+  tmp.enterse = tmp.enterse || that.enterse;
+  tmp.leavese = tmp.leavese || that.leavese;
+  console.log(tmp);
+}());

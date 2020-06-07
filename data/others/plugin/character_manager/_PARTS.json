@@ -1,0 +1,120 @@
+{
+    "test": {
+        "param": {
+            "jname": "Test",
+            "storage": "color/empty.png",
+            "width": 600,
+            "height": 800,
+            "reflect": "none",
+            "color": "none"
+        },
+        "hair_back": {
+            "zindex": 0,
+            "face": {
+                "default": "parts/hair_back.png"
+            }
+        },
+        "body_back": {
+            "zindex": 1,
+            "face": {
+                "default": "parts/body_back.png"
+            }
+        },
+        "body_front": {
+            "zindex": 2,
+            "face": {
+                "default": "parts/body_front.png"
+            }
+        },
+        "head": {
+            "zindex": 3,
+            "face": {
+                "default": "parts/head.png"
+            }
+        },
+        "face_back": {
+            "zindex": 4,
+            "face": {
+                "default": "parts/face_back.png"
+            }
+        },
+        "face_front": {
+            "zindex": 5,
+            "face": {
+                "default": "parts/face_front.png"
+            }
+        },
+        "eye": {
+            "zindex": 6,
+            "face": {
+                "default": "parts/eye_normal.png",
+                "close": "parts/eye_close.png"
+            }
+        },
+        "hair_front": {
+            "zindex": 7,
+            "face": {
+                "default": "parts/hair_front.png"
+            }
+        }
+    },
+    "test2": {
+        "param": {
+            "jname": "Test",
+            "storage": "color/empty.png",
+            "width": 600,
+            "height": 800,
+            "reflect": "none",
+            "color": "none"
+        },
+        "hair_back": {
+            "zindex": 0,
+            "face": {
+                "default": "parts/hair_back.png"
+            }
+        },
+        "body_back": {
+            "zindex": 1,
+            "face": {
+                "default": "parts/body_back.png"
+            }
+        },
+        "body_front": {
+            "zindex": 2,
+            "face": {
+                "default": "parts/body_front.png"
+            }
+        },
+        "head": {
+            "zindex": 3,
+            "face": {
+                "default": "parts/head.png"
+            }
+        },
+        "face_back": {
+            "zindex": 4,
+            "face": {
+                "default": "parts/face_back.png"
+            }
+        },
+        "face_front": {
+            "zindex": 5,
+            "face": {
+                "default": "parts/face_front.png"
+            }
+        },
+        "eye": {
+            "zindex": 6,
+            "face": {
+                "default": "parts/eye_normal.png",
+                "close": "parts/eye_close.png"
+            }
+        },
+        "hair_front": {
+            "zindex": 7,
+            "face": {
+                "default": "parts/hair_front.png"
+            }
+        }
+    }
+}
