@@ -8,4 +8,8 @@
         StageObjectManager.deleteStageObjects(mp.stage);
     [endscript]
 [endmacro]
+[macro name="mod_sprite"]
+    [3d_hide name="&mp.hide_name" time="&mp.time" wait="false"]
+    [3d_show *]
+[endmacro]
 [return]

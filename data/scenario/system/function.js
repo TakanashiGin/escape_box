@@ -16,13 +16,15 @@ function getRand(min,max){
     return rand;
 }
 
-function getRadian(c){ return c * (Math.PI/180); }
+function getRadian(c){ return c * Math.PI / 180; }
+
+function getMeasuringDegrees(rad){ return rad * 180 / Math.PI }
 
 function getRotate(x,y,z){
-    let tmp = [
+    let rad = [
         getRadian(parseInt(x)),
         getRadian(parseInt(y)),
         getRadian(parseInt(z))
     ];
-    return tmp.join(',');
+    return rad.join(',');
 }

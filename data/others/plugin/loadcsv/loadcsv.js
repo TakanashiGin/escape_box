@@ -21,7 +21,7 @@ tyrano.plugin.kag.loadcsv = {
     },
 
     parseNum: function(val){
-        if (typeof val === 'string' && !!val && !Number.isNaN(+val)) return parseFloat(val);
+        if (typeof val === 'string' && !!val && !Number.isNaN(+val) && val.indexOf('0x') < 0) return parseFloat(val);
         else return val;
     },
 

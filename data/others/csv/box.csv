@@ -1,0 +1,4 @@
+stage,name,texture,color,width,height,depth,pos,rot,scale,tonemap
+0,s0num_box,none,0x575757,10,17,1,none,none,none,FALSE
+0,s0num_monitor,none,0xffffff,10,3,1,none,none,none,FALSE
+0,s0monitor,none,gray,16,9,1,none,none,none,FALSE

@@ -11,8 +11,12 @@
     sf.object_data = {
         image: [],
         sprite: [],
-        model: []
+        model: [],
+        box: []
     }
+
+    let timer_minit = 0.25;
+    sf.timer = timer_minit * 60 * 1000;
 
     sf.stage_data = {};
 

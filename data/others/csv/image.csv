@@ -22,6 +22,7 @@ global,back_door,none,none,none,none,100-100-100,FALSE,none,none,door.jpg,TRUE
 0,s0b7,none,none,none,none,100-100-100,FALSE,none,none,num/7.png,FALSE
 0,s0b8,none,none,none,none,100-100-100,FALSE,none,none,num/8.png,FALSE
 0,s0b9,none,none,none,none,100-100-100,FALSE,none,none,num/9.png,FALSE
+0,s0ok,none,none,none,none,100-100-100,FALSE,none,none,num/ok.png,FALSE
 0,s0back,none,none,none,none,100-100-100,FALSE,none,none,num/back.png,FALSE
 0,s0num,none,none,none,none,100-100-100,FALSE,none,none,num/num.png,FALSE
 0,s0num1,none,none,none,none,100-100-100,FALSE,none,none,num/num0.png,FALSE
@@ -34,6 +35,7 @@ global,back_door,none,none,none,none,100-100-100,FALSE,none,none,door.jpg,TRUE
 0,s0num8,none,none,none,none,100-100-100,FALSE,none,none,num/num7.png,FALSE
 0,s0num9,none,none,none,none,100-100-100,FALSE,none,none,num/num8.png,FALSE
 0,s0num10,none,none,none,none,100-100-100,FALSE,none,none,num/num9.png,FALSE
+0,s0hint,none,none,none,none,100-100-100-,FALSE,none,none,box_0/hint.png,FALSE
 1,s1b0,none,none,none,none,100-100-100,FALSE,none,none,num/0.png,FALSE
 1,s1b1,none,none,none,none,100-100-100,FALSE,none,none,num/1.png,FALSE
 1,s1b2,none,none,none,none,100-100-100,FALSE,none,none,num/2.png,FALSE
@@ -44,6 +46,7 @@ global,back_door,none,none,none,none,100-100-100,FALSE,none,none,door.jpg,TRUE
 1,s1b7,none,none,none,none,100-100-100,FALSE,none,none,num/7.png,FALSE
 1,s1b8,none,none,none,none,100-100-100,FALSE,none,none,num/8.png,FALSE
 1,s1b9,none,none,none,none,100-100-100,FALSE,none,none,num/9.png,FALSE
+1,s1ok,none,none,none,none,100-100-100,FALSE,none,none,num/ok.png,FALSE
 1,s1back,none,none,none,none,100-100-100,FALSE,none,none,num/back.png,FALSE
 1,s1num,none,none,none,none,100-100-100,FALSE,none,none,num/num.png,FALSE
 1,s1num0,none,none,none,none,100-100-100,FALSE,none,none,num/num0.png,FALSE

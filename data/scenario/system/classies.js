@@ -33,3 +33,18 @@ class TyranoThreeModel extends TyranoThreeObject {
         this.motion = motion;
     }
 }
+
+class TyranoThreeBox extends TyranoThreeObject {
+    constructor(stage,name,texture,color,width,height,depth,pos,rot,scale,tonemap){
+        super(stage,name,pos,rot,scale,tonemap);
+        this.texture = texture;
+        this.color = color;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+        this.pos = pos;
+        this.rot = rot;
+        this.scale = scale;
+        this.tonemap = tonemap;
+    }
+}

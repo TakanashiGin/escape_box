@@ -8,7 +8,13 @@
 ; model
 [loadcsv var="tf.three_models" src="csv/model.csv"]
 
+; box
+[loadcsv var="tf.three_boxies" src="csv/box.csv" parse_flort="false"]
+
 ; loading
 [loadjs storage="../scenario/setup/loadcsv.js"]
+
+; StageObjectManager
+[loadjs storage="../scenario/setup/stage_object_manager.js"]
 
 [return]
