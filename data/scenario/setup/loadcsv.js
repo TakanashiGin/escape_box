@@ -16,7 +16,7 @@
         let three_data = csv_data[cate];
         three_data = three_data.map(ver => {
             return ver.map((side,i) => {
-                if (typeof side == 'string' && side.indexOf('-') >= 1) {
+                if (typeof side === 'string' && side.indexOf('-') !== -1) {
                     return side.split('-').join(',');
                 } else if (side == 'none') {
                     let index = three_data[0];
@@ -48,25 +48,24 @@
                 }
             });
         });
-        three_data.forEach((val,i) => {
-            if (i > 0) {
-                switch (cate) {
-                    case 'image':
-                        var new_object = new TyranoThreeImage(...val);
-                        break;
-                    case 'sprite':
-                        var new_object = new TyranoThreeSprite(...val);
-                        break;
-                    case 'model':
-                        var new_object = new TyranoThreeModel(...val);
-                        break;
-                    case 'box':
-                        var new_object = new TyranoThreeBox(...val);
-                        break;
-                }
-                sf.object_data[cate].push(new_object);
+        for (let i=1; i<three_data.length; i++) {
+            let val = three_data[i];
+            switch (cate) {
+                case 'image':
+                    var new_object = new TyranoThreeImage(...val);
+                    break;
+                case 'sprite':
+                    var new_object = new TyranoThreeSprite(...val);
+                    break;
+                case 'model':
+                    var new_object = new TyranoThreeModel(...val);
+                    break;
+                case 'box':
+                    var new_object = new TyranoThreeBox(...val);
+                    break;
             }
-        });
+            sf.object_data[cate].push(new_object);
+        }
     }
 
     let pushObject = (data,data_key,num) => {
