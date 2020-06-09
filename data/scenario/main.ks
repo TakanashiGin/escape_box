@@ -13,15 +13,19 @@ for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
 ; 全体で使う3Dデータをロード
 [load_stage_objects stage="global"]
 
-; 最初のステージ3Dデータをロード
-[load_stage_objects stage="&f.rooms[f.current]"]
-
 ; 静的3Dデータを表示
 [call storage="box/call/set_room.ks" target="setup"]
 
+; 疑似的な次の部屋を表示
+;[call]
+
 *start_room
-; 次のステージ3Dデータをロード
-[load_stage_objects stage="&f.rooms[f.current]" cond="f.current < f.rooms.length-1"]
+[cm][clearstack]
+; ステージ3Dデータをロード
+[load_stage_objects stage="&f.rooms[f.current]"]
+; カメラをリセット
+[3d_anim name="camera" pos="0" time="10"]
+[3d_anim name="camera" rot="0" time="10"]
 ; 共通3Dデータを表示
 [call storage="box/call/set_room.ks" target="set_room"]
 ; ステージのファイルを取得
@@ -35,13 +39,14 @@ f.stage_file = {
 [endscript]
 ; ステージ3Dデータを表示
 [call storage="&f.stage_file.show_three"]
-; 次のステージ3Dデータを表示
-;[call storage="&f.stage_file.set_next_room" cond="f.current < f.rooms.length-1"]
 ; 表示待ち
 [wait time="10"]
 ; メッセージを表示
 [show_message]
 [mask_off time="500"]
+
+; タイマーをスタート
+[ctrl_circle_timer name="game_timer" content="stop" cond="f.rooms[f.current] != 0"]
 
 *return
 [cm][clearstack]
@@ -66,7 +71,17 @@ f.stage_file = {
 
 
 *next_room
-[mask]
+[cm][clearstack]
+[clearfix]
+; タイマーを一時停止
+[ctrl_circle_timer name="game_timer" content="stop"]
+[eval exp="tf.room_num = f.rooms[f.current]"]
+[3d_hide name="front_door" wait="false"]
+[3d_hide name="wall_back" cond="tf.room_num == 0"]
+[3d_hide name="back_door" cond="tf.room_num != 0"]
+[wait time="1000"]
+[3d_anim name="camera" pos="0,0,-2" time="2000" wait="false"]
+[mask time="2000"]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
 ; 現在のルームを一つ進める

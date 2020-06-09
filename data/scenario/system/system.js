@@ -8,6 +8,10 @@
         if (es.keyCode == 27) TG.ftag.startTag('close',{ask:'false'});
     });
 
+    sf.skip = {
+        tutorial: true
+    };
+
     sf.object_data = {
         image: [],
         sprite: [],
@@ -15,7 +19,7 @@
         box: []
     }
 
-    let timer_minit = 0.25;
+    let timer_minit = 3;
     sf.timer = timer_minit * 60 * 1000;
 
     sf.stage_data = {};
