@@ -64,6 +64,7 @@ const StageObjectManager = {
                     break;
             }
         });
+        console.log(`--> load stage objects (${stage})`);
         console.log(tyrano.plugin.kag.tmp.three);
     },
 
@@ -72,7 +73,7 @@ const StageObjectManager = {
         const f = TG.stat.f;
         const sf = TG.variable.sf;
         const tf = TG.variable.tf;
-        const stage = (s != 'global')? `box_${s}` : 'global';
+        const stage = (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
         Object.keys(sf.stage_data[stage]['objects']).forEach(key => {
             sf.stage_data[stage]['objects'][key].forEach(v => {
                 let name = v.name;
@@ -85,6 +86,7 @@ const StageObjectManager = {
                 delete TYRANO.kag.tmp.three.models[name];
             });
         });
+        console.log(`--> delete stage objects (${stage})`);
         console.log(tyrano.plugin.kag.tmp.three);
     },
 

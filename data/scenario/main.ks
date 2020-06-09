@@ -10,14 +10,15 @@ f.rooms = [0,1];
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
 [endscript]
 
-; 全体で使う3Dデータをロード
+; 全体で使う3Dデータ・next_roomの3Dデータをロード
 [load_stage_objects stage="global"]
+[load_stage_objects stage="next_room"]
 
 ; 静的3Dデータを表示
 [call storage="box/call/set_room.ks" target="setup"]
 
 ; 疑似的な次の部屋を表示
-;[call]
+[call storage="box/call/set_room.ks" target="set_next_room"]
 
 *start_room
 [cm][clearstack]
@@ -112,3 +113,8 @@ console.log('--> タイムアウト');
 [show_message]
 ――脱出失敗
 [s]
+
+
+[iscript]
+x=x.map(a=>{weight:Math.random(),value:a}).sort((a,b)=>a.weight-b.weight).map(a=>a.value});
+[endscript]

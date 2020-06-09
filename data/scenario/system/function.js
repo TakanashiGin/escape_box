@@ -16,6 +16,12 @@ function getRand(min,max){
     return rand;
 }
 
+function shuffleArray(arr){
+    return arr.map(a => {
+        return { weight:Math.random(), value:a};
+    }).sort((a,b) => a.weight - b.weight).map(a => a.value);
+}
+
 function getRadian(c){ return c * Math.PI / 180; }
 
 function getMeasuringDegrees(rad){ return rad * 180 / Math.PI }

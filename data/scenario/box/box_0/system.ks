@@ -76,7 +76,7 @@
 if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.status = 2;
 [endscript]
 
-; タイマーを起動（ついでにナンバー配列も初期化）
+; タイマーを起動（ついでにナンバー配列も初期化・akaneオブジェクトを削除）
 [if exp="sf.stage_data.box_0.status == 2"]
     [start_timer]
     [iscript]
@@ -85,6 +85,7 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
     f.ans_model = [];
     sf.stage_data.box_0.status++;
     [endscript]
+    [delete_stage_objects stage="akane"]
 [endif]
 
 ; メインシステム
@@ -102,7 +103,7 @@ if (sf.stage_data.box_0.status == 3) {
 }
 [endscript]
 [clickable storage="box/box_0/system.ks" target="panel" x="470" y="65" width="340" height="570" color="black" opacity="0" mouseopacity="100" cond="tf.bool1 == true"]
-[clickable storage="box/box_0/system.ks" target="hint" x="470" y="190" width="340" height="340" color="black" opacity="50   " mouseopacity="100" cond="tf.bool2 == true"]
+[clickable storage="box/box_0/system.ks" target="hint" x="470" y="190" width="340" height="340" color="black" opacity="0" mouseopacity="100" cond="tf.bool2 == true"]
 
 [jump storage="main.ks" target="return_system"]
 
