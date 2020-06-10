@@ -26,7 +26,7 @@ function getOrientation(log){
             }
         }
         deg[key] = d;
-        deg_abs[key] = Math.abs(deg[key]);
+        deg_abs[key] = Math.abs(d);
     }
     let transverse = (function(){
         if (deg_abs.y == 0) return 'front';
