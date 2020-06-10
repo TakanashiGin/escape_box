@@ -1,3 +1,10 @@
+function getTimeZone(){
+    const hour = new Date().getHours();
+    if (hour >= 21 || hour < 6) return 'night';
+    else if (hour >= 18 && hour < 21) return 'sunset';
+    else return 'day';
+}
+
 function getCenter(coordinate, val){
   if (coordinate == 'x') {
     var t_width = $('#tyrano_base').width();

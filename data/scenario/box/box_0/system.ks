@@ -94,7 +94,15 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
     #あなた
     [eval exp="tf.orientation = getOrientation()"]
     [if exp="tf.orientation[1] == 'up'"]
-        空が見える。
+        空が見える。[r]
+        [switch exp="getTimeZone()"]
+            [case is="day"]
+                せっかく良い天気なのになぁ
+            [case is="sunset"]
+                もう夕方じゃないか
+            [case is="night"]
+                もうすっかり夜じゃないか
+        [endswitch]
     [elsif exp="tf.orientation[1] == 'down'"]
         床だ。
     [else]
