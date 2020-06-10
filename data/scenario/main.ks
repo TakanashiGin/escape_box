@@ -52,7 +52,7 @@ f.stage_file = {
 *return
 [cm][clearstack]
 ; ステージシステム読み込み
-[jump storage="&f.stage_file.system"]
+;[jump storage="&f.stage_file.system"]
 *return_system
 ; カメラ制御ボタンを表示
 [camera_button]
@@ -60,6 +60,7 @@ f.stage_file = {
 ; debug用
 ;[start_timer]
 ;[3d_debug_camera]
+[eval exp="getOrientation(true)"]
 ; ============================================================================
 [s]
 

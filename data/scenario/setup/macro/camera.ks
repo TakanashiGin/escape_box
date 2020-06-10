@@ -9,7 +9,7 @@
         y: camera.rotation.y,
         z: camera.rotation.z
     };
-    for (pos in rotation) rotation[pos] = Math.ceil(getMeasuringDegrees(rotation[pos]));
+    for (pos in rotation) rotation[pos] = getMeasuringDegrees(rotation[pos]);
     switch (f.to_direction) {
         case 'right': rotation.y -= 90; break;
         case 'left': rotation.y += 90; break;
