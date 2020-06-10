@@ -41,13 +41,13 @@ f.stage_file = {
 ; ステージ3Dデータを表示
 [call storage="&f.stage_file.show_three"]
 ; 表示待ち
-[wait time="10"]
+[wait time="100"]
 ; メッセージを表示
 [show_message]
 [mask_off time="500"]
 
 ; タイマーをスタート
-[ctrl_circle_timer name="game_timer" content="stop" cond="f.rooms[f.current] != 0"]
+;[ctrl_circle_timer name="game_timer" content="stop" cond="f.rooms[f.current] != 0"]
 
 *return
 [cm][clearstack]
@@ -81,12 +81,14 @@ f.stage_file = {
 [3d_hide name="wall_back" cond="tf.room_num == 0"]
 [3d_hide name="back_door" cond="tf.room_num != 0"]
 [wait time="1000"]
-[3d_anim name="camera" pos="0,0,-2" time="2000" wait="false"]
+[3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
+[wait time="1000"]
 [mask time="2000"]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
 ; 現在のルームを一つ進める
 [eval exp="f.current++"]
+; 次のルームに進む
 [jump target="start_room" cond="f.current < f.rooms.length"]
 ; クリア処理
 [jump target="clear_game" cond="f.current >= f.rooms.length"]
@@ -113,8 +115,3 @@ console.log('--> タイムアウト');
 [show_message]
 ――脱出失敗
 [s]
-
-
-[iscript]
-x=x.map(a=>{weight:Math.random(),value:a}).sort((a,b)=>a.weight-b.weight).map(a=>a.value});
-[endscript]

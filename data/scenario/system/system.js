@@ -12,6 +12,8 @@
         tutorial: true
     };
 
+    sf.userenv = $.userenv();
+
     sf.object_data = {
         image: [],
         sprite: [],

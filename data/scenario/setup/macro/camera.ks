@@ -1,4 +1,7 @@
+[loadjs storage="../scenario/setup/macro/camera.js"]
+
 [macro name="direction_manager"]
+    #
     [iscript]
     let camera = tyrano.plugin.kag.tmp.three.camera;
     let rotation = {
@@ -6,7 +9,7 @@
         y: camera.rotation.y,
         z: camera.rotation.z
     };
-    for (pos in rotation) rotation[pos] = Math.floor(180*rotation[pos]/Math.PI/10)*10;
+    for (pos in rotation) rotation[pos] = Math.ceil(getMeasuringDegrees(rotation[pos]));
     switch (f.to_direction) {
         case 'right': rotation.y -= 90; break;
         case 'left': rotation.y += 90; break;
@@ -22,13 +25,6 @@
 
 [macro name="camera_button"]
     [iscript]
-    let camera = tyrano.plugin.kag.tmp.three.camera;
-    tf.rotation = {
-        x: camera.rotation.x,
-        y: camera.rotation.y,
-        z: camera.rotation.z
-    };
-    for (let pos in tf.rotation) tf.rotation[pos] = Math.floor(180*tf.rotation[pos]/Math.PI/10)*10;
     tf.size = 125;
     let dif = 20;
     let sx = 840 + 20;
@@ -52,10 +48,10 @@
     }
     for (let key in sf.button) sf.button[key]['y'] -= dif/2;
     [endscript]
-    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&tf.size" height="&tf.size" fix="true" cond="tf.rotation.x < 90 && tf.rotation.x > -90"]
-    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&tf.size" height="&tf.size" fix="true" cond="tf.rotation.x < 90 && tf.rotation.x > -90"]
-    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&tf.size" height="&tf.size" fix="true" cond="tf.rotation.x < 90"]
-    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&tf.size" height="&tf.size" fix="true" cond="tf.rotation.x > -90"]
+    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
+    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
+    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] != 'up'"]
+    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] != 'down'"]
 [endmacro]
 
 [return]

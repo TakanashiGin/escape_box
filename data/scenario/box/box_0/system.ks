@@ -11,8 +11,8 @@
         #
         [eval exp="sf.stage_data.box_0.status++"]
     [case is="1"]
-        [eval exp="tf.deg_y = getMeasuringDegrees(tyrano.plugin.kag.tmp.three.camera.rotation.y)"]
-        [if exp="tf.deg_y % 180 == 0 && tf.deg_y != 0"]
+        [eval exp="tf.orientation = getOrientation()"]
+        [if exp="tf.orientation[0] == 'back' && tf.orientation[1] == 'horizontal'"]
             [3d_show name="akane_happy" pos="0,0,9" scale="2.5,4,1" time="700"]
             #アカネ
             『やっほー、アカネだよ』[p]
@@ -89,23 +89,49 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
 [endif]
 
 ; メインシステム
-[iscript]
-if (sf.stage_data.box_0.status == 3) {
-    let deg_y = getMeasuringDegrees(tyrano.plugin.kag.tmp.three.camera.rotation.y) % 360;
-    let deg_y_abs = Math.abs(deg_y);
-    let bool1 = deg_y_abs % 90 == 0 && deg_y_abs % 180 != 0 && deg_y_abs % 360 != 0;
-    let bool2 = deg_y == 90 || deg_y == -270;
-    tf.bool1 = bool1 && bool2;
-    tf.bool2 = bool1 && !bool2;
-} else {
-    tf.bool1 = false;
-    tf.bool2 = false;
-}
-[endscript]
-[clickable storage="box/box_0/system.ks" target="panel" x="470" y="65" width="340" height="570" color="black" opacity="0" mouseopacity="100" cond="tf.bool1 == true"]
-[clickable storage="box/box_0/system.ks" target="hint" x="470" y="190" width="340" height="340" color="black" opacity="0" mouseopacity="100" cond="tf.bool2 == true"]
+[if exp="sf.stage_data.box_0.status == 3"]
+    [nowait]
+    #あなた
+    [eval exp="tf.orientation = getOrientation()"]
+    [if exp="tf.orientation[1] == 'up'"]
+        空が見える。
+    [elsif exp="tf.orientation[1] == 'down'"]
+        床だ。
+    [else]
+        [if exp="tf.orientation[0] == 'front'"]
+            謎を解かないとこの扉は開かない。
+        [elsif exp="tf.orientation[0] == 'back'"]
+            爆発だって……！？[r]
+            はやくここから脱出しないと……！！
+        [elsif exp="tf.orientation[0] == 'left'"]
+            これはなんだろう……？
+            [call target="inf_object"]
+            [clickable storage="box/box_0/system.ks" target="hint" x="470" y="190" width="340" height="340" color="black" opacity="0" mouseopacity="100"]
+        [elsif exp="tf.orientation[0] == 'right'"]
+            このパネルは一体……？
+            [call target="inf_object"]
+            [clickable storage="box/box_0/system.ks" target="panel" x="470" y="65" width="340" height="570" color="black" opacity="0" mouseopacity="100"]
+        [endif]
+    [endif]
+    [endnowait]
+[endif]
 
 [jump storage="main.ks" target="return_system"]
+
+
+
+
+
+*inf_object
+[r]
+[font color="0xfa8c8c"]（オブジェクトを
+[if exp="sf.userenv == 'pc'"]
+    クリック
+[else]
+    タップ
+[endif]
+すると注視することが出来ます）[resetfont]
+[return]
 
 
 
