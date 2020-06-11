@@ -2,9 +2,6 @@
 ; コンフィグ モード　画面作成
 ;=========================================
 
-; key_event
-[clear_key_event]
-
 ;	メッセージレイヤ0を不可視に
 	[layopt layer="message0" visible="false"]
 
@@ -214,11 +211,8 @@
 ;	キーコンフィグの有効化
 	[start_keyconfig]
 
-;	コールスタックのクリア
-	[clearstack]
-
-;	ゲーム復帰
-	[awakegame]
+;	return
+	[jump storage="title.ks" target="return_config"]
 
 ;================================================================================
 

@@ -1,13 +1,14 @@
 *setup
+
 [iscript]
-const hour = new Date().getHours();
-if (hour >= 21 || hour < 6) tf.sky = 'night';
-else if (hour >= 18 && hour < 21) tf.sky = 'sunset';
-else tf.sky = 'day';
+tf.src = `sky_${getTimeZone()}.jpg`;
 [endscript]
-[3d_show name="sky_day"    scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'day'"]
-[3d_show name="sky_sunset" scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'sunset'"]
-[3d_show name="sky_night"  scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'night'"]
+[show_sky_box storage="&tf.src" r="400" rot="45,0,0"]
+
+;[3d_show name="sky_day"    scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'day'"]
+;[3d_show name="sky_sunset" scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'sunset'"]
+;[3d_show name="sky_night"  scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'night'"]
+
 [3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_left" pos="-10,0,0" rot="&getRotate(0,-90,0)" scale="20,20,1" time="10" wait="false"]
@@ -45,11 +46,25 @@ else tf.sky = 'day';
     [iscript]
     console.log('--> set last room');
     [endscript]
-; 疑似的な次の部屋を非表示
-; next_roomオブジェクトを削除
+; クリアオブジェクトを読み込み
+    [load_stage_objects stage="clear"]
 ; akaneオブジェクトを読み込み
-; クリア用オブジェクトを読み込み
-; クリア用オブジェクトを表示
+    [load_stage_objects stage="akane"]
+; 疑似的な次の部屋を非表示
+    [3d_hide name="next_floor" time="10" wait="false"]
+    [3d_hide name="next_wall_right" time="10" wait="false"]
+    [3d_hide name="next_wall_left" time="10" wait="false"]
+    [3d_hide name="next_ceiling" time="10" wait="false"]
+    [3d_hide name="next_wall_front_door" time="10" wait="false"]
+    [3d_hide name="next_front_door" time="10" wait="false"]
+; クリアオブジェクトを表示
+    [iscript]
+    tf.src = `clear_base_${getTimeZone()}`;
+    [endscript]
+    [3d_show name="&tf.src" pos="0,-20,0" rot="&getRotate(90,0,0)" scale="800,800,1" time="10" wait="false"]
+    [wait time="10"]
+; next_roomオブジェクトを削除
+    [delete_stage_objects stage="next_room"]
 [endif]
 ; -----------------------------------------------------------------------------
 

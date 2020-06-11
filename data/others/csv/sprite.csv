@@ -1,6 +1,6 @@
 stage,name,storage,folder,pos,rot,scale,tonemap
-akane,akane_normal,../../../fgimage/chara/akane/normal.png,none,none,none,10-8-1,FALSE
-akane,akane_happy,../../../fgimage/chara/akane/happy.png,none,none,none,10-8-1,FALSE
-akane,akane_sad,../../../fgimage/chara/akane/sad.png,none,none,none,10-8-1,FALSE
-akane,akane_doki,../../../fgimage/chara/akane/doki.png,none,none,none,10-8-1,FALSE
-akane,akane_angry,../../../fgimage/chara/akane/angry.png,none,none,none,10-8-1,FALSE
+akane,akane_normal,../../../fgimage/chara/akane/normal.png,none,none,none,4-13-1,FALSE
+akane,akane_happy,../../../fgimage/chara/akane/happy.png,none,none,none,4-13-1,FALSE
+akane,akane_sad,../../../fgimage/chara/akane/sad.png,none,none,none,4-13-1,FALSE
+akane,akane_doki,../../../fgimage/chara/akane/doki.png,none,none,none,4-13-1,FALSE
+akane,akane_angry,../../../fgimage/chara/akane/angry.png,none,none,none,4-13-1,FALSE

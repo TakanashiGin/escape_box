@@ -9,7 +9,9 @@
     });
 
     sf.skip = {
-        tutorial: true
+        tutorial: true,
+        box_0: true,
+        box_1: true
     };
 
     sf.userenv = $.userenv();
@@ -21,7 +23,7 @@
         box: []
     }
 
-    let timer_minit = 3;
+    let timer_minit = 1;
     sf.timer = timer_minit * 60 * 1000;
 
     sf.stage_data = {};

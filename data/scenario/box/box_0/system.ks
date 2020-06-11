@@ -124,6 +124,14 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
     [endnowait]
 [endif]
 
+[if exp="sf.skip.box_0"]
+    [iscript]
+    console.log('--> click to skip');
+    [endscript]
+    [l]
+    [jump storage="main.ks" target="next_room"]
+[endif]
+
 [jump storage="main.ks" target="return_system"]
 
 

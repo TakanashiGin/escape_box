@@ -18,6 +18,9 @@ next_room,next_floor,none,none,none,none,100-100-100,FALSE,none,none,kabe.PNG,TR
 next_room,next_wall_front_door,none,none,none,none,100-100-100,FALSE,none,none,kabe2.PNG,TRUE
 next_room,next_ceiling,none,none,none,none,100-100-100,FALSE,none,none,tenjo.PNG,TRUE
 next_room,next_front_door,none,none,none,none,100-100-100,FALSE,none,none,door.jpg,TRUE
+clear,clear_base_day,none,none,none,none,100-100-100,FALSE,none,none,base_day.png,TRUE
+clear,clear_base_sunset,none,none,none,none,100-100-100,FALSE,none,none,base_sunset.png,TRUE
+clear,clear_base_night,none,none,none,none,100-100-100,FALSE,none,none,base_night.png,TRUE
 0,s0b0,none,none,none,none,100-100-100,FALSE,none,none,num/0.png,FALSE
 0,s0b1,none,none,none,none,100-100-100,FALSE,none,none,num/1.png,FALSE
 0,s0b2,none,none,none,none,100-100-100,FALSE,none,none,num/2.png,FALSE

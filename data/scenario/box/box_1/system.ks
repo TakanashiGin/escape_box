@@ -26,4 +26,13 @@
     [endif]
 [endif]
 [endnowait]
+
+[if exp="sf.skip.box_1"]
+    [iscript]
+    console.log('--> click to skip');
+    [endscript]
+    [l]
+    [jump storage="main.ks" target="next_room"]
+[endif]
+
 [jump storage="main.ks" target="return_system"]

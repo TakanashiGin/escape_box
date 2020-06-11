@@ -20,7 +20,7 @@
     tf.rot = [];
     for (pos in rotation) tf.rot.push(rotation[pos]);
     [endscript]
-    [3d_anim name="camera" rot="&getRotate(...tf.rot)"]
+    [3d_anim name="camera" rot="&getRotate(...tf.rot)" time="500"]
 [endmacro]
 
 [macro name="camera_button"]

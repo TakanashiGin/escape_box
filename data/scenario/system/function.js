@@ -1,8 +1,15 @@
-function getTimeZone(){
-    const hour = new Date().getHours();
-    if (hour >= 21 || hour < 6) return 'night';
-    else if (hour >= 18 && hour < 21) return 'sunset';
-    else return 'day';
+function getTimeZone(n){
+    switch (n) {
+        case 0: return 'day'; break;
+        case 1: return 'sunset'; break;
+        case 2: return 'night'; break;
+        default:
+            const hour = new Date().getHours();
+            if (hour >= 21 || hour < 6) return 'night';
+            else if (hour >= 18 && hour < 21) return 'sunset';
+            else return 'day';
+            break;
+    }
 }
 
 function getCenter(coordinate, val){
