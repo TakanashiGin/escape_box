@@ -5,10 +5,6 @@ tf.src = `sky_${getTimeZone()}.jpg`;
 [endscript]
 [show_sky_box storage="&tf.src" r="400" rot="45,0,0"]
 
-;[3d_show name="sky_day"    scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'day'"]
-;[3d_show name="sky_sunset" scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'sunset'"]
-;[3d_show name="sky_night"  scale="1.5,1.5,1" pos="0,400,-300" rot="&getRotate(90,0,90)" time="10" wait="false" cond="getTimeZone() == 'night'"]
-
 [3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_left" pos="-10,0,0" rot="&getRotate(0,-90,0)" scale="20,20,1" time="10" wait="false"]
@@ -48,8 +44,8 @@ tf.src = `sky_${getTimeZone()}.jpg`;
     [endscript]
 ; クリアオブジェクトを読み込み
     [load_stage_objects stage="clear"]
-; akaneオブジェクトを読み込み
-    [load_stage_objects stage="akane"]
+; akane_fullオブジェクトを読み込み
+    [load_stage_objects stage="akane_full"]
 ; 疑似的な次の部屋を非表示
     [3d_hide name="next_floor" time="10" wait="false"]
     [3d_hide name="next_wall_right" time="10" wait="false"]

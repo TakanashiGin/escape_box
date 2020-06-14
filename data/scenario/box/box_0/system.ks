@@ -78,7 +78,7 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
 
 ; タイマーを起動（ついでにナンバー配列も初期化・akaneオブジェクトを削除）
 [if exp="sf.stage_data.box_0.status == 2"]
-    [start_timer]
+    [start_timer cond="sf.on_timer == true"]
     [iscript]
     f.answer = '4,1,2,3';
     f.ans_nums = [];
@@ -159,7 +159,7 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
 [clearfix]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&tf.size" height="&tf.size" fix="true"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true"]
 [for name="tf.i" from="0" len="3" deep="0"]
     [for name="tf.j" from="0" len="3" deep="1"]
         [iscript]
@@ -254,7 +254,7 @@ console.log('--> correct');
 [clearfix]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&tf.size" height="&tf.size" fix="true"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true"]
 [s]
 
 

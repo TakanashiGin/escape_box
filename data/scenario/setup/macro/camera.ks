@@ -25,33 +25,33 @@
 
 [macro name="camera_button"]
     [iscript]
-    tf.size = 125;
+    sf.button_size = 125;
     let dif = 20;
     let sx = 840 + 20;
     sf.button = {
         right: {
-            x: 1280 - tf.size - dif,
-            y: 400 + ((300-tf.size)/2) + dif/2
+            x: 1280 - sf.button_size - dif,
+            y: 400 + ((300-sf.button_size)/2) + dif/2
         },
         left: {
             x: sx + dif,
-            y: 400 + ((300-tf.size)/2) + dif/2
+            y: 400 + ((300-sf.button_size)/2) + dif/2
         },
         top: {
-            x: sx + dif + ((1280-sx-(dif*2)-tf.size)/2),
+            x: sx + dif + ((1280-sx-(dif*2)-sf.button_size)/2),
             y: 400 + dif
         },
         down: {
-            x: sx + dif + ((1280-sx-(dif*2)-tf.size)/2),
-            y: 720 - tf.size - dif
+            x: sx + dif + ((1280-sx-(dif*2)-sf.button_size)/2),
+            y: 720 - sf.button_size - dif
         }
     }
     for (let key in sf.button) sf.button[key]['y'] -= dif/2;
     [endscript]
-    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
-    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
-    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] != 'up'"]
-    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&tf.size" height="&tf.size" fix="true" cond="getOrientation()[1] != 'down'"]
+    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
+    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
+    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'up'"]
+    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'down'"]
 [endmacro]
 
 [return]

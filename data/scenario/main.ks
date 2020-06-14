@@ -45,10 +45,15 @@ f.stage_file = {
 [wait time="100"]
 ; メッセージを表示
 [show_message]
+; アイテム欄を表示
+[if exp="f.rooms[f.current] == 0"]
+    [reset_item]
+    [show_item]
+[endif]
 [mask_off time="500"]
 
 ; タイマーをスタート
-[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0"]
+[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.on_timer == true"]
 
 *return
 [cm][clearstack]
@@ -77,7 +82,7 @@ f.stage_file = {
 [cm][clearstack]
 [clearfix]
 ; タイマーを一時停止
-[ctrl_circle_timer name="game_timer" content="stop"]
+[ctrl_circle_timer name="game_timer" content="stop" cond="sf.on_timer == true"]
 ; クリア判定
 [eval exp="tf.clear = f.current >= f.rooms.length - 1"]
 ; クリアの場合、akaneオブジェクトを表示・天球を回転
@@ -113,7 +118,7 @@ f.stage_file = {
 console.log('--> clear game');
 [endscript]
 ; タイマー削除
-[ctrl_circle_timer name="game_timer" content="delete"]
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
 ; カメラ移動
 [3d_anim name="camera" pos="0,0,-10" time="3000" wait="false"]
 [wait time="1000"]
@@ -134,15 +139,15 @@ console.log('--> clear game');
 ; 最初にカメラでふりふり
 [3d_anim name="camera" rot="&getRotate(0,45,180)" time="1000"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,-45,180)" time="1000"]
+[3d_anim name="camera" rot="&getRotate(0,-45,180)" time="2000"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,0,180)" time="500"]
+[3d_anim name="camera" rot="&getRotate(0,0,180)" time="1000"]
 [wait time="500"]
 
 #アカネ
-おめでとう、無事に脱出できたね！
-[3d_debug_camera]
-[s]
+おめでとう、無事に脱出できたね！[p]
+;[3d_debug_camera]
+[jump target="return_game"]
 
 
 *timeout
@@ -153,9 +158,19 @@ console.log('--> clear game');
 console.log('--> time out');
 [endscript]
 [clearfix]
-[ctrl_circle_timer name="game_timer" content="delete"]
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
+[close_item]
 [3d_close]
 [mask_off]
 [show_message]
-――脱出失敗
-[s]
+――脱出失敗[l]
+[jump target="return_game"]
+
+
+*return_game
+[mask]
+[close_item]
+[3d_close]
+#
+[hide_message]
+[jump storage="first.ks" target="return_game"]

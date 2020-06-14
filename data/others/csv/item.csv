@@ -1,0 +1,4 @@
+stage,name,width,height,storage,reflect
+1,box1,100,100,../fgimage/color/red.png,FALSE
+1,box2,100,100,../fgimage/color/col2.png,FALSE
+1,box3,100,100,../fgimage/color/col1.png,FALSE

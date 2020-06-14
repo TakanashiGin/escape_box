@@ -1,6 +1,11 @@
 stage,name,storage,folder,pos,rot,scale,tonemap
-akane,akane_normal,../../../fgimage/chara/akane/normal.png,none,none,none,4-13-1,FALSE
-akane,akane_happy,../../../fgimage/chara/akane/happy.png,none,none,none,4-13-1,FALSE
-akane,akane_sad,../../../fgimage/chara/akane/sad.png,none,none,none,4-13-1,FALSE
-akane,akane_doki,../../../fgimage/chara/akane/doki.png,none,none,none,4-13-1,FALSE
-akane,akane_angry,../../../fgimage/chara/akane/angry.png,none,none,none,4-13-1,FALSE
+akane,akane_normal,../../../fgimage/chara/akane/normal.png,none,none,none,2;3;1,FALSE
+akane,akane_happy,../../../fgimage/chara/akane/happy.png,none,none,none,2;3;1,FALSE
+akane,akane_sad,../../../fgimage/chara/akane/sad.png,none,none,none,2;3;1,FALSE
+akane,akane_doki,../../../fgimage/chara/akane/doki.png,none,none,none,2;3;1,FALSE
+akane,akane_angry,../../../fgimage/chara/akane/angry.png,none,none,none,2;3;1,FALSE
+akane_full,akane_normal,../../../fgimage/chara/akane/normal_full.png,none,none,none,4;13;1,FALSE
+akane_full,akane_happy,../../../fgimage/chara/akane/happy_full.png,none,none,none,4;13;1,FALSE
+akane_full,akane_sad,../../../fgimage/chara/akane/sad_full.png,none,none,none,4;13;1,FALSE
+akane_full,akane_doki,../../../fgimage/chara/akane/doki_full.png,none,none,none,4;13;1,FALSE
+akane_full,akane_angry,../../../fgimage/chara/akane/angry_full.png,none,none,none,4;13;1,FALSE

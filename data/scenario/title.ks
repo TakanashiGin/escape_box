@@ -1,7 +1,7 @@
 *start
 [cm][clearstack]
 [mask time="500"]
-    [3d_init]
+    [3d_init layer="0"]
     [3d_camera pos="-50,26,50" rot="-0.34,-0.8,0" scale="1,1,1"]
     [show_sky_box storage="title.png" r="100" rot="0,0,0"]
     [load_stage_objects stage="global"]

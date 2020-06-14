@@ -9,7 +9,7 @@ sf.title = 'Escape Box';
 [layopt layer="message1" visible="false"]
 [layopt layer="0" visible="true"]
 [layopt layer="1" visible="true"]
-[layopt layer="2" visible="false"]
+[layopt layer="2" visible="true"]
 [layopt layer="fix" visible="true"]
 
 @loadjs storage="js/init.js"
@@ -25,8 +25,18 @@ sf.title = 'Escape Box';
 @call storage="setup/loadcsv.ks"
 @call storage="setup/macro/macro_main.ks"
 
-@jump storage="title.ks"
+*return_game
+[cm][clearstack]
+
+@jump storage="title.ks" cond="!sf.skip.title"
 *return_title
+[eval exp="sf.rafStop()"]
+
+
+; -- test -------------------------------------------------------------------
+
+; ---------------------------------------------------------------------------
+
 
 @jump storage="main.ks"
 

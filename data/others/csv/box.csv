@@ -2,3 +2,7 @@ stage,name,texture,color,width,height,depth,pos,rot,scale,tonemap
 0,s0num_box,none,0x575757,10,17,1,none,none,none,FALSE
 0,s0num_monitor,none,0xffffff,10,3,1,none,none,none,FALSE
 0,s0monitor,none,gray,16,9,1,none,none,none,FALSE
+1,s1table,none,0x784830,4,9,8,8;-6;0,none,none,FALSE
+1,s1box1,none,0xd43535,1.5,1.5,1.5,7.5;-0.6;-2,none,none,FALSE
+1,s1box2,none,0x2d3ae3,1.5,1.5,1.5,7.5;-0.6;0,none,none,FALSE
+1,s1box3,none,0x36e83f,1.5,1.5,1.5,7.5;-0.6;2,none,none,FALSE

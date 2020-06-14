@@ -11,6 +11,9 @@
 ; box
 [loadcsv var="tf.three_boxies" src="csv/box.csv" parse_flort="false"]
 
+; itemはitem.ksで
+;[loadcsv var="tf.items" src="csv/item.csv"]
+
 ; loading
 [loadjs storage="../scenario/setup/loadcsv.js"]
 

@@ -9,10 +9,13 @@
     });
 
     sf.skip = {
+        title: true,
         tutorial: true,
         box_0: true,
-        box_1: true
+        box_1: false
     };
+
+    sf.on_timer = false;
 
     sf.userenv = $.userenv();
 

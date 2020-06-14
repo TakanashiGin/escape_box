@@ -16,8 +16,8 @@
         let three_data = csv_data[cate];
         three_data = three_data.map(ver => {
             return ver.map((side,i) => {
-                if (typeof side === 'string' && side.indexOf('-') !== -1) {
-                    return side.split('-').join(',');
+                if (typeof side === 'string' && side.indexOf(';') !== -1) {
+                    return side.split(';').join(',');
                 } else if (side == 'none') {
                     let index = three_data[0];
                     switch (cate) {
