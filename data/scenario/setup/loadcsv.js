@@ -91,6 +91,6 @@
         });
     });
 
-    console.log(sf.stage_data);
+    //console.log(sf.stage_data);
 
 }());

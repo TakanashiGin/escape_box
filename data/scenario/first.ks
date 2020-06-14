@@ -34,43 +34,7 @@ sf.title = 'Escape Box';
 
 
 ; -- test -------------------------------------------------------------------
-
 ; ---------------------------------------------------------------------------
 
 
 @jump storage="main.ks"
-
-
-
-
-
-
-
-
-
-
-; テスト用
-[iscript]
-$(window).on('keydown',ec => {
-    switch (ec.keyCode) {
-        case 65:  // a
-            TYRANO.kag.tmp.three.camera.position.x -= 10;
-            break;
-        case 68:  // d
-            TYRANO.kag.tmp.three.camera.position.x += 10;
-            break;
-        case 87:  // w
-            TYRANO.kag.tmp.three.camera.position.z -= 10;
-            break;
-        case 83:  // s
-            TYRANO.kag.tmp.three.camera.position.z += 10;
-            break;
-        case 81:  // q
-            TYRANO.kag.tmp.three.camera.position.y += 10;
-            break;
-        case 69:  // e
-            TYRANO.kag.tmp.three.camera.position.y -= 10;
-            break;
-    }
-});
-[endscript]

@@ -18,6 +18,8 @@
 [macro name="reset_item"]
     [iscript]
     f.hold_items = [];
+    f.current_hold_item = null;
+    ItemManager.updateItem();
     [endscript]
 [endmacro]
 
@@ -39,7 +41,7 @@
     [endscript]
 [endmacro]
 
-; ※ 使う前には必ず[clearfix]を実行
+; ※ 使う前に必ず[clearfix]を実行
 [macro name="show_item_button"]
     [iscript]
     tf.be = false;
@@ -69,6 +71,7 @@
 
 [macro name="no_hold_item_text"]
     [show_message]
+    [nowait]
     #あなた
     [if exp="f.hold_items.length > 0"]
         どのアイテムを使おうか……。
@@ -77,6 +80,7 @@
     [endif]
     [p]
     #
+    [endnowait]
     [hide_message]
 [endmacro]
 

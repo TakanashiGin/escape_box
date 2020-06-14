@@ -76,7 +76,7 @@ const ItemManager = {
 
         const self = this;
         const items = TYRANO.kag.stat.f.hold_items;
-        console.log(items);
+        //console.log(items);
 
         $('#items').empty();
 
@@ -101,9 +101,7 @@ const ItemManager = {
                     justifyContent: "center",
                     alignItems: "center"
                 });
-                $('#items').css({
-                    width: `${(div_size) * (i + 1)}px`
-                }).append(j_div_item);
+                $('#items').css("width",`${(div_size) * (i + 1)}px`).append(j_div_item);
 
                 item.src = `./data/image/${item.storage}`;
                 if (item.width >= item.height) {
@@ -121,9 +119,7 @@ const ItemManager = {
 
             });
         } else {
-            $('#items').css({
-                width: `1px`
-            })
+            $('#items').css("width","1px");
         }
     },
 
@@ -133,13 +129,11 @@ const ItemManager = {
         TYRANO.kag.stat.f.hold_items.forEach((v,i) => {
             if (v.line == true) {
                 TYRANO.kag.stat.f.hold_items[i].line = false;
-                //$(`.${v.name}`).css("border","none");
                 $(`.${v.name}`).css('backgroundColor','transparent');
             }
             if (v.line != true && b.name == v.name) {
                 TYRANO.kag.stat.f.hold_items[i].line = true;
                 TYRANO.kag.stat.f.current_hold_item = v.name;
-                //$(`.${v.name}`).css("border","2px dashed #000000");
                 $(`.${v.name}`).css('backgroundColor','gray');
             }
         });
@@ -148,9 +142,10 @@ const ItemManager = {
 
     checkGot: function(name){
         var be = false;
-        TYRANO.kag.stat.f.hold_items.forEach(v => {
+        for (let index of TYRANO.kag.stat.f.hold_items) {
+            let v = TYRANO.kag.stat.f.hold_items[index];
             if (v.name == name) be = true;
-        });
+        }
         return be;
     }
 

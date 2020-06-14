@@ -105,7 +105,7 @@ class TyranoPluginCircleTimer {
         TYRANO.kag.stat.f.circle_timer_array = TYRANO.kag.stat.f.circle_timer_array.filter(val => {
             if (val.name != self.name) return val;
         });
-        console.log(TYRANO.kag.stat.f.circle_timer_array);
+        //console.log(TYRANO.kag.stat.f.circle_timer_array);
     }
 }
 tyrano.plugin.kag.tag.set_circle_timer = {
@@ -133,7 +133,7 @@ tyrano.plugin.kag.tag.set_circle_timer = {
             }
         });
         TYRANO.kag.stat.f.circle_timer_array.push(new TyranoPluginCircleTimer(pm));
-        console.log(TYRANO.kag.stat.f.circle_timer_array);
+        //console.log(TYRANO.kag.stat.f.circle_timer_array);
         this.kag.ftag.nextOrder();
     }
 };
@@ -170,13 +170,13 @@ tyrano.plugin.kag.tag.ctrl_circle_timer = {
 };
 tyrano.plugin.kag.tag.make_circle_timer = {
     start: function(pm){
-        console.log(TYRANO.kag.stat.f.circle_timer_array);
+        //console.log(TYRANO.kag.stat.f.circle_timer_array);
         if (!TYRANO.kag.stat.f.circle_timer_array) TYRANO.kag.stat.f.circle_timer_array = [];
-        console.log(TYRANO.kag.stat.f.circle_timer_array);
+        //console.log(TYRANO.kag.stat.f.circle_timer_array);
         for (let i=0; i<TYRANO.kag.stat.f.circle_timer_array; i++) {
             let val = TYRANO.kag.stat.f.circle_timer_array[i];
-            console.log(val);
-            console.log(val.init);
+            //console.log(val);
+            //console.log(val.init);
             document.getElementById(val.canvas.name).remove();
             val.init();
         }

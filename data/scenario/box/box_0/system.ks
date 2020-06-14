@@ -43,7 +43,7 @@
             『右を向いてみて』[p]
             #
             [eval exp="f.to_direction = 'right'"]
-            [3d_anim name="camera" pos="0" wait="false"]
+            [3d_anim name="camera" pos="0" wait="false" time="500"]
             [direction_manager]
             #アカネ
             『いかにも怪しそうなパネルがあるねぇ、なんだろうねぇ』[p]

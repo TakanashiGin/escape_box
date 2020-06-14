@@ -107,7 +107,15 @@ tf.num = 2;
     [no_hold_item_text]
 [endif]
 ;[eval exp="console.log(f.qbox)"]
-[jump target="return_event"]
+[iscript]
+tf.bool = true;
+for (let i=0; i<f.qbox.box.length; i++) {
+    if (f.qbox.box[i] != f.qbox.correct[i]) tf.bool = false;
+}
+[endscript]
+[jump target="return_event" cond="!tf.bool"]
+[jump target="correct" cond="tf.bool"]
+[s]
 
 
 *back_main
@@ -115,3 +123,13 @@ tf.num = 2;
 [3d_anim name="camera" pos="0,0,0"]
 [show_message]
 [jump storage="main.ks" target="return"]
+
+
+*correct
+[iscript]
+console.log('--> correct');
+[endscript]
+[3d_anim name="camera" pos="0,0,0"]
+[eval exp="f.to_direction = 'left'"]
+[direction_manager]
+[jump storage="main.ks" target="next_room"]

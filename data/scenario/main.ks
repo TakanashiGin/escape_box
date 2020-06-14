@@ -87,7 +87,7 @@ f.stage_file = {
 [eval exp="tf.clear = f.current >= f.rooms.length - 1"]
 ; クリアの場合、akaneオブジェクトを表示・天球を回転
 [if exp="tf.clear"]
-    [3d_show name="akane_normal" pos="0,-5,-30" scale="6,19.5,1" time="10"]
+    [3d_show name="akane_normal" pos="0,-5,-50" scale="6,19.5,1" time="10"]
     [iscript]
     tyrano.plugin.kag.tmp.three.models.sky_box.rotation.y = 180;
     tyrano.plugin.kag.tmp.three.models.sky_box.rotation.z = 180;
@@ -119,6 +119,8 @@ console.log('--> clear game');
 [endscript]
 ; タイマー削除
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
+; アイテム欄削除
+[close_item]
 ; カメラ移動
 [3d_anim name="camera" pos="0,0,-10" time="3000" wait="false"]
 [wait time="1000"]
@@ -137,11 +139,11 @@ console.log('--> clear game');
 [mask_off]
 
 ; 最初にカメラでふりふり
-[3d_anim name="camera" rot="&getRotate(0,45,180)" time="1000"]
+[3d_anim name="camera" rot="&getRotate(0,20,180)" time="500"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,-45,180)" time="2000"]
+[3d_anim name="camera" rot="&getRotate(0,-20,180)" time="1000"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,0,180)" time="1000"]
+[3d_anim name="camera" rot="&getRotate(0,0,180)" time="500"]
 [wait time="500"]
 
 #アカネ
@@ -151,7 +153,7 @@ console.log('--> clear game');
 
 
 *timeout
-[mask]
+[mask color="white"]
 [cm][clearstack]
 #
 [iscript]
@@ -161,6 +163,7 @@ console.log('--> time out');
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
 [close_item]
 [3d_close]
+[close_item]
 [mask_off]
 [show_message]
 ――脱出失敗[l]
