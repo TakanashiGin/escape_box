@@ -33,14 +33,6 @@
 [endif]
 [endnowait]
 
-[if exp="sf.skip.box_1"]
-    [iscript]
-    console.log('--> click to skip');
-    [endscript]
-    [l]
-    [jump storage="main.ks" target="next_room"]
-[endif]
-
 [jump storage="main.ks" target="return_system"]
 
 
@@ -49,6 +41,7 @@
 [hide_message]
 [3d_anim name="camera" pos="1,0,0"]
 *return_event
+;[eval exp="console.log(f.item)"]
 [clearfix]
 [clickable x="220" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box1"]
 [clickable x="520" y="330" width="240" height="230" color="black" opacity="0" mouseopacity="0" target="click_box2"]
@@ -61,21 +54,21 @@
 
 *click_box1
 [iscript]
-console.log('--> click box1');
+//console.log('--> click box1');
 tf.num = 0;
 [endscript]
 [jump target="common_box"]
 
 *click_box2
 [iscript]
-console.log('--> click box2');
+//console.log('--> click box2');
 tf.num = 1;
 [endscript]
 [jump target="common_box"]
 
 *click_box3
 [iscript]
-console.log('--> click box3');
+//console.log('--> click box3');
 tf.num = 2;
 [endscript]
 [jump target="common_box"]
@@ -83,7 +76,7 @@ tf.num = 2;
 *common_box
 [cm][clearstack]
 [clearfix]
-;[eval exp="console.log(f.current_hold_item == 'box1' || f.current_hold_item == 'box2' || f.current_hold_item == 'box3')"]
+;[eval exp="console.log(f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3')"]
 [if exp="f.qbox.box[tf.num] != null"]
     [get_item name="&f.qbox.box[tf.num]"]
     [iscript]
@@ -91,17 +84,14 @@ tf.num = 2;
     f.qbox.box[tf.num] = null;
     [endscript]
     [3d_hide name="&tf.n" time="10"]
-[elsif exp="f.current_hold_item == 'box1' || f.current_hold_item == 'box2' || f.current_hold_item == 'box3' || f.hold_items.length > 0"]
+[elsif exp="f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3' || f.item.hold.length > 0"]
+    [use_current_item var="tf.item"]
     [iscript]
-    if (!f.current_hold_item) f.current_hold_item = f.hold_items[0].name;
-    [endscript]
-    [delete_item name="&f.current_hold_item"]
-    [iscript]
-    f.qbox.box[tf.num] = f.current_hold_item;
-    tf.n = `s1${f.current_hold_item}`;
+    f.qbox.box[tf.num] = tf.item;
+    tf.n = `s1${tf.item}`;
     tf.p = f.qbox.pos[tf.num];
-    f.current_hold_item = null;
     [endscript]
+    [delete_item name="&tf.item"]
     [3d_show name="&tf.n" pos="&tf.p" time="10"]
 [else]
     [no_hold_item_text]

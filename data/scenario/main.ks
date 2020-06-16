@@ -1,13 +1,17 @@
 *start
 [cm][clearstack]
 
+; 暗転
 [mask]
 
+; canvas表示
 [3d_init]
 
 [iscript]
 f.current = 0;
-f.rooms = [0,1];
+f.rooms = (sf.shuffle_array)? shuffleArray(sf.rooms) : sf.rooms;
+f.rooms.unshift(0);
+console.log(`--> rooms ${f.rooms}`);
 // 各ステージのステータスを設定
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
 [endscript]
@@ -60,6 +64,15 @@ f.stage_file = {
 ; ステージシステム読み込み
 [jump storage="&f.stage_file.system"]
 *return_system
+; スキップ（デバッグモード）
+[eval exp="tf.skip_bool = sf['skip'][`box_${f.rooms[f.current]}`]"]
+[if exp="tf.skip_bool"]
+    [iscript]
+    console.log('--> click to skip');
+    [endscript]
+    [l]
+    [jump storage="main.ks" target="next_room"]
+[endif]
 ; カメラ制御ボタンを表示
 [camera_button]
 ; ============================================================================
@@ -108,7 +121,10 @@ f.stage_file = {
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
 ; 現在のルームを一つ進める
-[eval exp="f.current++"]
+[iscript]
+f.current++;
+console.log(`--> next to ${f.rooms[f.current]}`);
+[endscript]
 ; 次のルームに進む
 [jump target="start_room" cond="f.current < f.rooms.length"]
 
@@ -153,19 +169,28 @@ console.log('--> clear game');
 
 
 *timeout
+; ホワイトアウト
 [mask color="white"]
 [cm][clearstack]
+; 名前欄解放に
 #
 [iscript]
 console.log('--> time out');
 [endscript]
+; fixレイヤ解放
 [clearfix]
+; タイマー削除
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
+; アイテム欄削除
 [close_item]
+; canvas削除
 [3d_close]
-[close_item]
-[mask_off]
+; メッセージウィンドウ表示
 [show_message]
+; wait
+[wait time="2000"]
+; マスク解除
+[mask_off]
 ――脱出失敗[l]
 [jump target="return_game"]
 

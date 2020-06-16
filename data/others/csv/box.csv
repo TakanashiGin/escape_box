@@ -6,3 +6,7 @@ stage,name,texture,color,width,height,depth,pos,rot,scale,tonemap
 1,s1box1,none,0xd43535,1.5,1.5,1.5,7.5;-0.6;-2,none,none,FALSE
 1,s1box2,none,0x2d3ae3,1.5,1.5,1.5,7.5;-0.6;0,none,none,FALSE
 1,s1box3,none,0x36e83f,1.5,1.5,1.5,7.5;-0.6;2,none,none,FALSE
+2,test,none,none,none,none,none,none,none,none,FALSE
+3,test,none,none,none,none,none,none,none,none,FALSE
+4,test,none,none,none,none,none,none,none,none,FALSE
+5,test,none,none,none,none,none,none,none,none,FALSE
