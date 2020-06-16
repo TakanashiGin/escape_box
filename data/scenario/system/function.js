@@ -48,3 +48,7 @@ function getRotate(x,y,z){
     ];
     return rad.join(',');
 }
+
+function getStage(s){
+    return (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
+}

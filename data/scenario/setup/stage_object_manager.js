@@ -5,7 +5,7 @@ const StageObjectManager = {
         const f = TG.stat.f;
         const sf = TG.variable.sf;
         const tf = TG.variable.tf;
-        const stage = (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
+        const stage = getStage(s);
         Object.keys(sf.stage_data[stage]['objects']).forEach(key => {
             let objects = sf.stage_data[stage]['objects'][key];
             switch (key) {
@@ -73,7 +73,7 @@ const StageObjectManager = {
         const f = TG.stat.f;
         const sf = TG.variable.sf;
         const tf = TG.variable.tf;
-        const stage = (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
+        const stage = getStage(s);
         Object.keys(sf.stage_data[stage]['objects']).forEach(key => {
             sf.stage_data[stage]['objects'][key].forEach(v => {
                 let name = v.name;

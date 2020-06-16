@@ -70,7 +70,7 @@
 
     let pushObject = (data,data_key,num) => {
         if (!num) num = data.stage;
-        let stage = (!Number.isNaN(parseInt(num)))? `box_${num}` : data.stage;
+        let stage = getStage(num);
         if (!sf.stage_data[stage]) sf.stage_data[stage] = {};
         if (!sf.stage_data[stage]['objects']) sf.stage_data[stage]['objects'] = {};
         if (!sf.stage_data[stage]['objects'][data_key]) sf.stage_data[stage]['objects'][data_key] = [];

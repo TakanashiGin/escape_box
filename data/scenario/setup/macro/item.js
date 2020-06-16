@@ -22,7 +22,7 @@ class ItemManager {
             let ver = items[i];
             let s = ver[0];
             let name = ver[1];
-            let stage = (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
+            let stage = getStage(s);
             if (!sf.stage_data[stage]['item']) sf.stage_data[stage]['item'] = {};
             if (!sf.stage_data[stage]['item'][name]) sf.stage_data[stage]['item'][name] = {};
             ver.forEach((v,j) => sf.stage_data[stage]['item'][name][items[0][j]] = v);
