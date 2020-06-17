@@ -9,7 +9,7 @@
     });
 
     sf.skip = {
-        title: true,
+        title: false,
         tutorial: true,
         box_0: true,
         box_1: false,

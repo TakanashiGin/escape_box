@@ -3,7 +3,8 @@
 [mask time="500"]
     [3d_init layer="0"]
     [3d_camera pos="-50,26,50" rot="-0.34,-0.8,0" scale="1,1,1"]
-    [show_sky_box storage="title.png" r="100" rot="0,0,0"]
+;    [show_sky_box storage="title.png" r="100" rot="0,0,0"]
+    [show_panoramic_image name="title" storage="title.png" rad="100"]
     [load_stage_objects stage="global"]
     [3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1" time="10" wait="false"]
     [3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1" time="10" wait="false"]
@@ -24,6 +25,7 @@
 *start_game
 [mask time="1000"]
 [free layer="1" name="title" time="10"]
+[remove_panoramic_image name="title"]
 [iscript]
 sf.rafStop();
 [endscript]
@@ -31,6 +33,7 @@ sf.rafStop();
 [jump storage="first.ks" target="return_title"]
 
 *config
+[remove_panoramic_image name="title"]
 [iscript]
 sf.rafStop();
 [endscript]

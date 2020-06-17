@@ -49,6 +49,8 @@ function getRotate(x,y,z){
     return rad.join(',');
 }
 
+const getModel = name => TYRANO.kag.tmp.three.models[name];
+
 function getStage(s){
     return (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
 }

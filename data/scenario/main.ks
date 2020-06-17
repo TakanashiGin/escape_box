@@ -102,8 +102,9 @@ f.stage_file = {
 [if exp="tf.clear"]
     [3d_show name="akane_normal" pos="0,-5,-50" scale="6,19.5,1" time="10"]
     [iscript]
-    tyrano.plugin.kag.tmp.three.models.sky_box.rotation.y = 180;
-    tyrano.plugin.kag.tmp.three.models.sky_box.rotation.z = 180;
+    let sky = getModel('sky');
+    sky.rotation.y = 180;
+    sky.rotation.z = 180;
     [endscript]
 [endif]
 ; 扉を削除

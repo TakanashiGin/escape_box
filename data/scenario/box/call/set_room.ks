@@ -3,7 +3,7 @@
 [iscript]
 tf.src = `sky_${getTimeZone()}.jpg`;
 [endscript]
-[show_sky_box storage="&tf.src" r="400" rot="45,0,0"]
+[show_panoramic_image name="sky" storage="&tf.src" rad="400" rot="&getRotate(45,0,0)"]
 
 [3d_show name="floor" pos="0,-10,0" rot="&getRotate(90,0,0)" scale="20,20,1" time="10" wait="false"]
 [3d_show name="wall_right" pos="10,0,0" rot="&getRotate(0,90,0)" scale="20,20,1" time="10" wait="false"]

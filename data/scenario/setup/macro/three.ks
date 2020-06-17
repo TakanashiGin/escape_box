@@ -15,10 +15,24 @@
     [3d_show *]
 [endmacro]
 
-[loadjs storage="../scenario/setup/macro/show_sky_box.js"]
-[macro name="show_sky_box"]
+[loadjs storage="../scenario/setup/macro/show_panoramic_image.js"]
+[macro name="show_panoramic_image"]
     [iscript]
-    show_sky_box(mp.storage,parseInt(mp.r),$.three_pos(mp.rot));
+    let pos = mp.pos || "0,0,0";
+    let rot = mp.rot || "0,0,0";
+    let tmp = [
+        mp.name || 'panoramic_image',
+        mp.storage,
+        mp.rad || 100,
+        pos.split(',').map(Number),
+        rot.split(',').map(Number)
+    ];
+    showPanoramicImage(...tmp);
+    [endscript]
+[endmacro]
+[macro name="remove_panoramic_image"]
+    [iscript]
+    removePanoramicImage(mp.name);
     [endscript]
 [endmacro]
 
