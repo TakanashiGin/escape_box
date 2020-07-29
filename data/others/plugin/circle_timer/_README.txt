@@ -25,9 +25,12 @@ Canvas要素のContext2Dで実装してみました
 
 [set_circle_timer]
 [ctrl_circle_timer]
-[make_circle_timer]  --> 廃止
+[make_circle_timer]
 
 以上のタグが使えるようになります。
+
+またQiita記事にてサンプルコード含め詳細な使用方法を扱っているため詳しい使い方については以下のURLをご覧ください。
+https://qiita.com/diyin_near_j/items/c04bd66302d29f41c695
 
 
 ◇ ファイル構成 ◇
@@ -35,7 +38,7 @@ Canvas要素のContext2Dで実装してみました
 for
  ├ _README.txt
  ├ _SAMPLE.ks
- ├ circle_timer.js
+ ├ circle_timer.min.js
  └ init.ks
 
 
@@ -69,7 +72,10 @@ data/others/plugin/ 下にコピーしてください。
 
     fix  true/falseを指定。サークルタイマーをfixレイヤーに表示する際はtrueに。
 
-    time  サークルタイマーの時間をﾐﾘ秒で指定してください。デフォルトでは3000 [ms]
+    time  サークルタイマーの最大時間をﾐﾘ秒で指定してください。デフォルトでは3000 [ms]
+
+    start_time  タイマーがスタートする時間を指定することが出来ます。
+                time属性で指定した時間よりも大きい値は指定できません。デフォルトは0 [ms]
 
     storage  指定時間後にジャンプするファイルを指定
 
@@ -79,7 +85,9 @@ data/others/plugin/ 下にコピーしてください。
 
     top  円の中心座標（y）
 
-    rad  円の半径
+    scale  表示する円（厳密に言えばcanvas要素）の大きさを倍率で指定します。
+            1 だと円が画面全体に表示されます
+            デフォルトは 1
 
     front_color  円前面の色
 
@@ -88,6 +96,12 @@ data/others/plugin/ 下にコピーしてください。
     stroke_color  枠線の色を指定。noneで指定しないことも出来る。
 
     stroke_width  枠線の幅
+
+    end_p  色を変化させる位置をパーセントで指定（例：80%）
+
+    end_color  変化させた後の色を指定。例えば残り時間が僅かな時に変化させることが出来ます。
+
+    start  true/falseを指定。サークルタイマーを表示後、すぐにタイマーを起動するかどうかを指定出来ます。デフォルトはtrue。
 
     clear  true/falseを指定。指定時間後にサークルを削除するかどうか。
 
@@ -106,6 +120,8 @@ data/others/plugin/ 下にコピーしてください。
 
     content  操作内容を指定します。
 
+        time  interval_time属性とmax_time属性の操作をする時に指定
+
         stop  タイマーを一時停止
 
         start  一時停止したタイマーを起動
@@ -113,6 +129,19 @@ data/others/plugin/ 下にコピーしてください。
         clear  タイマーを停止・削除
 
         delete  タイマーを削除
+
+    interval_time  content属性がtimeの時に指定可。経過時間を操作することが出来ます。
+                    例えば「interval_time="5000"」とするとタイマーが 5000 [ms] まで一瞬で進む（または戻る）
+
+    max_time  content属性がtimeの時に指定可。タイマーの最大時間を操作することが出来ます。
+                例えば「time="5000"」のタイマーに対し「max_time="1000"」とするとタイマーが早く進む。
+
+◆ [make_circle_timer] サークルタイマーをロード時に復帰する
+
+    || 概要
+
+    make.ksに記述してください
+    セーブデータをロード時、セーブデータにサークルタイマーの起動が確認されると自動的に復帰されます
 
 
 ◇ FAQ・既知のバグ等 ◇
@@ -124,3 +153,6 @@ data/others/plugin/ 下にコピーしてください。
 ◇ 履歴 ◇
 
 2020/06/03 実験版リリース
+2020/07/08 β版リリース
+2020/07/14 canvas系パラメーター追加
+2020/07/14 画面比率対応（canvas系・radパラメーを廃止・scaleを追加）

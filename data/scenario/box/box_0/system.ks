@@ -58,7 +58,7 @@
             [direction_manager][direction_manager]
             [mod_sprite name="akane_doki" hide_name="akane_normal" pos="0,0,9" scale="2.5,4,1" time="10"]
             #アカネ
-            『そうそう、言い忘れてたけど、制限時間以内に脱出できないと部屋が爆発しちゃうから気を付けてね』[p]
+            『そうそう、言い忘れてたけど、１分以内に脱出できないと部屋が爆発しちゃうから気を付けてね』[p]
             [mod_sprite name="akane_happy" hide_name="akane_doki" pos="0,0,9" scale="2.5,4,1" time="10"]
             『それじゃ、頑張ってねぇ～』[p]
             #
@@ -111,11 +111,11 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
         [elsif exp="tf.orientation[0] == 'back'"]
             爆発だって……！？[r]
             はやくここから脱出しないと……！！
-        [elsif exp="tf.orientation[0] == 'left'"]
+        [elsif exp="tf.orientation[0] == 'right'"]
             これはなんだろう……？
             [call target="inf_object"]
             [clickable storage="box/box_0/system.ks" target="hint" x="470" y="190" width="340" height="340" color="black" opacity="0" mouseopacity="100"]
-        [elsif exp="tf.orientation[0] == 'right'"]
+        [elsif exp="tf.orientation[0] == 'left'"]
             このパネルは一体……？
             [call target="inf_object"]
             [clickable storage="box/box_0/system.ks" target="panel" x="470" y="65" width="340" height="570" color="black" opacity="0" mouseopacity="100"]

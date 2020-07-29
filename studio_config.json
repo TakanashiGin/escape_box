@@ -1,14 +1,1 @@
-{
-    "project_dir":"",
-    "view":{
-        "checkDebugPreview":{
-            "type":"checkbox",
-            "val":true
-        },
-        "selectDebugPos":{
-            "type":"select",
-            "val":"right"
-        }
-    },
-    "map_watch":{}
-}
+{"project_dir":"","view":{"checkDebugPreview":{"type":"checkbox","val":true},"selectDebugPos":{"type":"select","val":"bottom"}},"map_watch":{}}

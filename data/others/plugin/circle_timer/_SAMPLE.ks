@@ -6,15 +6,14 @@
 [layopt layer="0" visible="true"]
 [bg storage="room.jpg"]
 
-[set_circle_timer name="test" time="50000" clear="false" target="end" left="100" top="50" rad="20" front_color="skyblue" stroke_color="black" stroke_width="0.5"]
+[set_circle_timer name="test" time="10000" start_time="1000" start="false" clear="false" target="end" fade_in="true" front_color="skyblue" stroke_color="black" stroke_width="0.5" end_color="red" end_p="80%"]
+
 *timer
 [l]
-[ctrl_circle_timer name="test" content="stop"]
-[eval exp="console.log(f.circle_timer_array)"]
-[l]
 [ctrl_circle_timer name="test" content="start"]
+[l]
+[ctrl_circle_timer name="test" content="stop"]
 [jump target="timer"]
-[s]
 
 *end
 [eval exp="console.log('end')"]

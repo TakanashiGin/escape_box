@@ -105,6 +105,10 @@ f.stage_file = {
     let sky = getModel('sky');
     sky.rotation.y = 180;
     sky.rotation.z = 180;
+    // 並行光を削除
+    let three = tyrano.plugin.kag.tmp.three;
+    three.scene.remove(three.light);
+    delete three.light;
     [endscript]
 [endif]
 ; 扉を削除
@@ -148,19 +152,18 @@ console.log('--> clear game');
 [delete_stage_objects stage="global"]
 ; 現在のルームを一つ進める（便宜的）
 [eval exp="f.current++"]
-; 角度を逆転（地面の反対側へ）
-[3d_anim name="&tf.src" pos="20" time="10" wait="false"]
-[3d_anim name="akane_normal" pos="0,5,-30" rot="&getRotate(0,0,180)" time="10" wait="false"]
-[3d_camera rot="&getRotate(0,0,180)"]
+; cameraを前に進める
+[3d_camera pos="0,0,-30"]
+; メッセージウィンドウを表示
 [show_message]
 [mask_off]
 
 ; 最初にカメラでふりふり
-[3d_anim name="camera" rot="&getRotate(0,20,180)" time="500"]
+[3d_anim name="camera" rot="&getRotate(0,20,0)" time="500"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,-20,180)" time="1000"]
+[3d_anim name="camera" rot="&getRotate(0,-20,0)" time="1000"]
 [wait time="500"]
-[3d_anim name="camera" rot="&getRotate(0,0,180)" time="500"]
+[3d_anim name="camera" rot="&getRotate(0,0,0)" time="500"]
 [wait time="500"]
 
 #アカネ
@@ -173,7 +176,7 @@ console.log('--> clear game');
 ; ホワイトアウト
 [mask color="white"]
 [cm][clearstack]
-; 名前欄解放に
+; 名前欄解放
 #
 [iscript]
 console.log('--> time out');

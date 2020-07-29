@@ -24,11 +24,11 @@
         謎を解かないとこの扉は開かない。
     [elsif exp="tf.orientation[0] == 'back'"]
         さっきの部屋には戻れないようだ。
-    [elsif exp="tf.orientation[0] == 'left'"]
+    [elsif exp="tf.orientation[0] == 'right'"]
         箱が３つ……？
         [clickable x="200" y="300" width="850" height="250" color="black" opacity="0" mouseopacity="100" storage="box/box_1/system.ks" target="start_event"]
-    [elsif exp="tf.orientation[0] == 'right'"]
-        右の壁には何もない。
+    [elsif exp="tf.orientation[0] == 'left'"]
+        左の壁には何もない。
     [endif]
 [endif]
 [endnowait]
@@ -51,6 +51,7 @@
 [show_item_button name="box2" hint="青色の箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [show_item_button name="box3" hint="緑色の箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [s]
+
 
 *click_box1
 [iscript]
@@ -98,13 +99,9 @@ tf.num = 2;
 [endif]
 ;[eval exp="console.log(f.qbox)"]
 [iscript]
-tf.bool = true;
-for (let i=0; i<f.qbox.box.length; i++) {
-    if (f.qbox.box[i] != f.qbox.correct[i]) tf.bool = false;
-}
 [endscript]
-[jump target="return_event" cond="!tf.bool"]
-[jump target="correct" cond="tf.bool"]
+[jump target="correct" cond="f.qbox.correct.filter((v,i)=>v!=f.qbox.box[i]).length==0"]
+[jump target="return_event"]
 [s]
 
 

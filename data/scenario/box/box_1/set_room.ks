@@ -1,4 +1,6 @@
 
+; ヒントの配置をする
+
 [3d_show name="s1table"]
 [iscript]
 f.qbox = {

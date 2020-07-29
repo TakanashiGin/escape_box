@@ -75,9 +75,9 @@
         if (!sf.stage_data[stage]['objects']) sf.stage_data[stage]['objects'] = {};
         if (!sf.stage_data[stage]['objects'][data_key]) sf.stage_data[stage]['objects'][data_key] = [];
         let tmp = {};
-        Object.keys(data).forEach(k => {
+        for (let k in data) {
             if (k != 'stage') tmp[k] = data[k];
-        });
+        }
         sf.stage_data[stage]['objects'][data_key].push(tmp);
     }
     Object.keys(sf.object_data).forEach(data_key => {

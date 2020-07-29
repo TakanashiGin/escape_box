@@ -31,8 +31,8 @@ function getOrientation(log){
     let transverse = (function(){
         if (deg_abs.y == 0) return 'front';
         else if (deg_abs.y == 180) return 'back';
-        else if (deg.y == 90 || deg.y == -270) return 'right';
-        else return 'left';
+        else if (deg.y == 90 || deg.y == -270) return 'left';
+        else return 'right';
     }());
     let longitudinally = (function(){
         if (deg.x > 0) return 'up';
