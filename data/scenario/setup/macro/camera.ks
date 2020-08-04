@@ -54,4 +54,28 @@
     [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'down'"]
 [endmacro]
 
+[macro name="to_front"]
+    [eval exp="tf.loop = true"]
+*nextwhile
+    [iscript]
+    const orientation = getOrientation();
+    if (orientation[1] == 'up') {
+        f.to_direction = 'down';
+    } else if (orientation[1] == 'down') {
+        f.to_direction = 'up';
+    } else {
+        switch (orientation[0]) {
+            case 'right': f.to_direction = 'left'; break;
+            case 'left': f.to_direction = 'right'; break;
+            case 'back': f.to_direction = 'right'; break;
+            default: tf.loop = false; break;
+        }
+    }
+    [endscript]
+    [direction_manager cond="tf.loop"]
+    [wait time="500" cond="tf.loop"]
+    [jump storage="setup/macro/camera.ks" target="nextwhile" cond="tf.loop"]
+    [eval exp="tf.loop = null"]
+[endmacro]
+
 [return]

@@ -78,7 +78,51 @@ f.stage_file = {
 ; ============================================================================
 ; debug用
 ;[start_timer]
+;[eval exp="console.log(tyrano.plugin.kag.tmp.three.models)"]
 ;[3d_debug_camera]
+;[3d_hide]
+[iscript]
+const debug_model = () => {
+    const three = TYRANO.kag.tmp.three;
+    const target = three.models.test1.model;
+    const d = 0.1;
+    console.log(target);
+    $(window).on('keydown.debug_three_model_by_key', de => {
+        switch (de.keyCode) {
+            case 65:  // a
+                var tmp = target.position.x;
+                target.position.x -= d;
+                console.log(`${tmp} => ${target.position.x}`);
+                break;
+            case 68:  // d
+                var tmp = target.position.x;
+                target.position.x += d;
+                console.log(`${tmp} => ${target.position.x}`);
+                break;
+            case 87:  // w
+                var tmp = target.position.z;
+                target.position.z -= d;
+                console.log(`${tmp} => ${target.position.z}`);
+                break;
+            case 83:  // s
+                var tmp = target.position.z;
+                target.position.z += d;
+                console.log(`${tmp} => ${target.position.z}`);
+                break;
+            case 81:  // q
+                var tmp = target.position.y;
+                target.position.y += d;
+                console.log(`${tmp} => ${target.position.y}`);
+                break;
+            case 69:  // e
+                var tmp = target.position.y;
+                target.position.y -= d;
+                console.log(`${tmp} => ${target.position.y}`);
+                break;
+        }
+    });
+}
+[endscript]
 ;[eval exp="getOrientation(true)"]
 ; ============================================================================
 [s]
@@ -152,8 +196,14 @@ console.log('--> clear game');
 [delete_stage_objects stage="global"]
 ; 現在のルームを一つ進める（便宜的）
 [eval exp="f.current++"]
-; cameraを前に進める
-[3d_camera pos="0,0,-30"]
+; cameraの位置を調整（バグ対策でJSから操作）
+[iscript]
+const camera = tyrano.plugin.kag.tmp.three.camera;
+['x','y','z'].forEach(d => {
+    camera.rotation[d] = 0;
+    camera.position[d] = d == 'z'? -30 : 0;
+});
+[endscript]
 ; メッセージウィンドウを表示
 [show_message]
 [mask_off]
