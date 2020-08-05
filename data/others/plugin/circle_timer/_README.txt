@@ -93,6 +93,10 @@ data/others/plugin/ 下にコピーしてください。
 
     back_color  円後面の色
 
+    front_graphic  円前面に使用する画像（実装予定）
+
+    back_graphic  円後面に使用する画像（実装予定）
+
     stroke_color  枠線の色を指定。noneで指定しないことも出来る。
 
     stroke_width  枠線の幅
@@ -100,6 +104,8 @@ data/others/plugin/ 下にコピーしてください。
     end_p  色を変化させる位置をパーセントで指定（例：80%）
 
     end_color  変化させた後の色を指定。例えば残り時間が僅かな時に変化させることが出来ます。
+
+    end_image  変化させた後の画像を指定。
 
     start  true/falseを指定。サークルタイマーを表示後、すぐにタイマーを起動するかどうかを指定出来ます。デフォルトはtrue。
 
@@ -156,3 +162,4 @@ data/others/plugin/ 下にコピーしてください。
 2020/07/08 β版リリース
 2020/07/14 canvas系パラメーター追加
 2020/07/14 画面比率対応（canvas系・radパラメーを廃止・scaleを追加）
+2020/08/03 end_p属性が反映されないバグを修正

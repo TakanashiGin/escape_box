@@ -46,16 +46,18 @@
 
 
     if (sf.system.var.reset_var) {
-        const tmp = [
-            sf.system,
-            sf.object_data,
-            sf.stage_data
-        ];
+        const tmp = {
+            title: sf.title,
+            system: sf.system,
+            object_data: sf.object_data,
+            stage_data: sf.stage_data
+        };
         TG.stat.f = {};
         TG.variable.sf = {};
-        TG.variable.sf.system = tmp[0];
-        TG.variable.sf.object_data = tmp[1];
-        TG.variable.sf.stage_data = tmp[2];
+        TG.variable.sf.title = tmp.title;
+        TG.variable.sf.system = tmp.system;
+        TG.variable.sf.object_data = tmp.object_data;
+        TG.variable.sf.stage_data = tmp.stage_data;
     }
 
     $.log = val => {

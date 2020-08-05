@@ -57,7 +57,7 @@ f.stage_file = {
 [mask_off time="500"]
 
 ; タイマーをスタート
-[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.system.var.on_timer == true"]
+[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.system.var.on_timer"]
 
 *return
 [cm][clearstack]
@@ -77,11 +77,11 @@ f.stage_file = {
 [camera_button]
 ; ============================================================================
 ; debug用
-;[start_timer]
 ;[eval exp="$.log(tyrano.plugin.kag.tmp.three.models)"]
+;[eval exp="getOrientation(true)"]
+;[start_timer]
 ;[3d_debug_camera]
 ;[3d_hide]
-;[eval exp="getOrientation(true)"]
 ; ============================================================================
 [s]
 
@@ -161,6 +161,10 @@ const camera = tyrano.plugin.kag.tmp.three.camera;
     camera.rotation[d] = 0;
     camera.position[d] = d == 'z'? -30 : 0;
 });
+if (camera.position.z != -13) {  // 追い打ち
+    camera.position.z = -13;
+    $.log(camera.position.z);
+}
 [endscript]
 ; メッセージウィンドウを表示
 [show_message]
