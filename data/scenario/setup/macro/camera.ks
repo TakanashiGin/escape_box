@@ -16,7 +16,7 @@
         case 'up': rotation.x += 90; break;
         case 'down': rotation.x -= 90; break;
     }
-    //console.log(rotation);
+    //$.log(rotation);
     tf.rot = [];
     for (pos in rotation) tf.rot.push(rotation[pos]);
     [endscript]

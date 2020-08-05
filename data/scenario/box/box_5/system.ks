@@ -6,7 +6,7 @@
 
 #
 [iscript]
-//console.log(f.to_direction);
+//$.log(f.to_direction);
 if (f.to_direction) {
     const system = f.room_system;
     system.dir.push(f.to_direction);
@@ -21,7 +21,7 @@ if (f.to_direction) {
         system.clear = true;
     }
 }
-//console.log(f.room_system);
+//$.log(f.room_system);
 [endscript]
 
 [if exp="f.room_system.correct_se"]
@@ -70,7 +70,7 @@ if (f.to_direction) {
 
 
 *clear
-[eval exp="console.log('-->_correct')"]
+[eval exp="$.log('-->_correct')"]
 [wait time="500"]
 [to_front]
 [jump storage="main.ks" target="next_room"]

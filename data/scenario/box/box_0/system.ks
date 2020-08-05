@@ -1,4 +1,4 @@
-[jump target="skip_tutorial" cond="sf.skip.tutorial == true"]
+[jump target="skip_tutorial" cond="sf.system.skip.tutorial == true"]
 
 [switch exp="sf.stage_data.box_0.status"]
     [case is="0"]
@@ -73,12 +73,12 @@
 
 *skip_tutorial
 [iscript]
-if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.status = 2;
+if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.status = 2;
 [endscript]
 
 ; タイマーを起動（ついでにナンバー配列も初期化・akaneオブジェクトを削除）
 [if exp="sf.stage_data.box_0.status == 2"]
-    [start_timer cond="sf.on_timer == true"]
+    [start_timer cond="sf.system.var.on_timer == true"]
     [iscript]
     f.answer = '4,1,2,3';
     f.ans_nums = [];
@@ -133,7 +133,7 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
 *inf_object
 [r]
 [font color="0xfa8c8c"]（オブジェクトを
-[if exp="sf.userenv == 'pc'"]
+[if exp="sf.system.var.userenv == 'pc'"]
     クリック
 [else]
     タップ
@@ -171,7 +171,7 @@ if (sf.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.box_0.sta
 [cm][clearstack]
 [clearfix]
 [iscript]
-console.log(`push ${tf.push_num}`);
+$.log(`push ${tf.push_num}`);
 tf.num_obj = `s0num${tf.push_num}`;
 tf.bool = f.ans_nums.includes(tf.push_num);
 f.ans_nums.push(tf.push_num);
@@ -230,7 +230,7 @@ f.ans_model = [];
 
 *correct
 [iscript]
-console.log('--> correct');
+$.log('--> correct');
 [endscript]
 [3d_anim name="camera" pos="0,0,0"]
 [eval exp="f.to_direction = 'right'"]

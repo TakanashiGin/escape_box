@@ -41,7 +41,7 @@
 [hide_message]
 [3d_anim name="camera" pos="1,0,0"]
 *return_event
-;[eval exp="console.log(f.item)"]
+;[eval exp="$.log(f.item)"]
 [clearfix]
 [clickable x="220" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box1"]
 [clickable x="520" y="330" width="240" height="230" color="black" opacity="0" mouseopacity="0" target="click_box2"]
@@ -55,21 +55,21 @@
 
 *click_box1
 [iscript]
-//console.log('--> click box1');
+//$.log('--> click box1');
 tf.num = 0;
 [endscript]
 [jump target="common_box"]
 
 *click_box2
 [iscript]
-//console.log('--> click box2');
+//$.log('--> click box2');
 tf.num = 1;
 [endscript]
 [jump target="common_box"]
 
 *click_box3
 [iscript]
-//console.log('--> click box3');
+//$.log('--> click box3');
 tf.num = 2;
 [endscript]
 [jump target="common_box"]
@@ -77,7 +77,7 @@ tf.num = 2;
 *common_box
 [cm][clearstack]
 [clearfix]
-;[eval exp="console.log(f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3')"]
+;[eval exp="$.log(f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3')"]
 [if exp="f.qbox.box[tf.num] != null"]
     [get_item name="&f.qbox.box[tf.num]"]
     [iscript]
@@ -97,7 +97,7 @@ tf.num = 2;
 [else]
     [no_hold_item_text]
 [endif]
-;[eval exp="console.log(f.qbox)"]
+;[eval exp="$.log(f.qbox)"]
 [iscript]
 [endscript]
 [jump target="correct" cond="f.qbox.correct.filter((v,i)=>v!=f.qbox.box[i]).length==0"]
@@ -114,7 +114,7 @@ tf.num = 2;
 
 *correct
 [iscript]
-console.log('--> correct');
+$.log('--> correct');
 [endscript]
 [3d_anim name="camera" pos="0,0,0"]
 [eval exp="f.to_direction = 'left'"]

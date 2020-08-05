@@ -27,7 +27,7 @@ class ItemManager {
             if (!sf.stage_data[stage]['item'][name]) sf.stage_data[stage]['item'][name] = {};
             ver.forEach((v,j) => sf.stage_data[stage]['item'][name][items[0][j]] = v);
         }
-        //console.log(sf.stage_data);
+        //$.log(sf.stage_data);
     }
 
     initItem(){
@@ -75,7 +75,7 @@ class ItemManager {
         const self = this;
         const f = TYRANO.kag.stat.f;
 
-        //console.log(this);
+        //$.log(this);
 
         $('#items').empty();
 
@@ -110,7 +110,7 @@ class ItemManager {
                     if (i == 0) self.current = item.name;
                 }
                 self.get_item = null;
-                //console.log(self.current)
+                //$.log(self.current)
 
                 item.src = `./data/image/${item.storage}`;
                 if (item.width >= item.height) {

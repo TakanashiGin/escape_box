@@ -40,7 +40,7 @@ f.item = new ItemManager(tf.items);
     f.item.hold = f.item.hold.filter(v => {
         if (v.name != mp.name && mp.all != 'true') return v;
     });
-    //console.log(f.item.hold);
+    //$.log(f.item.hold);
     f.item.updateItem();
     [endscript]
 [endmacro]
@@ -75,7 +75,7 @@ f.item = new ItemManager(tf.items);
         tf.b.x = sc_width - opt.diff - (opt.size * (index+1));
         tf.b.index = index;
         tf.b.name = name;
-        //console.log(tf.b);
+        //$.log(tf.b);
     }
     [endscript]
     [button fix="true" exp="f.item.showLine(preexp)" preexp="&tf.b" storage="%storage" target="%target" hint="%hint" graphic="../fgimage/color/empty.png" x="&tf.b.x" y="&tf.b.y" width="&tf.b.width" height="&tf.b.height" cond="tf.be"]

@@ -40,9 +40,9 @@ function getOrientation(log){
         else return 'horizontal';
     }());
     if (log) {
-        console.log(deg);
-        console.log(deg_abs);
-        console.log([transverse,longitudinally]);
+        $.log(deg);
+        $.log(deg_abs);
+        $.log([transverse,longitudinally]);
     }
     return [transverse,longitudinally];
 }

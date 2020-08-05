@@ -12,10 +12,10 @@ sf.title = 'Escape Box';
 @layopt layer="2" visible="true"
 @layopt layer="fix" visible="true"
 
-@loadjs storage="js/init.js"
 @loadjs storage="../scenario/system/system.js"
 @loadjs storage="../scenario/system/function.js"
 @loadjs storage="../scenario/system/classies.js"
+@loadjs storage="js/init.js"
 
 @plugin name="for"
 @plugin name="switch"
@@ -30,7 +30,7 @@ sf.title = 'Escape Box';
 @cm
 @clearstack
 
-@jump storage="title.ks" cond="!sf.skip.title"
+@jump storage="title.ks" cond="!sf.system.skip.title"
 *return_title
 @eval exp="sf.rafStop()"
 

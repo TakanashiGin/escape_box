@@ -9,9 +9,9 @@
 
 [iscript]
 f.current = 0;
-f.rooms = (sf.shuffle_array)? shuffleArray(sf.rooms) : sf.rooms;
+f.rooms = (sf.system.var.shuffle_array)? shuffleArray(sf.system.rooms) : sf.system.rooms;
 f.rooms.unshift(0);
-console.log(`--> rooms ${f.rooms}`);
+$.log(`--> rooms ${f.rooms}`);
 // 各ステージのステータスを設定
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
 [endscript]
@@ -57,7 +57,7 @@ f.stage_file = {
 [mask_off time="500"]
 
 ; タイマーをスタート
-[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.on_timer == true"]
+[ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.system.var.on_timer == true"]
 
 *return
 [cm][clearstack]
@@ -65,10 +65,10 @@ f.stage_file = {
 [jump storage="&f.stage_file.system"]
 *return_system
 ; スキップ（デバッグモード）
-[eval exp="tf.skip_bool = sf['skip'][`box_${f.rooms[f.current]}`]"]
+[eval exp="tf.skip_bool = sf.system['skip'][`box_${f.rooms[f.current]}`]"]
 [if exp="tf.skip_bool"]
     [iscript]
-    console.log('--> click to skip');
+    $.log('--> click to skip');
     [endscript]
     [l]
     [jump storage="main.ks" target="next_room"]
@@ -78,51 +78,9 @@ f.stage_file = {
 ; ============================================================================
 ; debug用
 ;[start_timer]
-;[eval exp="console.log(tyrano.plugin.kag.tmp.three.models)"]
+;[eval exp="$.log(tyrano.plugin.kag.tmp.three.models)"]
 ;[3d_debug_camera]
 ;[3d_hide]
-[iscript]
-const debug_model = () => {
-    const three = TYRANO.kag.tmp.three;
-    const target = three.models.test1.model;
-    const d = 0.1;
-    console.log(target);
-    $(window).on('keydown.debug_three_model_by_key', de => {
-        switch (de.keyCode) {
-            case 65:  // a
-                var tmp = target.position.x;
-                target.position.x -= d;
-                console.log(`${tmp} => ${target.position.x}`);
-                break;
-            case 68:  // d
-                var tmp = target.position.x;
-                target.position.x += d;
-                console.log(`${tmp} => ${target.position.x}`);
-                break;
-            case 87:  // w
-                var tmp = target.position.z;
-                target.position.z -= d;
-                console.log(`${tmp} => ${target.position.z}`);
-                break;
-            case 83:  // s
-                var tmp = target.position.z;
-                target.position.z += d;
-                console.log(`${tmp} => ${target.position.z}`);
-                break;
-            case 81:  // q
-                var tmp = target.position.y;
-                target.position.y += d;
-                console.log(`${tmp} => ${target.position.y}`);
-                break;
-            case 69:  // e
-                var tmp = target.position.y;
-                target.position.y -= d;
-                console.log(`${tmp} => ${target.position.y}`);
-                break;
-        }
-    });
-}
-[endscript]
 ;[eval exp="getOrientation(true)"]
 ; ============================================================================
 [s]
@@ -139,7 +97,7 @@ const debug_model = () => {
 [cm][clearstack]
 [clearfix]
 ; タイマーを一時停止
-[ctrl_circle_timer name="game_timer" content="stop" cond="sf.on_timer == true"]
+[ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
 ; クリア判定
 [eval exp="tf.clear = f.current >= f.rooms.length - 1"]
 ; クリアの場合、akaneオブジェクトを表示・天球を回転
@@ -172,7 +130,7 @@ const debug_model = () => {
 ; 現在のルームを一つ進める
 [iscript]
 f.current++;
-console.log(`--> next to ${f.rooms[f.current]}`);
+$.log(`--> next to ${f.rooms[f.current]}`);
 [endscript]
 ; 次のルームに進む
 [jump target="start_room" cond="f.current < f.rooms.length"]
@@ -180,10 +138,10 @@ console.log(`--> next to ${f.rooms[f.current]}`);
 
 *clear_game
 [iscript]
-console.log('--> clear game');
+$.log('--> clear game');
 [endscript]
 ; タイマー削除
-[ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
 ; アイテム欄削除
 [close_item]
 ; カメラ移動
@@ -229,12 +187,12 @@ const camera = tyrano.plugin.kag.tmp.three.camera;
 ; 名前欄解放
 #
 [iscript]
-console.log('--> time out');
+$.log('--> time out');
 [endscript]
 ; fixレイヤ解放
 [clearfix]
 ; タイマー削除
-[ctrl_circle_timer name="game_timer" content="delete" cond="sf.on_timer == true"]
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
 ; アイテム欄削除
 [close_item]
 ; canvas削除

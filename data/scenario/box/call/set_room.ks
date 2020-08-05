@@ -40,7 +40,7 @@ tf.src = `sky_${getTimeZone()}.jpg`;
 ; -- 最後の部屋の時の処理 -------------------------------------------------------
 [if exp="f.current >= f.rooms.length - 1"]
     [iscript]
-    console.log('--> set last room');
+    $.log('--> set last room');
     [endscript]
 ; クリアオブジェクトを読み込み
     [load_stage_objects stage="clear"]

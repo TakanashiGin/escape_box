@@ -64,8 +64,8 @@ const StageObjectManager = {
                     break;
             }
         });
-        console.log(`--> load stage objects (${stage})`);
-        //console.log(tyrano.plugin.kag.tmp.three);
+        $.log(`--> load stage objects (${stage})`);
+        //$.log(tyrano.plugin.kag.tmp.three);
     },
 
     deleteStageObjects: function(s){
@@ -86,8 +86,8 @@ const StageObjectManager = {
                 delete TYRANO.kag.tmp.three.models[name];
             });
         });
-        console.log(`--> delete stage objects (${stage})`);
-        //console.log(tyrano.plugin.kag.tmp.three);
+        $.log(`--> delete stage objects (${stage})`);
+        //$.log(tyrano.plugin.kag.tmp.three);
     },
 
     loadObj: function(pm){
