@@ -6,6 +6,7 @@ class TyranoThreeObject {
         this.folder = folder;
         this.pos = pos;
         this.rot = rot;
+        if (this.rot != 0 && this.rot != false) this.rot = this.rot.split(',').map(v => getRadian(v)).join(',');
         this.scale = scale;
         this.tonemap = tonemap;
     }

@@ -48,10 +48,10 @@
     }
     for (let key in sf.button) sf.button[key]['y'] -= dif/2;
     [endscript]
-    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
-    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'"]
-    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'up'"]
-    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'down'"]
+    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'" clickse="&sf.se.storage.click"]
+    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'" clickse="&sf.se.storage.click"]
+    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'up'" clickse="&sf.se.storage.click"]
+    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'down'" clickse="&sf.se.storage.click"]
 [endmacro]
 
 [macro name="to_front"]

@@ -100,20 +100,20 @@ class TyranoPluginCircleTimer {
             //console.log(this);
             //console.log(TYRANO.kag.stat.circle_timer_array);
         }
-    
-        console.log(this)
-    
+
+        //console.log(this)
+
         //this.init();
-    
+
     }
 
 
 
 
     setCanvas(){
-        
+
         const self = this;
-        
+
         if (self.fix) $(`#tyrano_base`).append(`<canvas id='${self.canvas.name}' class='fixlayer'></canvas>`);
         else $(`.${self.layer}_fore`).append(`<canvas id='${self.canvas.name}'></canvas>`);
 
@@ -125,73 +125,80 @@ class TyranoPluginCircleTimer {
             height: self.canvas.height,
             zIndex: self.canvas.zIndex
         });
-    
+
     }
 
 
 
 
     startInterval(){
-    
+
 
         const self = this;
-    
+
 
         const canvas = document.getElementById(this.canvas.name);
-    
+
 
         this.draw(canvas);
-    
+
 
         self.loop =()=> {
-    
+
             const context = canvas.getContext( "2d" );
-    
+
             context.clearRect(0, 0, this.canvas_width, this.canvas_height);
-    
+
             self.interval_time += 25;
             self.arc = (360 * (self.interval_time / self.time)) - 90;
-        
+
             TYRANO.kag.stat.circle_timer_array.forEach(val => {
                 if (val.timer.name == self.name) val.tmp = self;
             });
-        
+
             self.draw(canvas);
-        
+
             if (self.arc < 270 && self.mode == 'set') self.timeout = setTimeout(self.loop,25);
             else if (self.mode != 'stop') self.endTimer();
-        
+
         }
-    
+
 
         self.timeout = setTimeout(self.loop,25);
-    
 
+
+    }
+
+
+
+
+    getTime(){
+        return this.interval_time;
     }
 
 
 
 
     draw(canvas){
-        
+
         if (this.front_graphic) this.drawCircleImage(canvas);
         else this.drawCircle(canvas);
-        
+
         if (this.back_graphic) this.drawArcImage(canvas);
         else this.drawArc(canvas);
-    
+
     }
 
 
 
 
     drawCircle(canvas){
-    
+
         const context = canvas.getContext( "2d" );
-    
+
         context.beginPath();
         context.arc(this.left, this.top, this.rad, 0*Math.PI/180, 360*Math.PI/180, false);
-    
+
         if (this.interval_time / this.time >= this.end_p / 100) {
             if (this.end_graphic) {
                 context.clip();
@@ -204,9 +211,9 @@ class TyranoPluginCircleTimer {
             context.fillStyle = this.front_color;
             context.fill();
         }
-    
+
         this.stroke(context);
-    
+
     }
 
 

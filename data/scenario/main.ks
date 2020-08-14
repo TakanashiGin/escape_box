@@ -80,6 +80,9 @@ f.stage_file = {
 ;[eval exp="$.log(tyrano.plugin.kag.tmp.three.models)"]
 ;[eval exp="getOrientation(true)"]
 ;[start_timer]
+;[l]
+;[clearfix]
+;[3d_camera rot="&getRotate(0,-90,0)"]
 ;[3d_debug_camera]
 ;[3d_hide]
 ; ============================================================================
@@ -102,7 +105,7 @@ f.stage_file = {
 [eval exp="tf.clear = f.current >= f.rooms.length - 1"]
 ; クリアの場合、akaneオブジェクトを表示・天球を回転
 [if exp="tf.clear"]
-    [3d_show name="akane_normal" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+    [3d_show name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
     [iscript]
     let sky = getModel('sky');
     sky.rotation.y = 180;
@@ -122,9 +125,12 @@ f.stage_file = {
 ; クリアの場合、ラベルにジャンプ
 [jump target="clear_game" cond="tf.clear"]
 ; 次の部屋に進む場合の処理
+[playse storage="&sf.se.storage.walk"]
 [3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
 [wait time="1000"]
 [mask time="2000"]
+; アイテムをリセット
+[reset_item]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
 ; 現在のルームを一つ進める
@@ -139,11 +145,15 @@ $.log(`--> next to ${f.rooms[f.current]}`);
 *clear_game
 [iscript]
 $.log('--> clear game');
+f.clear_time = parseInt(TYRANO.kag.stat.circle_timer_array[0].timer.getTime() / 1000);
+$.log(`clear time: ${f.clear_time}`);
 [endscript]
 ; タイマー削除
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
 ; アイテム欄削除
 [close_item]
+; bgmフェードアウト
+[fadeoutbgm time="3000"]
 ; カメラ移動
 [3d_anim name="camera" pos="0,0,-10" time="3000" wait="false"]
 [wait time="1000"]
@@ -154,21 +164,22 @@ $.log('--> clear game');
 [delete_stage_objects stage="global"]
 ; 現在のルームを一つ進める（便宜的）
 [eval exp="f.current++"]
-; cameraの位置を調整（バグ対策でJSから操作）
+; cameraの位置を調整
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 ['x','y','z'].forEach(d => {
     camera.rotation[d] = 0;
     camera.position[d] = d == 'z'? -30 : 0;
 });
-if (camera.position.z != -13) {  // 追い打ち
-    camera.position.z = -13;
+if (camera.position.z != -30) {  // 追い打ち
+    camera.position.z = -30;
     $.log(camera.position.z);
 }
 [endscript]
 ; メッセージウィンドウを表示
 [show_message]
-[mask_off]
+[fadeinbgm storage="&sf.bgm.storage.game3" time="1000"]
+[mask_off time="1000"]
 
 ; 最初にカメラでふりふり
 [3d_anim name="camera" rot="&getRotate(0,20,0)" time="500"]
@@ -178,15 +189,40 @@ if (camera.position.z != -13) {  // 追い打ち
 [3d_anim name="camera" rot="&getRotate(0,0,0)" time="500"]
 [wait time="500"]
 
+[mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
 #アカネ
 おめでとう、無事に脱出できたね！[p]
+[mod_sprite name="akane_normal_full" hide_name="akane_happy_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+クリア時間は「[emb exp="f.clear_time"]
+_ 秒」……[p]
+[if exp="f.clear_time <= 60"]
+    [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+    スゴイスゴイ！[r]
+    1分を切ってるね！[p]
+    [mod_sprite name="akane_normal_full" hide_name="akane_happy_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+    これは脱出ゲームマスターって言っても過言じゃないね！[p]
+[elsif exp="f.clear_time <= 120"]
+    2分を切ってるよ！[r]
+    もしかして君才能あるかもしれないね。[p]
+[elsif exp="f.clear_time <= 180"]
+    3分かぁ。[r]
+    君ならまだまだ行けると思うな。[p]
+    次はもっとはやく脱出してみよう。[p]
+[else]
+    難しかったかな。[p]
+    でも次はもっと上手くいけると思うよ！[p]
+[endif]
+[mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+それじゃ機会があったらまた会おうねぇ～[p]
 ;[3d_debug_camera]
 [jump target="return_game"]
 
 
 *timeout
+[fadeoutbgm time="1000"]
+[playse storage="&sf.se.storage.explosion"]
 ; ホワイトアウト
-[mask color="white"]
+[mask color="white" time="1000"]
 [cm][clearstack]
 ; 名前欄解放
 #
@@ -207,7 +243,8 @@ $.log('--> time out');
 [wait time="2000"]
 ; マスク解除
 [mask_off]
-――脱出失敗[l]
+――脱出失敗[r]
+クリックでタイトルに戻ります[p]
 [jump target="return_game"]
 
 

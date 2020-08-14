@@ -4,6 +4,7 @@
 
 [iscript]
 f.item = new ItemManager(tf.items);
+$.log(f.item)
 [endscript]
 
 [macro name="show_item"]
@@ -32,6 +33,7 @@ f.item = new ItemManager(tf.items);
     let item = sf.stage_data[stage]['item'][mp.name];
     f.item.getItem(stage,item);
     f.item.updateItem();
+    $.log(f.item)
     [endscript]
 [endmacro]
 
@@ -82,6 +84,7 @@ f.item = new ItemManager(tf.items);
 [endmacro]
 
 [macro name="no_hold_item_text"]
+    [cm][clearfix]
     [show_message]
     [nowait]
     #あなた

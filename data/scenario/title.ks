@@ -17,12 +17,17 @@
     [wait time="10"]
     [eval exp="sf.raf_animation = true"]
     [ptext layer="1" name="title" text="&sf.title" size="75" bold="bold" shadow="black" x="0" y="100" width="1280" align="center" time="10"]
-    [glink text="START" color="btn_07_white" size="30" target="start_game" x="270" y="550" width="300" height="70"]
-    [glink text="CONFIG" color="btn_07_white" size="30" target="config" x="710" y="550" width="300" height="70"]
+    [glink text="START" color="btn_07_white" size="30" target="start_game" x="270" y="550" width="300" height="70" clickse="&sf.se.storage.click"]
+    [glink text="CONFIG" color="btn_07_white" size="30" target="config" x="710" y="550" width="300" height="70" clickse="&sf.se.storage.click"]
+    [glink text="CREDIT" color="btn_07_white" size="25" target="credit" x="960" y="15" width="280" height="60" clickse="&sf.se.storage.click"]
+    [fadeinbgm storage="&sf.bgm.storage.main" time="500"]
 [mask_off time="500"]
+[eval exp="$.setDebugCtrlTimer()"]
 [s]
 
 *start_game
+[eval exp="$.clearDebugCtrlTimer()"]
+[fadeoutbgm time="1000"]
 [mask time="1000"]
 [free layer="1" name="title" time="10"]
 [remove_panoramic_image name="title"]
@@ -33,6 +38,7 @@ sf.rafStop();
 [jump storage="first.ks" target="return_title"]
 
 *config
+[eval exp="$.clearDebugCtrlTimer()"]
 [remove_panoramic_image name="title"]
 [iscript]
 sf.rafStop();
@@ -42,4 +48,28 @@ sf.rafStop();
 *return_config
 [cm][clearstack]
 [clearfix]
+[jump target="start"]
+
+*credit
+[cm][clearstack]
+[clearfix]
+[eval exp="$.clearDebugCtrlTimer()"]
+[free layer="1" name="title" time="10"]
+[layopt layer="message0" visible="true"]
+[nowait]
+作った人：小鳥遊銀[r]
+[r]
+テクスチャ素材：ぱくたそ[r]
+アイコン素材：ICOON MONO[r]
+効果音：効果音ラボ[r]
+[r]
+=>
+_ クリックで戻る
+[endnowait]
+[l]
+[mask time="500"]
+[layopt layer="message0" visible="false"]
+[remove_panoramic_image name="title"]
+[eval exp="sf.rafStop()"]
+[3d_close]
 [jump target="start"]
