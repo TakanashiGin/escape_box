@@ -11,8 +11,9 @@
 [endmacro]
 
 [macro name="mod_sprite"]
+    [eval exp="tf.akane_face = mp.name"]
     [3d_hide name="&mp.hide_name" time="&mp.time" wait="false"]
-    [3d_show *]
+    [3d_show name="&mp.name" time="&mp.time" wait="&mp.wait" pos="&mp.pos" rot="&mp.rot" scale="&mp.scale"]
 [endmacro]
 
 [loadjs storage="../scenario/setup/macro/show_panoramic_image.js"]

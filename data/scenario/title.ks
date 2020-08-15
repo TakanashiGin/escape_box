@@ -1,6 +1,7 @@
 *start
 [cm][clearstack]
 [mask time="500"]
+    [eval exp="sf.in_the_title = true"]
     [3d_init layer="0"]
     [3d_camera pos="-50,26,50" rot="-0.34,-0.8,0" scale="1,1,1"]
 ;    [show_sky_box storage="title.png" r="100" rot="0,0,0"]
@@ -26,6 +27,7 @@
 [s]
 
 *start_game
+[eval exp="sf.in_the_title = false"]
 [eval exp="$.clearDebugCtrlTimer()"]
 [fadeoutbgm time="1000"]
 [mask time="1000"]
@@ -38,6 +40,7 @@ sf.rafStop();
 [jump storage="first.ks" target="return_title"]
 
 *config
+[eval exp="sf.in_the_title = false"]
 [eval exp="$.clearDebugCtrlTimer()"]
 [remove_panoramic_image name="title"]
 [iscript]
@@ -53,6 +56,7 @@ sf.rafStop();
 *credit
 [cm][clearstack]
 [clearfix]
+[eval exp="sf.in_the_title = false"]
 [eval exp="$.clearDebugCtrlTimer()"]
 [free layer="1" name="title" time="10"]
 [layopt layer="message0" visible="true"]
@@ -69,6 +73,25 @@ _ クリックで戻る
 [l]
 [mask time="500"]
 [layopt layer="message0" visible="false"]
+[remove_panoramic_image name="title"]
+[eval exp="sf.rafStop()"]
+[3d_close]
+[jump target="start"]
+
+
+
+
+
+*delete
+[dialog type="confirm" text="プレイデータを削除しますか？" target="d_yes" target_cancel="d_no"]
+[s][s][s][s][s]
+*d_yes
+[wait time="1000"]
+[eval exp="sf.player_data = $.setPlayerData()"]
+[dialog text="プレイデータを削除しました" target="d_no"]
+[s][s][s][s][s]
+*d_no
+[mask time="500"]
 [remove_panoramic_image name="title"]
 [eval exp="sf.rafStop()"]
 [3d_close]

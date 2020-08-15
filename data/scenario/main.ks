@@ -133,6 +133,8 @@ f.stage_file = {
 [reset_item]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
+; クリアした部屋をplayer_dataに追加
+[eval exp="sf.player_data.clear_box.add(f.rooms[f.current])"]
 ; 現在のルームを一つ進める
 [iscript]
 f.current++;
@@ -212,7 +214,14 @@ _ 秒」……[p]
     難しかったかな。[p]
     でも次はもっと上手くいけると思うよ！[p]
 [endif]
-[mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
+
+[call storage="badge.ks" target="first" cond="!sf.player_data.badge.clear_first && sf.system.var.badge_system"]
+[call storage="badge.ks" target="three_min" cond="!sf.player_data.badge.three_min && f.clear_time <= 180 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="two_min" cond="!sf.player_data.badge.two_min && f.clear_time <= 120 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="a_min" cond="!sf.player_data.badge.a_min && f.clear_time <= 60 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && sf.player_data.clear_box.size() >= sf.system.rooms.length + 1 + 2 && sf.system.var.badge_system"]
+
+[mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10" cond="tf.akane_face != 'akane_happy_full'"]
 それじゃ機会があったらまた会おうねぇ～[p]
 ;[3d_debug_camera]
 [jump target="return_game"]

@@ -30,6 +30,8 @@ sf.title = 'Escape Box';
 @jump storage="setup/preload.ks"
 *return_preload
 
+@call storage="setup/novecole/novecole.ks"
+
 *return_game
 @cm
 @clearstack

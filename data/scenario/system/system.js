@@ -15,7 +15,8 @@
             browser: $.getBrowser(),
             on_timer: true,
             shuffle_array: false,
-            timer: 4 * 60e3
+            timer: 4 * 60e3,
+            badge_system: true
         },
 
         skip: {
@@ -34,11 +35,20 @@
     };
 
     // 実装予定
-    sf.player_data = {
-        fast_time: null,
-        clear_box: [],
-        get_badge: {}
-    };
+    $.setPlayerData = () => {
+        return {
+            fast_time: null,
+            clear_box: new Set(),
+            badge: {
+                clear_first: false,
+                a_min: false,
+                two_min: false,
+                three_min: false,
+                clear_all_box: false
+            }
+        };
+    }
+    if (!sf.player_data) sf.player_data = $.setPlayerData();
 
     sf.object_data = {
         image: [],
@@ -68,7 +78,7 @@
             title: sf.title,
             system: sf.system,
             object_data: sf.object_data,
-            stage_data: sf.stage_data
+            stage_data: sf.stage_data,
         };
         TG.stat.f = {};
         TG.variable.sf = {};
@@ -76,7 +86,10 @@
         TG.variable.sf.system = tmp.system;
         TG.variable.sf.object_data = tmp.object_data;
         TG.variable.sf.stage_data = tmp.stage_data;
+        TG.variable.sf.player_data = $.setPlayerData();
     }
+
+
 
     $.log = val => {
         if (sf.system.var.debug) console.log(val);
@@ -90,6 +103,13 @@
             case 122:
                 if (sf.system.var.browser == 'unknown' || sf.system.var.debug) TG.ftag.startTag('screen_full');
                 break;
+            case 46:
+                if (sf.in_the_title) {
+                    TYRANO.kag.ftag.startTag('jump',{
+                        storage: 'title.ks',
+                        target: 'delete'
+                    });
+                }
         }
     });
 
