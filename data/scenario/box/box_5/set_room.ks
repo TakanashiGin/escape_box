@@ -5,10 +5,25 @@
 [iscript]
 tf.rots = [];
 tf.correct = [];
+var orientation;
 for (let i=0; i<4; i++) {
     const rand = getRand(0,3);
     tf.rots[i] = getRotate(...[90*rand, 90, 0]);
     tf.correct[i] = rand==0? 'up' : rand == 1? 'left' : rand == 2? 'down' : 'right';
+    if (!orientation) {
+        orientation = tf.correct[i];
+    } else {
+        if (orientation == 'up') {
+            tf.correct[i] = 'down';
+            orientation = 'horizon';
+        } else if (orientation == 'down') {
+            tf.correct[i] = 'up';
+            orientation = 'horizon';
+        } else {
+            orientation = tf.correct[i];
+        }
+    }
+
     if (tf.correct[i-1] == 'up' || tf.correct[i-1] == 'down') {
         if (tf.correct[i-2] != 'up' && tf.correct[i-2] != 'down') {
             if (tf.correct[i-1] == 'up') {
