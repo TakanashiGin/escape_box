@@ -77,6 +77,7 @@ f.stage_file = {
 [camera_button]
 ; ============================================================================
 ; debug用
+[eval exp="$.log(sf)"]
 ;[eval exp="$.log(tyrano.plugin.kag.tmp.three.models)"]
 ;[eval exp="getOrientation(true)"]
 ;[start_timer]
@@ -134,7 +135,7 @@ f.stage_file = {
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
 ; クリアした部屋をplayer_dataに追加
-[eval exp="sf.player_data.clear_box.add(f.rooms[f.current])"]
+[eval exp="sf.player_data.clear_box['box_' + f.rooms[f.current]] = true"]
 ; 現在のルームを一つ進める
 [iscript]
 f.current++;
@@ -219,7 +220,7 @@ _ 秒」……[p]
 [call storage="badge.ks" target="three_min" cond="!sf.player_data.badge.three_min && f.clear_time <= 180 && sf.system.var.badge_system"]
 [call storage="badge.ks" target="two_min" cond="!sf.player_data.badge.two_min && f.clear_time <= 120 && sf.system.var.badge_system"]
 [call storage="badge.ks" target="a_min" cond="!sf.player_data.badge.a_min && f.clear_time <= 60 && sf.system.var.badge_system"]
-[call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && sf.player_data.clear_box.size() >= sf.system.rooms.length + 1 + 2 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && sf.player_data.clear_box.filter(v => !!v).length >= sf.system.var.box_sum && sf.system.var.badge_system"]
 
 [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10" cond="tf.akane_face != 'akane_happy_full'"]
 それじゃ機会があったらまた会おうねぇ～[p]

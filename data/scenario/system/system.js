@@ -16,7 +16,8 @@
             on_timer: true,
             shuffle_array: false,
             timer: 4 * 60e3,
-            badge_system: true
+            badge_system: true,
+            box_sum: 6
         },
 
         skip: {
@@ -27,18 +28,17 @@
             box_2: true,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ}
             box_3: true,  // 数字4ケタ（ヒント：箱破壊+ハンマー）{箱・ハンマー}{2D：ハンマー}
             box_4: true,  // てんびん（ヒント：なし）=>完成
-            box_5: true  // 振り向きの順序（ヒント：矢印）=>完成
+            box_5: false  // 振り向きの順序（ヒント：矢印）=>完成
         },
 
         rooms: [1,4,5]
 
     };
 
-    // 実装予定
-    $.setPlayerData = () => {
-        return {
+    if (!sf.player_data) {
+        sf.player_data = {
             fast_time: null,
-            clear_box: new Set(),
+            clear_box: {},
             badge: {
                 clear_first: false,
                 a_min: false,
@@ -47,8 +47,8 @@
                 clear_all_box: false
             }
         };
+        for (let i=0; i<sf.system.var.box_sum; i++) sf.player_data.clear_box['box_' + i] = false;
     }
-    if (!sf.player_data) sf.player_data = $.setPlayerData();
 
     sf.object_data = {
         image: [],
@@ -86,7 +86,18 @@
         TG.variable.sf.system = tmp.system;
         TG.variable.sf.object_data = tmp.object_data;
         TG.variable.sf.stage_data = tmp.stage_data;
-        TG.variable.sf.player_data = $.setPlayerData();
+        TG.variable.sf.player_data = {
+            fast_time: null,
+            clear_box: {},
+            badge: {
+                clear_first: false,
+                a_min: false,
+                two_min: false,
+                three_min: false,
+                clear_all_box: false
+            }
+        };
+        for (let i=0; i<TG.variable.sf.system.var.box_sum; i++) TG.variable.sf.player_data.clear_box['box_' + i] = false;
     }
 
 

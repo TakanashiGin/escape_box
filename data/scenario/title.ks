@@ -87,7 +87,20 @@ _ クリックで戻る
 [s][s][s][s][s]
 *d_yes
 [wait time="1000"]
-[eval exp="sf.player_data = $.setPlayerData()"]
+[iscript]
+sf.player_data = {
+    fast_time: null,
+    clear_box: {},
+    badge: {
+        clear_first: false,
+        a_min: false,
+        two_min: false,
+        three_min: false,
+        clear_all_box: false
+    }
+};
+for (let i=0; i<sf.system.var.box_sum; i++) sf.player_data.clear_box['box_' + i] = false;
+[endscript]
 [dialog text="プレイデータを削除しました" target="d_no"]
 [s][s][s][s][s]
 *d_no
