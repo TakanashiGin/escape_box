@@ -51,6 +51,15 @@
 
 
 
+    if ($.getBrowser() == 'unknown') {
+        TG.variable.sf.bgm.mode = 'ogg';
+        TG.variable.sf.se.mode = 'ogg';
+    }
+
+
+
+
+
     ['bgm','se'].forEach(sound => {
         TG.variable.sf[sound].file.forEach(file => {
             const s = TG.variable.sf[sound];
