@@ -1,20 +1,22 @@
 (function(){
 
-    TYRANO.kag.variable.sf.raf_rot = 0;
-    TYRANO.kag.variable.sf.rafContent = function(){
-        if (TYRANO.kag.variable.sf.raf_animation) {
+    const sf = TYRANO.kag.variable.sf;
+
+    sf.raf_rot = 0;
+    sf.rafContent = function(){
+        if (sf.raf_animation) {
             let camera = TYRANO.kag.tmp.three.camera;
-            TYRANO.kag.variable.sf.raf_rot += 0.5;
-            const radian = (TYRANO.kag.variable.sf.raf_rot * Math.PI) / 180;
+            sf.raf_rot += 0.5;
+            const radian = (sf.raf_rot * Math.PI) / 180;
             camera.position.x = 100 * Math.sin(radian);
             //camera.position.y = 100 * Math.sin(radian);
             camera.position.z = 100 * Math.cos(radian);
             camera.lookAt(new THREE.Vector3(0, 0, 0));
         }
     }
-    TYRANO.kag.variable.sf.rafStop = function(){
-        TYRANO.kag.variable.sf.raf_animation = false;
-        TYRANO.kag.variable.sf.raf_rot = 0;
+    sf.rafStop = function(){
+        sf.raf_animation = false;
+        sf.raf_rot = 0;
     }
 
     tyrano.plugin.kag.tag["3d_init"] = {
