@@ -9,8 +9,10 @@
 
 [iscript]
 f.current = 0;
-f.rooms = (sf.system.var.shuffle_array)? shuffleArray(sf.system.rooms) : sf.system.rooms;
-f.rooms.unshift(0);
+f.rooms = [];
+const rooms = !!sf.system.var.shuffle_array? shuffleArray(sf.system.rooms) : sf.system.rooms;
+rooms.unshift(0);
+for (let i=0; i<4; i++) f.rooms[i] = rooms[i];
 $.log(`--> rooms ${f.rooms}`);
 // 各ステージのステータスを設定
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
