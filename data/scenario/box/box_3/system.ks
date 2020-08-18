@@ -74,11 +74,12 @@ tf.p.y = o == 'front' || o == 'right'? 200 : 375;
 
 
 *start_event
+[playse storage="&sf.se.storage.click"]
+*return_event
 [cm][clearstack]
 [clearfix]
 [hide_message]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
-[playse storage="&sf.se.storage.click"]
 [clickable x="760" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box1" cond="!!f.boxies.map[0][0]"]
 [clickable x="580" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box2" cond="!!f.boxies.map[0][1]"]
 [clickable x="400" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box3" cond="!!f.boxies.map[0][2]"]
@@ -132,14 +133,15 @@ f.boxies.broke.push(tf.box);
 f.boxies.map[index][box] = null;
 $.log(f.boxies);
 [endscript]
+[playse storage="&sf.se.storage.break_box"]
 [3d_hide name="&tf.obj" time="10"]
 [jump storage="main.ks" target="faild" cond="f.boxies.broke.filter(v => f.boxies.correct.indexOf(v) < 0).length > 0"]
 [jump target="correct" cond="f.boxies.broke.filter(v => f.boxies.correct.indexOf(v) != -1).length == 3"]
-[jump target="start_event"][s]
+[jump target="return_event"][s]
 
 *no_item
 [no_hold_item_text]
-[jump target="start_event"]
+[jump target="return_event"]
 
 *correct
 [iscript]

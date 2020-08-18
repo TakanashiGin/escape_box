@@ -28,6 +28,7 @@ $.log(f.item)
 [endmacro]
 
 [macro name="get_item"]
+    [playse storage="&sf.se.storage.take_item"]
     [iscript]
     let stage = (mp.num_box == 'false')? mp.stage : `box_${f.rooms[f.current]}`;
     let item = sf.stage_data[stage]['item'][mp.name];

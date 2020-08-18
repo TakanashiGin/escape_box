@@ -40,7 +40,9 @@
             'walk',
             'push_button',
             'put_block',
-            'explosion'
+            'explosion',
+            'take_item',
+            'break_box'
         ],
 
         storage: {}
