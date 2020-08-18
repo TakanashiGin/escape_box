@@ -1,7 +1,7 @@
 *setup
 
 [iscript]
-tf.src = `sky_${getTimeZone()}.jpg`;
+tf.src = `sky_${sf.time_zone}.jpg`;
 [endscript]
 [show_panoramic_image name="sky" storage="&tf.src" rad="400" rot="&getRotate(45,0,0)"]
 
@@ -64,7 +64,7 @@ tf.src = `sky_${getTimeZone()}.jpg`;
     [3d_hide name="next_front_door" time="10" wait="false"]
 ; クリアオブジェクトを表示
     [iscript]
-    tf.src = `clear_base_${getTimeZone()}`;
+    tf.src = `clear_base_${sf.time_zone}`;
     [endscript]
     [3d_show name="&tf.src" pos="0,-20,0" rot="&getRotate(90,0,0)" scale="800,800,1" time="10" wait="false"]
     [wait time="10"]
