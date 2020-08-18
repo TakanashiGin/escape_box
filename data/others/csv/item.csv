@@ -2,6 +2,7 @@ stage,name,width,height,storage,reflect
 1,box1,100,100,../others/3d/texture/box_1/box_1.jpg,FALSE
 1,box2,100,100,../others/3d/texture/box_1/box_2.jpg,FALSE
 1,box3,100,100,../others/3d/texture/box_1/box_3.jpg,FALSE
+3,hammer,100,100,../others/3d/texture/box_3/hammer_item.png,FALSE
 4,box1,100,100,../others/3d/texture/box_4/box_1.jpg,FALSE
 4,box2,100,100,../others/3d/texture/box_4/box_2.jpg,FALSE
 4,box3,100,100,../others/3d/texture/box_4/box_3.jpg,FALSE

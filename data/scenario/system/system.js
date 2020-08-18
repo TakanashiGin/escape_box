@@ -9,29 +9,30 @@
     sf.system = {
 
         var: {
-            debug: false,
+            debug: true,
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
-            on_timer: true,
+            on_timer: false,
             shuffle_array: false,
             timer: 4 * 60e3,
-            badge_system: true,
-            box_sum: 6
+            badge_system: false,
+            box_sum: 6,
+            preload: false
         },
 
         skip: {
             title: true,
             tutorial: true,
             box_0: true,  // 数字4ケタ（チュートリアル）=>完成
-            box_1: true,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
-            box_2: true,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ}
-            box_3: true,  // 数字4ケタ（ヒント：箱破壊+ハンマー）{箱・ハンマー}{2D：ハンマー}
-            box_4: true,  // てんびん（ヒント：なし）=>完成
+            box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
+            box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ}
+            box_3: false,  // 箱破壊（ヒント：空）{箱・ハンマー}{2D：ハンマー}※即死ステージ =>SEのみ
+            box_4: false,  // てんびん（ヒント：なし）=>完成
             box_5: false  // 振り向きの順序（ヒント：矢印）=>完成
         },
 
-        rooms: [1,4,5]
+        rooms: [3]
 
     };
 
@@ -67,6 +68,7 @@
         system.var.reset_var = false;
         system.var.on_timer = true;
         system.var.shuffle_array = true;
+        system.var.preload = true;
         for (let key in system.skip) system.skip[key] = false;
     }
 

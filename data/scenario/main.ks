@@ -13,9 +13,12 @@ f.rooms = [];
 const rooms = !!sf.system.var.shuffle_array? shuffleArray(sf.system.rooms) : sf.system.rooms;
 rooms.unshift(0);
 for (let i=0; i<4; i++) f.rooms[i] = rooms[i];
+f.rooms = f.rooms.filter(v => v==0 || !!v);
 $.log(`--> rooms ${f.rooms}`);
 // 各ステージのステータスを設定
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
+// 時間帯を取得
+sf.time_zone = getTimeZone();
 [endscript]
 
 ; 全体で使う3Dデータ・next_roomの3Dデータをロード
@@ -150,7 +153,7 @@ $.log(`--> next to ${f.rooms[f.current]}`);
 *clear_game
 [iscript]
 $.log('--> clear game');
-f.clear_time = parseInt(TYRANO.kag.stat.circle_timer_array[0].timer.getTime() / 1000);
+f.clear_time = sf.system.var.on_timer? parseInt(TYRANO.kag.stat.circle_timer_array[0].timer.getTime() / 1000) : 0;
 $.log(`clear time: ${f.clear_time}`);
 [endscript]
 ; タイマー削除
@@ -255,9 +258,46 @@ $.log('--> time out');
 [wait time="2000"]
 ; マスク解除
 [mask_off]
+[jump target="faild_common"]
+
+*faild
+[show_message]
+#あなた
+あっ…………
+[fadeoutbgm time="1000"]
+[wait time="1000"]
+[playse storage="&sf.se.storage.explosion"]
+; ホワイトアウト
+[mask color="white" time="1000"]
+[cm][clearstack]
+; 名前欄解放
+#
+[iscript]
+$.log('--> faild');
+[endscript]
+; fixレイヤ解放
+[clearfix]
+; タイマー削除
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
+; アイテム欄削除
+[close_item]
+; canvas削除
+[3d_close]
+; メッセージウィンドウ表示
+[show_message]
+; wait
+[wait time="2000"]
+; マスク解除
+[mask_off]
+仕掛けによって部屋が爆発した[p]
+[jump target="faild_common"]
+
+*faild_common
 ――脱出失敗[r]
 クリックでタイトルに戻ります[p]
 [jump target="return_game"]
+[s]
+
 
 
 *return_game
