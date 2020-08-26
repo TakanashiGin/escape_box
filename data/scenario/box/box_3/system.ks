@@ -190,7 +190,7 @@ switch (f.panel.pushed_num.length) {
     case 4: tf.pos = '-9.1,2.15,-1.29'; break;
 }
 [endscript]
-[jump target="incorrect" cond="f.panel.pushed_num.length == 4 || tf.bool"]
+[jump target="incorrect" cond="f.panel.pushed_num.length == 5 || tf.bool"]
 [playse storage="&sf.se.storage.push_button"]
 [3d_show name="&tf.num_obj" pos="&tf.pos" rot="&getRotate(0,90,0)" scale="0.85,0.85,0.01" time="10" wait="false"]
 [wait time="10"]
@@ -199,7 +199,7 @@ switch (f.panel.pushed_num.length) {
 *ok
 [cm][clearstack]
 [clearfix]
-[jump target="correct" cond="f.panel.pushed_num.filter(val => f.number.correct.includes(val)).length == 3"]
+[jump target="correct" cond="f.panel.pushed_num.filter(val => f.number.correct.includes(val)).length == 3 && f.panel.pushed_num.length == 3"]
 [jump target="incorrect"]
 
 *back
@@ -232,7 +232,11 @@ $.log('--> correct');
     [eval exp="tf.model = f.panel.pushed_obj[tf.i]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
 [nextfor]
-[jump storage="main.ks" target="faild"]
+[iscript]
+f.panel.pushed_num = [];
+f.panel.pushed_obj = [];
+[endscript]
+[jump target="panel"]
 
 
 
