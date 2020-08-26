@@ -1,3 +1,8 @@
 stage,name,storage,folder,pos,rot,scale,tonemap,motion
 0,s0boad,boad.gltf,none,none,none,none,FALSE,none
+2,scissors,scissors.gltf,none,1;-9;-1,0;-45;0,none,FALSE,none
+2,bomb,bomb.gltf,none,1;-9;-1,0;60;86,none,FALSE,none
+2,bomb_wire_b,bomb_wire_b.gltf,none,1;-9;-1,0;60;87,none,FALSE,none
+2,bomb_wire_r,bomb_wire_r.gltf,none,1;-9;-1,0;60;88,none,FALSE,none
+2,bomb_wire_y,bomb_wire_y.gltf,none,1;-9;-1,0;60;89,none,FALSE,none
 3,hammer,hammer.gltf,none,1;-9;-1,0;60;90,none,FALSE,none

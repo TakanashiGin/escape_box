@@ -9,8 +9,9 @@ stage,name,texture,color,width,height,depth,pos,rot,scale,tonemap
 1,s1color1,box_1/box_1.jpg,none,0.1,1.5,1.5,none,none,none,FALSE
 1,s1color2,box_1/box_2.jpg,none,0.1,1.5,1.5,none,none,none,FALSE
 1,s1color3,box_1/box_3.jpg,none,0.1,1.5,1.5,none,none,none,FALSE
-2,s2table_right,none,0x84d2e0,4,9,8,8;-6;0,none,none,FALSE
-2,s2table_left,none,0x84d2e0,4,9,8,-8;-6;0,none,none,FALSE
+2,s2table_right,box_2/table.jpg,0x84d2e0,4,9,4,8;-6.2;0,none,none,FALSE
+2,s2table_left,box_2/table.jpg,0x84d2e0,4,9,4,-8;-6.2;0,none,none,FALSE
+2,s2hint_box,box_2/bar.jpg,none,2,2,2,6;12;6,none,none,FALSE
 3,s3table1,box_3/table.jpg,none,1.5,0.25,6,8.5;1.35;0,none,none,FALSE
 3,s3table2,box_3/table.jpg,none,1.5,0.25,6,8.5;-0.65;0,none,none,FALSE
 3,s3table3,box_3/table.jpg,none,1.5,0.25,6,8.5;-2.65;0,none,none,FALSE

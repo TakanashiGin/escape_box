@@ -164,13 +164,7 @@ class ItemManager {
     }
 
     checkGotItem(name){
-        var self = this;
-        var be = false;
-        for (let index of self.hold) {
-            let v = self.hold[index];
-            if (v.name == name) be = true;
-        }
-        return be;
+        return this.hold.some(v => v.name == name);
     }
 
 };

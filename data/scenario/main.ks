@@ -82,13 +82,13 @@ f.stage_file = {
 [camera_button]
 ; ============================================================================
 ; debug用
-[eval exp="$.log(sf)"]
+;[eval exp="$.log(sf)"]
 ;[eval exp="$.log(tyrano.plugin.kag.tmp.three.models)"]
 ;[eval exp="getOrientation(true)"]
 ;[start_timer]
 ;[l]
 ;[clearfix]
-;[3d_camera rot="&getRotate(0,-90,0)"]
+;[3d_camera pos="-8,1,5" rot="&getRotate(-30,0,0)"]
 ;[3d_debug_camera]
 ;[3d_hide]
 ; ============================================================================
@@ -105,6 +105,7 @@ f.stage_file = {
 *next_room
 [cm][clearstack]
 [clearfix]
+[eval exp="tf.tmp_rot = null"]
 ; タイマーを一時停止
 [ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
 ; クリア判定
@@ -244,6 +245,8 @@ _ 秒」……[p]
 [iscript]
 $.log('--> time out');
 [endscript]
+; wait_canvel
+[wait_cancel]
 ; fixレイヤ解放
 [clearfix]
 ; タイマー削除

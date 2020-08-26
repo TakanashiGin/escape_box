@@ -50,6 +50,9 @@ clear,clear_base_night,none,none,none,none,100;100;100,FALSE,none,none,base_nigh
 1,s1num1_right,none,none,none,none,5;5;1,FALSE,none,none,num/1.png,FALSE
 1,s1num2_right,none,none,none,none,5;5;1,FALSE,none,none,num/2.png,FALSE
 1,s1num3_right,none,none,none,none,5;5;1,FALSE,none,none,num/3.png,FALSE
+2,s2hint_r,none,none,none,none,2.048;1.536;0.1,FALSE,none,none,box_2/hint_r.png,FALSE
+2,s2hint_b,none,none,none,none,2.048;1.536;0.1,FALSE,none,none,box_2/hint_b.png,FALSE
+2,s2hint_y,none,none,none,none,2.048;1.536;0.1,FALSE,none,none,box_2/hint_y.png,FALSE
 3,s3b0,none,none,none,none,100;100;100,FALSE,none,none,num/0.png,FALSE
 3,s3b1,none,none,none,none,100;100;100,FALSE,none,none,num/1.png,FALSE
 3,s3b2,none,none,none,none,100;100;100,FALSE,none,none,num/2.png,FALSE
