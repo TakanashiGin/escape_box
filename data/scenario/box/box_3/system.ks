@@ -4,7 +4,7 @@
 [eval exp="$.log(sf.stage_data.box_3)"]
 [eval exp="tf.orientation = getOrientation()"]
 [if exp="tf.orientation[1] == 'up'"]
-    空が見える。[r]
+    空が見える[r]
     [switch exp="getTimeZone()"]
         [case is="day"]
             綺麗な「青」空だな
@@ -22,11 +22,11 @@
     [endif]
 [else]
     [if exp="tf.orientation[0] == 'front'"]
-        謎を解かないとこの扉は開かない。
+        謎を解かないとこの扉は開かない
     [elsif exp="tf.orientation[0] == 'back'"]
-        さっきの部屋には戻れないようだ。
+        さっきの部屋には戻れないようだ
     [elsif exp="tf.orientation[0] == 'left'"]
-        これはさっきと同じモニターか
+        これはさっきと同じパネルか
         [clickable storage="box/box_3/system.ks" target="panel_first" x="470" y="65" width="340" height="570" color="black" opacity="0" mouseopacity="100"]
     [elsif exp="tf.orientation[0] == 'right'"]
         [if exp="sf.stage_data.box_3.status == 0"]

@@ -8,7 +8,7 @@
 #あなた
 [eval exp="tf.orientation = getOrientation()"]
 [if exp="tf.orientation[1] == 'up'"]
-    空が見える。[r]
+    空が見える[r]
     [switch exp="getTimeZone()"]
         [case is="day"]
             せっかく良い天気なのになぁ
@@ -18,12 +18,12 @@
             もうすっかり夜じゃないか
     [endswitch]
 [elsif exp="tf.orientation[1] == 'down'"]
-    床だ。
+    床だ
 [else]
     [if exp="tf.orientation[0] == 'front'"]
-        謎を解かないとこの扉は開かない。
+        謎を解かないとこの扉は開かない
     [elsif exp="tf.orientation[0] == 'back'"]
-        さっきの部屋には戻れないようだ。
+        さっきの部屋には戻れないようだ
     [elsif exp="tf.orientation[0] == 'right'"]
         箱が３つ……？
         [clickable x="200" y="300" width="850" height="250" color="black" opacity="0" mouseopacity="100" storage="box/box_1/system.ks" target="start_event"]

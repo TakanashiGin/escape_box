@@ -40,7 +40,7 @@ if (f.to_direction) {
 #あなた
 [eval exp="tf.orientation = getOrientation()"]
 [if exp="tf.orientation[1] == 'up'"]
-    空が見える。[r]
+    空が見える[r]
     [switch exp="getTimeZone()"]
         [case is="day"]
             せっかく良い天気なのになぁ
@@ -50,17 +50,17 @@ if (f.to_direction) {
             もうすっかり夜じゃないか
     [endswitch]
 [elsif exp="tf.orientation[1] == 'down'"]
-    床だ。
+    床だ
 [else]
     [if exp="tf.orientation[0] == 'front'"]
-        謎を解かないとこの扉は開かない。
+        謎を解かないとこの扉は開かない
     [elsif exp="tf.orientation[0] == 'back'"]
-        さっきの部屋には戻れないようだ。
+        さっきの部屋には戻れないようだ
     [elsif exp="tf.orientation[0] == 'left'"]
         矢印が４つ……？
         [clickable storage="box/box_5/system.ks" target="arrows" x="50" y="100" width="1180" height="520" color="black" opacity="0" mouseopacity="100"]
     [elsif exp="tf.orientation[0] == 'right'"]
-        右の壁には何もない。
+        右の壁には何もない
     [endif]
 [endif]
 [endnowait]

@@ -3,7 +3,7 @@
 #あなた
 [eval exp="tf.orientation = getOrientation()"]
 [if exp="tf.orientation[1] == 'up'"]
-    空が見える。[r]
+    空が見える[r]
     [switch exp="getTimeZone()"]
         [case is="day"]
             せっかく良い天気なのになぁ
@@ -14,16 +14,16 @@
     [endswitch]
 [elsif exp="tf.orientation[1] == 'down'"]
     [if exp="f.item.hold.length == 5"]
-        床に転がっていた箱は一体なんなのだろう。
+        床に転がっていた箱は一体なんなのだろう
     [else]
-        床に箱が転がっている。
+        床に箱が転がっている
     [endif]
     [clickable x="0" y="0" width="1280" height="720" color="black" opacity="0" mouseopacity="100" storage="box/box_4/system.ks" target="take_box"]
 [else]
     [if exp="tf.orientation[0] == 'front'"]
-        謎を解かないとこの扉は開かない。
+        謎を解かないとこの扉は開かない
     [elsif exp="tf.orientation[0] == 'back'"]
-        さっきの部屋には戻れないようだ。
+        さっきの部屋には戻れないようだ
     [elsif exp="tf.orientation[0] == 'left'"]
         この「てんびん」は一体……？
         [clickable x="350" y="150" width="&1280-700" height="&720-300" color="black" opacity="0" mouseopacity="100" storage="box/box_4/system.ks" target="balance_main"]

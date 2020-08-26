@@ -95,7 +95,7 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
     #あなた
     [eval exp="tf.orientation = getOrientation()"]
     [if exp="tf.orientation[1] == 'up'"]
-        空が見える。[r]
+        空が見える[r]
         [switch exp="getTimeZone()"]
             [case is="day"]
                 せっかく良い天気なのになぁ
@@ -105,10 +105,10 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
                 もうすっかり夜じゃないか
         [endswitch]
     [elsif exp="tf.orientation[1] == 'down'"]
-        床だ。
+        床だ
     [else]
         [if exp="tf.orientation[0] == 'front'"]
-            謎を解かないとこの扉は開かない。
+            謎を解かないとこの扉は開かない
         [elsif exp="tf.orientation[0] == 'back'"]
             爆発だって……！？[r]
             はやくここから脱出しないと……！！
