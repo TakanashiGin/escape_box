@@ -177,7 +177,7 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
 [iscript]
 $.log(`push ${tf.push_num}`);
 tf.num_obj = `s0num${tf.push_num}`;
-tf.bool = f.ans_nums.includes(tf.push_num);
+tf.bool = f.ans_nums.includes(tf.push_num);  // 重複は許さない
 f.ans_nums.push(tf.push_num);
 f.ans_model.push(tf.num_obj);
 switch (f.ans_nums.length) {
