@@ -42,7 +42,9 @@
             'put_block',
             'explosion',
             'take_item',
-            'break_box'
+            'break_box',
+            'fall_box',
+            'cut'
         ],
 
         storage: {}

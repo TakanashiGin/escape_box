@@ -107,6 +107,11 @@ tf.pos = {
 [3d_hide name="s2hint_box" time="10" wait="false"]
 [eval exp="tf.model = 's2hint_' + f.correct"]
 [3d_show name="&tf.model" pos="2,-9,2" rot="&getRotate(90,0,20)" time="10" wait="false"]
+[playse storage="&sf.se.storage.fall_box"]
+[wse]
+[wait time="500"]
+[playse storage="&sf.se.storage.break_box"]
+[wse]
 [mask_off]
 [ctrl_circle_timer name="game_timer" content="start" cond="sf.system.var.on_timer"]
 [jump target="back_main"][s]
@@ -237,6 +242,8 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [clearfix]
 [jump target="no_item" cond="f.item.hold.length == 0"]
 [jump target="no_match_item_in_bomb" cond="f.item.current != 'scissors'"]
+[playse storage="&sf.se.storage.cut"]
+[wse]
 [iscript]
 tf.model = 'bomb_wire_' + tf.cut_wire;
 $.log('cut: ' + tf.cut_wire)
@@ -244,6 +251,7 @@ $.log('cut: ' + tf.cut_wire)
 [3d_hide name="&tf.model" time="100"]
 [wait time="1000"]
 [jump target="correct" cond="tf.cut_wire == f.correct"]
+[playse storage="&sf.se.storage.incorrect"]
 [jump storage="main.ks" target="faild"][s]
 
 *no_item
@@ -266,6 +274,7 @@ $.log('cut: ' + tf.cut_wire)
 [iscript]
 $.log('--> correct');
 [endscript]
+[playse storage="&sf.se.storage.correct"]
 [3d_anim name="camera" pos="0,0,0" rot="&tf.tmp_rot"]
 [wait time="100"]
 [iscript]
