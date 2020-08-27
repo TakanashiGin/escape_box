@@ -180,6 +180,7 @@ const camera = tyrano.plugin.kag.tmp.three.camera;
     camera.rotation[d] = 0;
     camera.position[d] = d == 'z'? -30 : 0;
 });
+$.log(`ajast camera position z: ${camera.position.z != -30}`);
 if (camera.position.z != -30) {  // 追い打ち
     camera.position.z = -30;
     $.log(camera.position.z);
