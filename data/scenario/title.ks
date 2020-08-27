@@ -62,6 +62,7 @@ sf.rafStop();
 [layopt layer="message0" visible="true"]
 [nowait]
 作った人：小鳥遊銀[r]
+3Dモデル協力：hideichi[r]
 [r]
 テクスチャ素材：ぱくたそ[r]
 アイコン素材：ICOON MONO[r]

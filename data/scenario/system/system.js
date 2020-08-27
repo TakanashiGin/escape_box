@@ -9,14 +9,14 @@
     sf.system = {
 
         var: {
-            debug: true,
+            debug: false,
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
             on_timer: false,
             shuffle_array: false,
             timer: 4 * 60e3,
-            badge_system: false,
+            badge_system: true,
             box_sum: 6,
             preload: false
         },
@@ -182,6 +182,20 @@
             $('#timer_debug_down').off().remove();
             $('#timer_debug_text').remove();
         }
+    }
+    $.getPlayerData = () => console.log(sf.player_data);
+    $.resetPlayerData = () => {
+        TG.variable.sf.player_data = {
+            fast_time: null,
+            clear_box: {},
+            badge: {
+                clear_first: false,
+                a_min: false,
+                two_min: false,
+                three_min: false,
+                clear_all_box: false
+            }
+        };
     }
 
 }());

@@ -228,6 +228,7 @@ _ 秒」……[p]
 [call storage="badge.ks" target="two_min" cond="!sf.player_data.badge.two_min && f.clear_time <= 120 && sf.system.var.badge_system"]
 [call storage="badge.ks" target="a_min" cond="!sf.player_data.badge.a_min && f.clear_time <= 60 && sf.system.var.badge_system"]
 [call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && sf.player_data.clear_box.filter(v => !!v).length >= sf.system.var.box_sum && sf.system.var.badge_system"]
+[eval exp="$.log(sf.player_data)"]
 
 [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10" cond="tf.akane_face != 'akane_happy_full'"]
 それじゃ機会があったらまた会おうねぇ～[p]
