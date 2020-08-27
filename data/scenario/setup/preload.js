@@ -1,6 +1,7 @@
 (function(){
     const TG = tyrano.plugin.kag;
     TG.variable.sf.preload = [
+        // ====================================================================
         "./data/bgimage/room.jpg",
         "./data/bgimage/rouka.jpg",
         "./data/bgimage/sky_day.jpg",
@@ -27,7 +28,7 @@
         "./data/fgimage/color/black.png",
         "./data/fgimage/color/black2.png",
         "./data/fgimage/color/black3.png",
-        "./data/fgimage/color/clear.png",
+        "./data/fgimage/color/clear.PNG",
         "./data/fgimage/color/col1.png",
         "./data/fgimage/color/col2.png",
         "./data/fgimage/color/col3.png",
@@ -153,15 +154,27 @@
         "./data/others/3d/texture/base_night.png",
         "./data/others/3d/texture/base_sunset.png",
         "./data/others/3d/texture/hint.png",
-        "./data/others/3d/texture/kabe.png",
-        "./data/others/3d/texture/kabe2.png",
-        "./data/others/3d/texture/tenjo.png",
+        "./data/others/3d/texture/kabe.PNG",
+        "./data/others/3d/texture/kabe2.PNG",
+        "./data/others/3d/texture/tenjo.PNG",
         "./data/others/3d/texture/box_0/hint.png",
         "./data/others/3d/texture/box_1/box_1.jpg",
         "./data/others/3d/texture/box_1/box_2.jpg",
         "./data/others/3d/texture/box_1/box_3.jpg",
         "./data/others/3d/texture/box_1/table.jpg",
         "./data/others/3d/texture/box_1/black.png",
+        "./data/others/3d/texture/box_2/bar.jpg",
+        "./data/others/3d/texture/box_2/table.jpg",
+        "./data/others/3d/texture/box_2/bar.png",
+        "./data/others/3d/texture/box_2/hint_b.png",
+        "./data/others/3d/texture/box_2/hint_r.png",
+        "./data/others/3d/texture/box_2/hint_y.png",
+        "./data/others/3d/texture/box_2/scissors.png",
+        "./data/others/3d/texture/box_3/black.jpg",
+        "./data/others/3d/texture/box_3/blue.jpg",
+        "./data/others/3d/texture/box_3/red.jpg",
+        "./data/others/3d/texture/box_3/table.jpg",
+        "./data/others/3d/texture/box_3/hammer_item.png",
         "./data/others/3d/texture/box_4/balance_1.jpg",
         "./data/others/3d/texture/box_4/balance_2.jpg",
         "./data/others/3d/texture/box_4/box_.jpg",
@@ -233,6 +246,7 @@
         "./tyrano/images/system/thumbnail.png",
         "./tyrano/images/system/thumbnail_save.png",
         "./tyrano/images/system/transparent.png",
+        // ====================================================================
     ];
     ['bgm','se'].forEach(sound => {
         const data = TG.variable.sf[sound];

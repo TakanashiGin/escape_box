@@ -9,7 +9,7 @@
     sf.system = {
 
         var: {
-            debug: true,
+            debug: false,
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
@@ -26,13 +26,13 @@
             tutorial: true,
             box_0: true,  // 数字4ケタ（チュートリアル）=>完成
             box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
-            box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ}
+            box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ} =>完成
             box_3: false,  // 数字3ケタ（ヒント：空・箱破壊・順不同番号）{箱・ハンマー}{2D：ハンマー} =>完成
             box_4: false,  // てんびん（ヒント：なし）=>完成
             box_5: false  // 振り向きの順序（ヒント：矢印）=>完成
         },
 
-        rooms: [5]//[1,2,3,4,5]
+        rooms: [1,2,3,4,5]
 
     };
 
