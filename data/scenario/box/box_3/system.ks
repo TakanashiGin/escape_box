@@ -16,7 +16,13 @@
 [elsif exp="tf.orientation[1] == 'down'"]
     [if exp="sf.stage_data.box_3.status == 0"]
         何か落ちているようだ
-        [clickable x="0" y="0" width="1280" height="720" color="black" opacity="0" mouseopacity="100" storage="box/box_3/system.ks" target="hammer"]
+        [iscript]
+        const o = tf.orientation[0];
+        tf.p = {};
+        tf.p.x = o == 'front' || o == 'left'? 650 : 475;
+        tf.p.y = o == 'front' || o == 'right'? 200 : 375;
+        [endscript]
+        [clickable x="&tf.p.x" y="&tf.p.y" width="150" height="150" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="get_item"]
     [else]
         このハンマーでなら「何か」を壊せそうだ
     [endif]
@@ -49,21 +55,6 @@
 
 
 
-
-*hammer
-[cm][clearstack]
-[clearfix]
-[hide_message]
-[playse storage="&sf.se.storage.click"]
-[iscript]
-const o = tf.orientation[0];
-tf.p = {};
-tf.p.x = o == 'front' || o == 'left'? 650 : 475;
-tf.p.y = o == 'front' || o == 'right'? 200 : 375;
-[endscript]
-[clickable x="&tf.p.x" y="&tf.p.y" width="150" height="150" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="get_item"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
-[s]
 
 *get_item
 [cm][clearfix]
