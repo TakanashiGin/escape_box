@@ -9,7 +9,7 @@
     sf.system = {
 
         var: {
-            debug: false,
+            debug: true,
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
@@ -32,7 +32,7 @@
             box_5: false  // 振り向きの順序（ヒント：矢印）=>完成
         },
 
-        rooms: [1,2,3,4,5]
+        rooms: [5]//[1,2,3,4,5]
 
     };
 

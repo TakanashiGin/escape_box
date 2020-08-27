@@ -21,7 +21,7 @@ if (f.to_direction) {
         system.clear = true;
     }
 }
-//$.log(f.room_system);
+$.log(f.room_system);
 [endscript]
 
 [if exp="f.room_system.incorrect_se"]
