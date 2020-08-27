@@ -132,8 +132,8 @@ f.stage_file = {
 ; クリアの場合、ラベルにジャンプ
 [jump target="clear_game" cond="tf.clear"]
 ; 次の部屋に進む場合の処理
-[playse storage="&sf.se.storage.walk"]
 [3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
+[playse storage="&sf.se.storage.walk"]
 [wait time="1000"]
 [mask time="2000"]
 ; アイテムをリセット
