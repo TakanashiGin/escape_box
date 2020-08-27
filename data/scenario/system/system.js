@@ -196,6 +196,8 @@
                 clear_all_box: false
             }
         };
+        for (let i=0; i<TG.variable.sf.system.var.box_sum; i++) TG.variable.sf.player_data.clear_box['box_' + i] = false;
+        TG.saveSystemVariable();
     }
 
 }());

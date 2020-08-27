@@ -105,7 +105,10 @@ f.stage_file = {
 *next_room
 [cm][clearstack]
 [clearfix]
+; カメラ角度を一時保存する変数を初期化
 [eval exp="tf.tmp_rot = null"]
+; クリアした部屋をplayer_dataに登録
+[eval exp="sf.player_data.clear_box['box_' + f.rooms[f.current]] = true"]
 ; タイマーを一時停止
 [ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
 ; クリア判定
@@ -140,8 +143,6 @@ f.stage_file = {
 [reset_item]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
-; クリアした部屋をplayer_dataに追加
-[eval exp="sf.player_data.clear_box['box_' + f.rooms[f.current]] = true"]
 ; 現在のルームを一つ進める
 [iscript]
 f.current++;
@@ -201,33 +202,33 @@ if (camera.position.z != -30) {  // 追い打ち
 
 [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
 #アカネ
-おめでとう、無事に脱出できたね！[p]
+『おめでとう、無事に脱出できたね！』[p]
 [mod_sprite name="akane_normal_full" hide_name="akane_happy_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
-クリア時間は「[emb exp="f.clear_time"]
-_ 秒」……[p]
-[if exp="f.clear_time <= 60"]
+『クリア時間は「[emb exp="f.clear_time"]
+_ 秒」……』[p]
+[if exp="f.clear_time < 60"]
     [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
-    スゴイスゴイ！[r]
-    1分を切ってるね！[p]
+    『スゴイスゴイ！[r]
+    1分を切ってるね！』[p]
     [mod_sprite name="akane_normal_full" hide_name="akane_happy_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
-    これは脱出ゲームマスターって言っても過言じゃないね！[p]
-[elsif exp="f.clear_time <= 120"]
-    2分を切ってるよ！[r]
-    もしかして君才能あるかもしれないね。[p]
-[elsif exp="f.clear_time <= 180"]
-    3分かぁ。[r]
-    君ならまだまだ行けると思うな。[p]
-    次はもっとはやく脱出してみよう。[p]
+    『これは脱出ゲームマスターって言っても過言じゃないね！』[p]
+[elsif exp="f.clear_time < 120"]
+    『2分を切ってるよ！[r]
+    もしかして君才能あるかもしれないね』[p]
+[elsif exp="f.clear_time < 180"]
+    『3分かぁ[r]
+    君ならまだまだ行けると思うな』[p]
+    『次はもっとはやく脱出してみよう』[p]
 [else]
-    難しかったかな。[p]
-    でも次はもっと上手くいけると思うよ！[p]
+    『難しかったかな』[p]
+    『でも次はもっと上手くいけると思うよ！』[p]
 [endif]
 
 [call storage="badge.ks" target="first" cond="!sf.player_data.badge.clear_first && sf.system.var.badge_system"]
-[call storage="badge.ks" target="three_min" cond="!sf.player_data.badge.three_min && f.clear_time <= 180 && sf.system.var.badge_system"]
-[call storage="badge.ks" target="two_min" cond="!sf.player_data.badge.two_min && f.clear_time <= 120 && sf.system.var.badge_system"]
-[call storage="badge.ks" target="a_min" cond="!sf.player_data.badge.a_min && f.clear_time <= 60 && sf.system.var.badge_system"]
-[call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && sf.player_data.clear_box.filter(v => !!v).length >= sf.system.var.box_sum && sf.system.var.badge_system"]
+[call storage="badge.ks" target="three_min" cond="!sf.player_data.badge.three_min && f.clear_time < 180 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="two_min" cond="!sf.player_data.badge.two_min && f.clear_time < 120 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="a_min" cond="!sf.player_data.badge.a_min && f.clear_time < 60 && sf.system.var.badge_system"]
+[call storage="badge.ks" target="clear_all_box" cond="!sf.player_data.badge.clear_all_box && !!Object.keys(sf.player_data.clear_box).every(box => !!sf.player_data.clear_box[box]) && sf.system.var.badge_system"]
 [eval exp="$.log(sf.player_data)"]
 
 [mod_sprite name="akane_happy_full" hide_name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10" cond="tf.akane_face != 'akane_happy_full'"]
