@@ -20,7 +20,8 @@
     [ptext layer="1" name="title" text="&sf.title" size="75" bold="bold" shadow="black" x="0" y="100" width="1280" align="center" time="10"]
     [glink text="START" color="btn_07_white" size="30" target="start_game" x="270" y="550" width="300" height="70" clickse="&sf.se.storage.click"]
     [glink text="CONFIG" color="btn_07_white" size="30" target="config" x="710" y="550" width="300" height="70" clickse="&sf.se.storage.click"]
-    [glink text="CREDIT" color="btn_07_white" size="25" target="credit" x="960" y="15" width="280" height="60" clickse="&sf.se.storage.click"]
+    [glink text="CREDIT" color="btn_07_white" size="25" target="credit" x="40" y="15" width="280" height="60" clickse="&sf.se.storage.click"]
+    [glink text="DELETE" color="btn_07_white" size="25" target="delete" x="960" y="15" width="280" height="60" clickse="&sf.se.storage.click"]
     [fadeinbgm storage="&sf.bgm.storage.main" time="500"]
 [mask_off time="500"]
 [eval exp="$.setDebugCtrlTimer()"]
@@ -59,8 +60,12 @@ sf.rafStop();
 [eval exp="sf.in_the_title = false"]
 [eval exp="$.clearDebugCtrlTimer()"]
 [free layer="1" name="title" time="10"]
-[layopt layer="message0" visible="true"]
+[position layer="message0" left="0" top="0" width="1280" height="720" page="fore" visible="true" opacity="200"]
+[position layer="message0" page="fore" margint="45" marginl="50" marginr="70" marginb="10"]
+[chara_config ptext="chara_name_area"]
 [nowait]
+[layopt layer="message0" visible="true"]
+#
 作った人：小鳥遊銀[r]
 3Dモデル協力：hideichi[r]
 [r]
@@ -88,20 +93,7 @@ _ クリックで戻る
 [s][s][s][s][s]
 *d_yes
 [wait time="1000"]
-[iscript]
-sf.player_data = {
-    fast_time: null,
-    clear_box: {},
-    badge: {
-        clear_first: false,
-        a_min: false,
-        two_min: false,
-        three_min: false,
-        clear_all_box: false
-    }
-};
-for (let i=0; i<sf.system.var.box_sum; i++) sf.player_data.clear_box['box_' + i] = false;
-[endscript]
+[eval exp="$.resetPlayerData()"]
 [dialog text="プレイデータを削除しました" target="d_no"]
 [s][s][s][s][s]
 *d_no
