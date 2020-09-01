@@ -42,7 +42,7 @@ function getMeasuringDegrees(rad){return Math.round(rad*180/Math.PI/10)*10}
 
 function getRotate(x=0,y,z){
     const rads = [x,y,z];
-    return (rads.filter(d=>!!d||parseInt(d)===0).length==rads.length?rads.map(d=>getRadian(parseInt(d))):rads.map(d=>getRadian(parseInt(x)))).join(',');
+    return (rads.every(d=>!!d||parseInt(d)===0)?rads.map(d=>getRadian(parseInt(d))):rads.map(d=>getRadian(parseInt(x)))).join(',');
 }
 
 const getModel = name => TYRANO.kag.tmp.three.models[name];

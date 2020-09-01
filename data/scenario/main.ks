@@ -2,18 +2,17 @@
 [cm][clearstack]
 
 ; 暗転
-[mask]
+;[mask]
+[pmask text_value="&f.loading_text" text_size="75" text_left="-70" text_top="600" text_align="right" text_width="1280" auto_change="true" auto_change_interval="1000" auto_change_random="false"]
 
 ; canvas表示
 [3d_init]
 
 [iscript]
 f.current = 0;
-f.rooms = [];
 const rooms = !!sf.system.var.shuffle_array? shuffleArray(sf.system.rooms) : sf.system.rooms;
 rooms.unshift(0);
-for (let i=0; i<4; i++) f.rooms[i] = rooms[i];
-f.rooms = f.rooms.filter(v => v==0 || !!v);
+f.rooms = rooms.slice(0,4);
 $.log(`--> rooms ${f.rooms}`);
 // 各ステージのステータスを設定
 for (let stage in sf.stage_data) sf.stage_data[stage]['status'] = 0;
@@ -60,6 +59,7 @@ f.stage_file = {
     [show_item]
 [endif]
 [mask_off time="500"]
+[pmask_off time="500"]
 
 ; タイマーをスタート
 [ctrl_circle_timer name="game_timer" content="start" cond="f.rooms[f.current] != 0 && sf.system.var.on_timer"]
@@ -138,7 +138,8 @@ f.stage_file = {
 [3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
 [playse storage="&sf.se.storage.walk"]
 [wait time="1000"]
-[mask time="2000"]
+;[mask time="2000"]
+[pmask time="2000" text_value="&f.loading_text" text_size="75" text_left="-70" text_top="600" text_align="right" text_width="1280" auto_change="true" auto_change_interval="1000" auto_change_random="false"]
 ; アイテムをリセット
 [reset_item]
 ; 現在のステージ3Dデータを削除

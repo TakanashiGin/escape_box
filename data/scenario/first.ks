@@ -22,6 +22,7 @@ sf.title = 'Escape Box';
 @plugin name="loadcsv"
 @plugin name="circle_timer"
 @plugin name="debug_three_model_by_key"
+@plugin name="pmask"
 
 @call storage="setup/loadcsv.ks"
 @call storage="setup/macro/macro_main.ks"

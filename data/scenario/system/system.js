@@ -9,12 +9,12 @@
     sf.system = {
 
         var: {
-            debug: false,
+            debug: true,
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
             on_timer: false,
-            shuffle_array: false,
+            shuffle_array: true,
             timer: 4 * 60e3,
             badge_system: true,
             box_sum: 6,
@@ -101,6 +101,15 @@
         };
         for (let i=0; i<TG.variable.sf.system.var.box_sum; i++) TG.variable.sf.player_data.clear_box['box_' + i] = false;
     }
+
+
+
+    f.loading_text = [
+        'Loading…',
+        'Loading……',
+        'Loading………',
+        'Loading…………'
+    ];
 
 
 

@@ -1,9 +1,5 @@
-const showPanoramicImage = (name,storage,rad,pos,rot) => {
-    let three = TYRANO.kag.tmp.three;
-    if (!name) name = 'panoramic_image';
-    if (!rad) rad = 100;
-    if (!pos) pos = [0,0,0];
-    if (!rot) rot = [0,0,0];
+const showPanoramicImage = ( name='panoramic_image', storage, rad=100, pos=[0,0,0], rot=[0,0,0] ) => {
+    const three = TYRANO.kag.tmp.three;
     const loader = new THREE.TextureLoader();
     const texture = loader.load(`./data/bgimage/${storage}`);
     const panoramic_image = new THREE.Mesh(
@@ -19,9 +15,8 @@ const showPanoramicImage = (name,storage,rad,pos,rot) => {
     three.models[name] = panoramic_image;
 }
 
-const removePanoramicImage = name => {
-    let three = TYRANO.kag.tmp.three;
-    if (!name) name = 'panoramic_image';
+const removePanoramicImage = (name='panoramic_image') => {
+    const three = TYRANO.kag.tmp.three;
     if (three.models[name]) {
         three.scene.remove(three.models[name]);
         delete three.models[name];
