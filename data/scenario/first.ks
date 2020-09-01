@@ -27,6 +27,7 @@ sf.title = 'Escape Box';
 @call storage="setup/loadcsv.ks"
 @call storage="setup/macro/macro_main.ks"
 @loadjs storage="../scenario/setup/sound.js"
+@call storage="setup/pmask.ks"
 
 @jump storage="setup/preload.ks" cond="sf.system.var.preload"
 *return_preload

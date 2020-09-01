@@ -22,7 +22,7 @@
         },
 
         skip: {
-            title: true,
+            title: false,
             tutorial: true,
             box_0: false,  // 数字4ケタ（チュートリアル）=>完成
             box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
@@ -101,15 +101,6 @@
         };
         for (let i=0; i<TG.variable.sf.system.var.box_sum; i++) TG.variable.sf.player_data.clear_box['box_' + i] = false;
     }
-
-
-
-    f.loading_text = [
-        'Loading…',
-        'Loading……',
-        'Loading………',
-        'Loading…………'
-    ];
 
 
 

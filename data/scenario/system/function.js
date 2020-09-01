@@ -63,3 +63,17 @@ function getObjecttPos(name, next=false){
     if (next) pos[2] -= 20;
     return pos.join(',');
 }
+
+function getLoadingText(){
+    const lt = TYRANO.kag.variable.sf.loading_text;
+    const text = lt[getRand(0, lt.length-1)];
+    var val = `[HINT]<br><br>${text}<br><br>Now Loading`;
+    var array = [];
+    for (let i=0; i<4; i++) {
+        array[i] = val;
+        for (let j=0; j<i+1; j++) {
+            array[i] += '…';
+        }
+    }
+    return array;
+}

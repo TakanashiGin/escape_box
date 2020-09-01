@@ -3,7 +3,6 @@
 
 ; 暗転
 ;[mask]
-[pmask text_value="&f.loading_text" text_size="75" text_left="-70" text_top="600" text_align="right" text_width="1280" auto_change="true" auto_change_interval="1000" auto_change_random="false"]
 
 ; canvas表示
 [3d_init]
@@ -72,7 +71,9 @@ if (f.current < f.rooms.length-1) {
     [reset_item]
     [show_item]
 [endif]
-[mask_off time="500"]
+[wait time="2500"]
+; カメラをリセット（追い打ち）
+[3d_camera pos="0,0,0" rot="0,0,0"]
 [pmask_off time="500"]
 
 ; タイマーをスタート
@@ -153,8 +154,8 @@ if (f.current < f.rooms.length-1) {
 [playse storage="&sf.se.storage.walk"]
 [wait time="1000"]
 ; 暗転
-;[mask time="2000"]
-[pmask time="2000" text_value="&f.loading_text" text_size="75" text_left="-70" text_top="600" text_align="right" text_width="1280" auto_change="true" auto_change_interval="1000" auto_change_random="false"]
+[eval exp="f.loading_text = getLoadingText()"]
+[pmask text="&f.loading_text" size="40" left="0" top="200" align="center" width="1280" auto_change="true" auto_change_interval="750" auto_change_random="false"]
 ; アイテムをリセット
 [reset_item]
 ; 現在のステージ3Dデータを削除
