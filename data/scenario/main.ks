@@ -27,28 +27,42 @@ sf.time_zone = getTimeZone();
 ; 静的3Dデータを表示
 [call storage="box/call/set_room.ks" target="setup"]
 
-; 疑似的な次の部屋を表示
+; 次の部屋の壁・扉を表示
 [call storage="box/call/set_room.ks" target="set_next_room"]
+
+; 最初のステージ3Dデータをロード
+[load_stage_objects stage="&f.rooms[f.current]"]
 
 *start_room
 [cm][clearstack]
-; ステージ3Dデータをロード
-[load_stage_objects stage="&f.rooms[f.current]"]
+; 次のステージ3Dデータをロード
+[load_stage_objects stage="&f.rooms[f.current+1]" cond="f.current < f.rooms.length-1"]
 ; カメラをリセット
 [3d_camera pos="0,0,0" rot="0,0,0"]
 ; 共通3Dデータを表示
 [call storage="box/call/set_room.ks" target="set_room"]
-; ステージのファイルを取得
 [iscript]
+// ステージのファイルを取得
 f.stage_file = {
     show_three: `box/box_${f.rooms[f.current]}/set_room.ks`,
     system: `box/box_${f.rooms[f.current]}/system.ks`,
     camera_system: `box/box_${f.rooms[f.current]}/camera_system.ks`,
-    set_next_room: `box/box_${f.rooms[f.current + 1]}/camera_system.ks`
+    set_next_room: `box/box_${f.rooms[f.current + 1]}/set_next_room.ks`
 };
+// 次の部屋のオブジェクトを取得
+//f.next_room_object = sf.stage_data['box_' + f.rooms[f.current + 1]]['objects'];
+if (f.current < f.rooms.length-1) {
+    f.next_room_object = getOriginObjectData(f.rooms[f.current + 1]);
+    $.log('--> next room');
+    $.log(f.next_room_object);
+} else {
+    delete f.next_room_object;
+}
 [endscript]
 ; ステージ3Dデータを表示
 [call storage="&f.stage_file.show_three"]
+; 次の部屋のステージ3Dデータを表示
+[call storage="&f.stage_file.set_next_room" cond="f.current < f.rooms.length-1"]
 ; 表示待ち
 [wait time="100"]
 ; メッセージを表示
@@ -113,7 +127,7 @@ f.stage_file = {
 [ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
 ; クリア判定
 [eval exp="tf.clear = f.current >= f.rooms.length - 1"]
-; クリアの場合、akaneオブジェクトを表示・天球を回転
+; ゲームクリアの場合、akaneオブジェクトを表示・天球を回転
 [if exp="tf.clear"]
     [3d_show name="akane_normal_full" pos="0,-5,-50" scale="6,19.5,1" time="10"]
     [iscript]
@@ -138,12 +152,15 @@ f.stage_file = {
 [3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
 [playse storage="&sf.se.storage.walk"]
 [wait time="1000"]
+; 暗転
 ;[mask time="2000"]
 [pmask time="2000" text_value="&f.loading_text" text_size="75" text_left="-70" text_top="600" text_align="right" text_width="1280" auto_change="true" auto_change_interval="1000" auto_change_random="false"]
 ; アイテムをリセット
 [reset_item]
 ; 現在のステージ3Dデータを削除
 [delete_stage_objects stage="&f.rooms[f.current]"]
+; 次の部屋のステージ3Dオブジェクトを非表示に
+[delete_stage_objects stage="&f.rooms[f.current + 1]" delete="false" cond="f.current+1 < f.rooms.length-1"]
 ; 現在のルームを一つ進める
 [iscript]
 f.current++;

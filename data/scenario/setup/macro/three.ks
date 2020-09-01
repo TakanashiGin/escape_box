@@ -6,7 +6,8 @@
 
 [macro name="delete_stage_objects"]
     [iscript]
-        StageObjectManager.deleteStageObjects(mp.stage);
+        const d = !!mp.delete? false : true;
+        StageObjectManager.deleteStageObjects(mp.stage, d);
     [endscript]
 [endmacro]
 

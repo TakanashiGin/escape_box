@@ -68,7 +68,7 @@ const StageObjectManager = {
         //$.log(tyrano.plugin.kag.tmp.three);
     },
 
-    deleteStageObjects: function(s){
+    deleteStageObjects: function(s,d=true){
         const TG = TYRANO.kag;
         const f = TG.stat.f;
         const sf = TG.variable.sf;
@@ -83,7 +83,7 @@ const StageObjectManager = {
                 var three = TYRANO.kag.tmp.three;
                 var model = TYRANO.kag.tmp.three.models[name];
                 three.scene.remove(model.model);
-                delete TYRANO.kag.tmp.three.models[name];
+                if (d) delete TYRANO.kag.tmp.three.models[name];
             });
         });
         $.log(`--> delete stage objects (${stage})`);

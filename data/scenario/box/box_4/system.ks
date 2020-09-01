@@ -156,7 +156,7 @@ if (!tf.tmp_rot) {
 [show_item_button name="box4" hint="赤茶色のタイルの箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
 [show_item_button name="box5" hint="石の箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
 [iscript]
-switch(f.balance.mode){
+switch(f.s4balance.mode){
     case 'right':
         tf.pos = {
             right: { x:780, y:400 },
@@ -177,20 +177,20 @@ switch(f.balance.mode){
         break;
 }
 [endscript]
-[clickable x="&tf.pos.right.x" y="&tf.pos.right.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.balance.disc.right.box != null? 0 : 100" target="put_box_on_right_disc"]
-[clickable x="&tf.pos.left.x" y="&tf.pos.left.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.balance.disc.left.box != null? 0 : 100" target="put_box_on_left_disc"]
+[clickable x="&tf.pos.right.x" y="&tf.pos.right.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.s4balance.disc.right.box != null? 0 : 100" target="put_box_on_right_disc"]
+[clickable x="&tf.pos.left.x" y="&tf.pos.left.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.s4balance.disc.left.box != null? 0 : 100" target="put_box_on_left_disc"]
 [s]
 
 *put_box_on_right_disc
 [iscript]
-tf.tmp_pos = tf.box_right;
+tf.tmp_pos = f.box_right;
 tf.put = 'right';
 [endscript]
 [jump target="common_put_box_on_disc"][s]
 
 *put_box_on_left_disc
 [iscript]
-tf.tmp_pos = tf.box_left;
+tf.tmp_pos = f.box_left;
 tf.put = 'left';
 [endscript]
 [jump target="common_put_box_on_disc"][s]
@@ -198,11 +198,11 @@ tf.put = 'left';
 *common_put_box_on_disc
 [cm][clearstack]
 [clearfix]
-[if exp="!!f.balance.disc[tf.put]['box']"]
+[if exp="!!f.s4balance.disc[tf.put]['box']"]
     [iscript]
-    tf.item = f.balance.disc[tf.put]['box'];
+    tf.item = f.s4balance.disc[tf.put]['box'];
     tf.model = 's4' + tf.item;
-    f.balance.disc[tf.put]['box'] = null;
+    f.s4balance.disc[tf.put]['box'] = null;
     [endscript]
     [get_item name="&tf.item"]
     [3d_hide name="&tf.model"]
@@ -210,7 +210,7 @@ tf.put = 'left';
     [jump target="no_hold_item" cond="f.item.hold.length <= 0"]
     [use_current_item var="tf.item"]
     [iscript]
-    f.balance.disc[tf.put]['box'] = tf.item;
+    f.s4balance.disc[tf.put]['box'] = tf.item;
     tf.model = 's4' + tf.item;
     [endscript]
     [playse storage="&sf.se.storage.put_block"]
@@ -218,17 +218,17 @@ tf.put = 'left';
     [delete_item name="&tf.item"]
 [endif]
 [eval exp="tf.correct = false"]
-[if exp="!f.balance.disc.right.box && !f.balance.disc.left.box"]
+[if exp="!f.s4balance.disc.right.box && !f.s4balance.disc.left.box"]
     [balance weight="horizon"]
-[elsif exp="!f.balance.disc.right.box"]
+[elsif exp="!f.s4balance.disc.right.box"]
     [balance weight="left"]
-[elsif exp="!f.balance.disc.left.box"]
+[elsif exp="!f.s4balance.disc.left.box"]
     [balance weight="right"]
 [else]
-    [if exp="f.balance.boxies[f.balance.disc.right.box].weight > f.balance.boxies[f.balance.disc.left.box].weight"]
+    [if exp="f.s4balance.boxies[f.s4balance.disc.right.box].weight > f.s4balance.boxies[f.s4balance.disc.left.box].weight"]
         [balance weight="right"]
         [playse storage="&sf.se.storage.incorrect"]
-    [elsif exp="f.balance.boxies[f.balance.disc.right.box].weight < f.balance.boxies[f.balance.disc.left.box].weight"]
+    [elsif exp="f.s4balance.boxies[f.s4balance.disc.right.box].weight < f.s4balance.boxies[f.s4balance.disc.left.box].weight"]
         [balance weight="left"]
         [playse storage="&sf.se.storage.incorrect"]
     [else]

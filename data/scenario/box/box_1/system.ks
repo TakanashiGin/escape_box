@@ -91,19 +91,19 @@ tf.num = 2;
 [cm][clearstack]
 [clearfix]
 ;[eval exp="$.log(f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3')"]
-[if exp="f.qbox.box[tf.num] != null"]
-    [get_item name="&f.qbox.box[tf.num]"]
+[if exp="f.s1qbox.box[tf.num] != null"]
+    [get_item name="&f.s1qbox.box[tf.num]"]
     [iscript]
-    tf.n = `s1${f.qbox.box[tf.num]}`;
-    f.qbox.box[tf.num] = null;
+    tf.n = `s1${f.s1qbox.box[tf.num]}`;
+    f.s1qbox.box[tf.num] = null;
     [endscript]
     [3d_hide name="&tf.n" time="10"]
 [elsif exp="f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3' || f.item.hold.length > 0"]
     [use_current_item var="tf.item"]
     [iscript]
-    f.qbox.box[tf.num] = tf.item;
+    f.s1qbox.box[tf.num] = tf.item;
     tf.n = `s1${tf.item}`;
-    tf.p = f.qbox.pos[tf.num];
+    tf.p = f.s1qbox.pos[tf.num];
     [endscript]
     [delete_item name="&tf.item"]
     [playse storage="&sf.se.storage.put_block"]
@@ -111,11 +111,11 @@ tf.num = 2;
 [else]
     [no_hold_item_text]
 [endif]
-;[eval exp="$.log(f.qbox)"]
+;[eval exp="$.log(f.s1qbox)"]
 [iscript]
 [endscript]
-[jump target="correct" cond="f.qbox.correct.filter((v,i)=>v!=f.qbox.box[i]).length==0"]
-[playse storage="&sf.se.storage.incorrect" cond="f.qbox.box.filter(v => !!v).length == 3"]
+[jump target="correct" cond="f.s1qbox.correct.filter((v,i)=>v!=f.s1qbox.box[i]).length==0"]
+[playse storage="&sf.se.storage.incorrect" cond="f.s1qbox.box.filter(v => !!v).length == 3"]
 [jump target="return_event"]
 [s]
 

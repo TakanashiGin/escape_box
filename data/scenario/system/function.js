@@ -50,3 +50,16 @@ const getModel = name => TYRANO.kag.tmp.three.models[name];
 function getStage(s){
     return (!Number.isNaN(parseInt(s)))? `box_${s}` : s;
 }
+
+function getOriginObjectData(s){
+    const TG = TYRANO.kag;
+    const f = TG.stat.f;
+    const sf = TG.variable.sf;
+    return sf.stage_data['box_' + s].objects;
+}
+
+function getObjecttPos(name, next=false){
+    const pos = tyrano.plugin.kag.tmp.three.models[name].pm.pos.split(',').map(Number);
+    if (next) pos[2] -= 20;
+    return pos.join(',');
+}

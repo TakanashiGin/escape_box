@@ -105,7 +105,7 @@ tf.pos = {
 [mask]
 [eval exp="sf.stage_data.box_2.status++"]
 [3d_hide name="s2hint_box" time="10" wait="false"]
-[eval exp="tf.model = 's2hint_' + f.correct"]
+[eval exp="tf.model = 's2hint_' + f.s2correct"]
 [3d_show name="&tf.model" pos="2,-9,2" rot="&getRotate(90,0,20)" time="10" wait="false"]
 [playse storage="&sf.se.storage.fall_box"]
 [wse]
@@ -250,7 +250,7 @@ $.log('cut: ' + tf.cut_wire)
 [endscript]
 [3d_hide name="&tf.model" time="100"]
 [wait time="1000"]
-[jump target="correct" cond="tf.cut_wire == f.correct"]
+[jump target="correct" cond="tf.cut_wire == f.s2correct"]
 [playse storage="&sf.se.storage.incorrect"]
 [jump storage="main.ks" target="faild"][s]
 

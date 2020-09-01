@@ -8,7 +8,7 @@
 [iscript]
 //$.log(f.to_direction);
 if (f.to_direction) {
-    const system = f.room_system;
+    const system = f.s5room_system;
     system.dir.push(f.to_direction);
     for (let i=0; i<system.dir.length; i++) {
         if (system.dir[i] != system.correct[i]) {
@@ -21,16 +21,16 @@ if (f.to_direction) {
         system.clear = true;
     }
 }
-$.log(f.room_system);
+$.log(f.s5room_system);
 [endscript]
 
-[if exp="f.room_system.incorrect_se"]
+[if exp="f.s5room_system.incorrect_se"]
     [playse storage="&sf.se.storage.incorrect" cond="tf.box5_pass_first"]
-    [eval exp="f.room_system.incorrect_se = false"]
+    [eval exp="f.s5room_system.incorrect_se = false"]
 [endif]
 [eval exp="if (!tf.box5_first) tf.box5_pass_first = true"]
 
-[jump target="clear" cond="f.room_system.clear"]
+[jump target="clear" cond="f.s5room_system.clear"]
 
 
 

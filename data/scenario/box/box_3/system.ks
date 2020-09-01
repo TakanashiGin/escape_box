@@ -75,15 +75,15 @@
 [clearfix]
 [hide_message]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
-[clickable x="760" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box1" cond="!!f.boxies.map[0][0]"]
-[clickable x="580" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box2" cond="!!f.boxies.map[0][1]"]
-[clickable x="400" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box3" cond="!!f.boxies.map[0][2]"]
-[clickable x="760" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box4" cond="!!f.boxies.map[1][0]"]
-[clickable x="580" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box5" cond="!!f.boxies.map[1][1]"]
-[clickable x="400" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box6" cond="!!f.boxies.map[1][2]"]
-[clickable x="760" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box7" cond="!!f.boxies.map[2][0]"]
-[clickable x="580" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box8" cond="!!f.boxies.map[2][1]"]
-[clickable x="400" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box9" cond="!!f.boxies.map[2][2]"]
+[clickable x="760" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box1" cond="!!f.s3boxies.map[0][0]"]
+[clickable x="580" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box2" cond="!!f.s3boxies.map[0][1]"]
+[clickable x="400" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box3" cond="!!f.s3boxies.map[0][2]"]
+[clickable x="760" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box4" cond="!!f.s3boxies.map[1][0]"]
+[clickable x="580" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box5" cond="!!f.s3boxies.map[1][1]"]
+[clickable x="400" y="300" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box6" cond="!!f.s3boxies.map[1][2]"]
+[clickable x="760" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box7" cond="!!f.s3boxies.map[2][0]"]
+[clickable x="580" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box8" cond="!!f.s3boxies.map[2][1]"]
+[clickable x="400" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box9" cond="!!f.s3boxies.map[2][2]"]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [s]
 
@@ -122,10 +122,10 @@
 [iscript]
 const index = parseInt((tf.box_num-1)/3);
 const box = tf.box_num - 1 - (3 * index);
-tf.box = f.boxies.map[index][box];
+tf.box = f.s3boxies.map[index][box];
 tf.obj = 's3' + tf.box;
-f.boxies.map[index][box] = null;
-$.log(f.boxies);
+f.s3boxies.map[index][box] = null;
+$.log(f.s3boxies);
 [endscript]
 [playse storage="&sf.se.storage.break_box"]
 [3d_hide name="&tf.obj" time="10"]
@@ -171,17 +171,17 @@ $.log(f.boxies);
 [iscript]
 $.log(`push ${tf.push_num}`);
 tf.num_obj = `s3num${tf.push_num}`;
-tf.bool = f.panel.pushed_num.includes(tf.push_num);
-f.panel.pushed_num.push(tf.push_num);
-f.panel.pushed_obj.push(tf.num_obj);
-switch (f.panel.pushed_num.length) {
+tf.bool = f.s3panel.pushed_num.includes(tf.push_num);
+f.s3panel.pushed_num.push(tf.push_num);
+f.s3panel.pushed_obj.push(tf.num_obj);
+switch (f.s3panel.pushed_num.length) {
     case 1: tf.pos = '-9.1,2.15,1.29'; break;
     case 2: tf.pos = '-9.1,2.15,0.43'; break;
     case 3: tf.pos = '-9.1,2.15,-0.43'; break;
     case 4: tf.pos = '-9.1,2.15,-1.29'; break;
 }
 [endscript]
-[jump target="incorrect" cond="f.panel.pushed_num.length == 5 || tf.bool"]
+[jump target="incorrect" cond="f.s3panel.pushed_num.length == 5 || tf.bool"]
 [playse storage="&sf.se.storage.push_button"]
 [3d_show name="&tf.num_obj" pos="&tf.pos" rot="&getRotate(0,90,0)" scale="0.85,0.85,0.01" time="10" wait="false"]
 [wait time="10"]
@@ -190,18 +190,18 @@ switch (f.panel.pushed_num.length) {
 *ok
 [cm][clearstack]
 [clearfix]
-[jump target="correct" cond="f.panel.pushed_num.filter(val => f.number.correct.includes(val)).length == 3 && f.panel.pushed_num.length == 3"]
+[jump target="correct" cond="f.s3panel.pushed_num.filter(val => f.s3number.correct.includes(val)).length == 3 && f.s3panel.pushed_num.length == 3"]
 [jump target="incorrect"]
 
 *back
 [cm][clearstack]
 [clearfix]
-[if exp="f.panel.pushed_num.length != 0"]
-    [eval exp="tf.model = f.panel.pushed_obj[f.panel.pushed_obj.length-1]"]
+[if exp="f.s3panel.pushed_num.length != 0"]
+    [eval exp="tf.model = f.s3panel.pushed_obj[f.s3panel.pushed_obj.length-1]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
     [iscript]
-    f.panel.pushed_num.pop();
-    f.panel.pushed_obj.pop();
+    f.s3panel.pushed_num.pop();
+    f.s3panel.pushed_obj.pop();
     [endscript]
     [wait time="10"]
 [endif]
@@ -219,13 +219,13 @@ $.log('--> correct');
 
 *incorrect
 [playse storage="&sf.se.storage.incorrect"]
-[for name="tf.i" from="0" len="&f.panel.pushed_obj.length" deep="1"]
-    [eval exp="tf.model = f.panel.pushed_obj[tf.i]"]
+[for name="tf.i" from="0" len="&f.s3panel.pushed_obj.length" deep="1"]
+    [eval exp="tf.model = f.s3panel.pushed_obj[tf.i]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
 [nextfor]
 [iscript]
-f.panel.pushed_num = [];
-f.panel.pushed_obj = [];
+f.s3panel.pushed_num = [];
+f.s3panel.pushed_obj = [];
 [endscript]
 [jump target="panel"]
 
