@@ -9,4 +9,12 @@
 [macro name="hide_message"]
     [layopt layer="message0" visible="false"]
 [endmacro]
+
+[macro name="show_system_button"]
+    [eval exp="$.showSystemButton()"]
+[endmacro]
+[macro name="hide_system_button"]
+    [eval exp="$.hideSystemButton()"]
+[endmacro]
+
 [return]

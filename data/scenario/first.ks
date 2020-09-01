@@ -16,6 +16,7 @@ sf.title = 'Escape Box';
 @loadjs storage="../scenario/system/function.js"
 @loadjs storage="../scenario/system/classies.js"
 @loadjs storage="js/init.js"
+@eval exp="f.played_tutorial = false"
 
 @plugin name="for"
 @plugin name="switch"

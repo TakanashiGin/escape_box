@@ -77,3 +77,19 @@ function getLoadingText(){
     }
     return array;
 }
+
+$.showSystemButton = () => {
+    $('#tyrano_base').append($(`<img id="back_title_button" src="./data/image/back_title.png">`).css({
+        position: 'absolute',
+        left: '1125px',
+        top: '135px',
+        width: 144,
+        height: 39,
+        zIndex: 99999999
+    }).on({
+        mouseover: () => $(this).css('src', './data/image/back_title2.png'),
+        mouseout: () => $(this).css('src', './data/image/back_title.png'),
+        click: () => tyrano.plugin.kag.ftag.startTag('jump', { storage:'main.ks', target:'back_title' })
+    }));
+}
+$.hideSystemButton = () => $('#back_title_button').remove();

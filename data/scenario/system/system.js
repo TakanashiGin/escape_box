@@ -13,7 +13,7 @@
             reset_var: true,
             userenv: $.userenv(),
             browser: $.getBrowser(),
-            on_timer: false,
+            on_timer: true,
             shuffle_array: true,
             timer: 4 * 60e3,
             badge_system: false,
@@ -23,7 +23,7 @@
 
         skip: {
             title: false,
-            tutorial: true,
+            tutorial: false,
             box_0: false,  // 数字4ケタ（チュートリアル）=>完成
             box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
             box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ} =>完成

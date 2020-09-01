@@ -1,9 +1,6 @@
 *start
 [cm][clearstack]
 
-; 暗転
-;[mask]
-
 ; canvas表示
 [3d_init]
 
@@ -71,9 +68,12 @@ if (f.current < f.rooms.length-1) {
     [reset_item]
     [show_item]
 [endif]
+; バックタイトルボタン表示（廃止）
+;[show_system_button]
 [wait time="2500"]
 ; カメラをリセット（追い打ち）
 [3d_camera pos="0,0,0" rot="0,0,0"]
+[mask_off time="500"]
 [pmask_off time="500"]
 
 ; タイマーをスタート
@@ -327,8 +327,31 @@ $.log('--> faild');
 
 *return_game
 [mask]
+
 [close_item]
 [3d_close]
 #
 [hide_message]
+[eval exp="$.hideSystemButton()"]
 [jump storage="first.ks" target="return_game"]
+
+
+
+*back_title
+[cm][clearstack]
+[clearfix]
+[ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
+[dialog type="confirm" text="タイトルに戻りますか？" target="back_title_yes" target_cancel="back_title_no"]
+[s]
+
+*back_title_yes
+[wait time="500"]
+[ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
+[jump target="return_game"]
+[s]
+
+*back_title_no
+[wait time="500"]
+[ctrl_circle_timer name="game_timer" content="start" cond="sf.system.var.on_timer == true"]
+[jump target="return"]
+[s]

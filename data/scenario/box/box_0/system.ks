@@ -1,4 +1,7 @@
-[jump target="skip_tutorial" cond="sf.system.skip.tutorial == true"]
+[call storage="box/call/skip_tutorial.ks" cond="f.played_tutorial && sf.stage_data.box_0.status == 0"]
+[cm][clearstack]
+
+[jump target="skip_tutorial" cond="sf.system.skip.tutorial"]
 
 [switch exp="sf.stage_data.box_0.status"]
     [case is="0"]
@@ -63,7 +66,10 @@
             『それじゃ、頑張ってねぇ～』[p]
             #
             [3d_hide name="akane_happy" time="10"]
-            [eval exp="sf.stage_data.box_0.status++"]
+            [iscript]
+            sf.stage_data.box_0.status++;
+            f.played_tutorial = true;
+            [endscript]
         [else]
             #？？？
             『そっちじゃないよー』[p]
@@ -85,6 +91,7 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
     f.ans_nums = [];
     f.ans_model = [];
     sf.stage_data.box_0.status++;
+    f.played_tutorial = true;
     [endscript]
     [delete_stage_objects stage="akane"]
 [endif]
