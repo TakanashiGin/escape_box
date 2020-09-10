@@ -10,11 +10,11 @@
 
         var: {
             debug: true,
-            reset_var: true,
+            reset_var: false,
             userenv: $.userenv(),
             browser: $.getBrowser(),
-            on_timer: true,
-            shuffle_array: true,
+            on_timer: false,
+            shuffle_array: false,
             timer: 4 * 60e3,
             badge_system: false,
             box_sum: 6,
@@ -22,9 +22,9 @@
         },
 
         skip: {
-            title: false,
-            tutorial: false,
-            box_0: false,  // 数字4ケタ（チュートリアル）=>完成
+            title: true,
+            tutorial: true,
+            box_0: true,  // 数字4ケタ（チュートリアル）=>完成
             box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
             box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ} =>完成
             box_3: false,  // 数字3ケタ（ヒント：空・箱破壊・順不同番号）{箱・ハンマー}{2D：ハンマー} =>完成

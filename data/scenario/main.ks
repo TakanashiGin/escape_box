@@ -102,7 +102,7 @@ if (f.current < f.rooms.length-1) {
 ;[eval exp="getOrientation(true)"]
 ;[start_timer]
 ;[l]
-;[clearfix]
+;[clear_button]
 ;[3d_camera pos="-8,1,5" rot="&getRotate(-30,0,0)"]
 ;[3d_debug_camera]
 ;[3d_hide]
@@ -111,15 +111,16 @@ if (f.current < f.rooms.length-1) {
 
 
 *control_camera
-[cm][clearfix]
+[cm][clear_button]
 [call storage="&f.stage_file.camera_system"]
 [direction_manager]
 [jump target="return"]
+[s]
 
 
 *next_room
 [cm][clearstack]
-[clearfix]
+[clear_button]
 ; カメラ角度を一時保存する変数を初期化
 [eval exp="tf.tmp_rot = null"]
 ; クリアした部屋をplayer_dataに登録
@@ -270,7 +271,7 @@ $.log('--> time out');
 ; wait_canvel
 [wait_cancel]
 ; fixレイヤ解放
-[clearfix]
+[clear_button]
 ; タイマー削除
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
 ; アイテム欄削除
@@ -301,7 +302,7 @@ $.log('--> time out');
 $.log('--> faild');
 [endscript]
 ; fixレイヤ解放
-[clearfix]
+[clear_button]
 ; タイマー削除
 [ctrl_circle_timer name="game_timer" content="delete" cond="sf.system.var.on_timer == true"]
 ; アイテム欄削除
@@ -339,7 +340,7 @@ $.log('--> faild');
 
 *back_title
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [ctrl_circle_timer name="game_timer" content="stop" cond="sf.system.var.on_timer == true"]
 [dialog type="confirm" text="タイトルに戻りますか？" target="back_title_yes" target_cancel="back_title_no"]
 [s]

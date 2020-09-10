@@ -73,16 +73,17 @@ $.log(f.s5room_system);
 
 *arrows
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [playse storage="&sf.se.storage.click"]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [hide_message]
 [button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_5/system.ks" target="back_main"]
 [s]
 
 *back_main
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="0,0,0" time="500"]
 [show_message]
 [jump storage="main.ks" target="return"]

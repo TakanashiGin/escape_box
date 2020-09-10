@@ -57,7 +57,7 @@
 
 
 *get_item
-[cm][clearfix]
+[cm][clear_button]
 [get_item name="hammer"]
 [3d_hide name="hammer" time="10"]
 [eval exp="sf.stage_data.box_3.status++"]
@@ -72,7 +72,7 @@
 [playse storage="&sf.se.storage.click"]
 *return_event
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 [clickable x="760" y="120" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box1" cond="!!f.s3boxies.map[0][0]"]
@@ -85,6 +85,7 @@
 [clickable x="580" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box8" cond="!!f.s3boxies.map[2][1]"]
 [clickable x="400" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box9" cond="!!f.s3boxies.map[2][2]"]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_3/system.ks" target="back_main"]
 [s]
 
 *box1
@@ -117,7 +118,7 @@
 
 *common
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [jump target="no_item" cond="sf.stage_data.box_3.status == 0"]
 [iscript]
 const index = parseInt((tf.box_num-1)/3);
@@ -145,7 +146,7 @@ $.log(f.s3boxies);
 [playse storage="&sf.se.storage.click"]
 *panel
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 *return_panel
 [hide_message]
@@ -163,11 +164,12 @@ $.log(f.s3boxies);
 [nextfor]
 [button name="ok" target="ok" graphic="../fgimage/color/empty.png" x="534" y="526" width="100" height="100" fix="true"]
 [button name="back" target="back" graphic="../fgimage/color/empty.png" x="641" y="526" width="100" height="100" fix="true"]
+[cbk dir="down" storage="box/box_3/system.ks" target="back_main"]
 [s]
 
 *push_num
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [iscript]
 $.log(`push ${tf.push_num}`);
 tf.num_obj = `s3num${tf.push_num}`;
@@ -189,13 +191,13 @@ switch (f.s3panel.pushed_num.length) {
 
 *ok
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [jump target="correct" cond="f.s3panel.pushed_num.filter(val => f.s3number.correct.includes(val)).length == 3 && f.s3panel.pushed_num.length == 3"]
 [jump target="incorrect"]
 
 *back
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [if exp="f.s3panel.pushed_num.length != 0"]
     [eval exp="tf.model = f.s3panel.pushed_obj[f.s3panel.pushed_obj.length-1]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
@@ -234,8 +236,8 @@ f.s3panel.pushed_obj = [];
 
 
 *back_main
-[cm][clearfix]
-[clearfix]
+[cm][clear_button]
+[clear_button]
 [show_message]
 [3d_anim name="camera" pos="0" time="500" cond="tyrano.plugin.kag.tmp.three.camera.position.x != 0"]
 [jump storage="main.ks" target="return"]

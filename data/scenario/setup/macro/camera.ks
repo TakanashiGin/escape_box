@@ -47,11 +47,13 @@
         }
     }
     for (let key in sf.button) sf.button[key]['y'] -= dif/2;
+    tf.get_orientation = getOrientation()[1];
     [endscript]
-    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'" clickse="&sf.se.storage.click"]
-    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] == 'horizontal'" clickse="&sf.se.storage.click"]
-    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'up'" clickse="&sf.se.storage.click"]
-    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="getOrientation()[1] != 'down'" clickse="&sf.se.storage.click"]
+    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&sf.se.storage.click"]
+    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&sf.se.storage.click"]
+    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'up'" clickse="&sf.se.storage.click"]
+    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'down'" clickse="&sf.se.storage.click"]
+    [cbk all="true"]
 [endmacro]
 
 [macro name="to_front"]
@@ -76,6 +78,19 @@
     [wait time="500" cond="tf.loop"]
     [jump storage="setup/macro/camera.ks" target="nextwhile" cond="tf.loop"]
     [eval exp="tf.loop = null"]
+[endmacro]
+
+[macro name="clear_button"]
+    [clearfix]
+    [eval exp="$(window).off('keydown')"]
+[endmacro]
+
+[macro name="cbk"]
+    [iscript]
+    mp.obj = !!mp.storage || !!mp.target? {storage:mp.storage,target:mp.target} : null;
+    if (mp.all == 'true') ['right','left','up','down'].forEach(dir => controlCameraByKey.setEvent(dir));
+    else controlCameraByKey.setEvent(mp.dir, mp.obj, mp.exp, mp.view);
+    [endscript]
 [endmacro]
 
 [return]

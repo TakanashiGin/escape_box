@@ -42,7 +42,7 @@
 
 *hint
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -57,6 +57,7 @@ if (!tf.tmp_rot) {
 [endscript]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_4/system.ks" target="back_main"]
 [s]
 
 
@@ -65,7 +66,7 @@ if (!tf.tmp_rot) {
 
 *take_box
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -88,13 +89,14 @@ tf.to_rot = [-0.94,0.46,0].map((to,i) => {
 [3d_anim name="camera" pos="5,2,5" rot="&tf.to_rot" scale="1,1,1" time="500"]
 *return_take_box
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [clickable x="980" y="320" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box1" cond="f.item.hold.filter(v => v.name == 'box1').length != 1"]
 [clickable x="770" y="460" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box2" cond="f.item.hold.filter(v => v.name == 'box2').length != 1"]
 [clickable x="460" y="360" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box3" cond="f.item.hold.filter(v => v.name == 'box3').length != 1"]
 [clickable x="630" y="320" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box4" cond="f.item.hold.filter(v => v.name == 'box4').length != 1"]
 [clickable x="550" y="240" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box5" cond="f.item.hold.filter(v => v.name == 'box5').length != 1"]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_4/system.ks" target="back_main" view="item"]
 [s]
 
 
@@ -118,6 +120,7 @@ tf.to_rot = [-0.94,0.46,0].map((to,i) => {
 [jump target="common_take_box"]
 
 *common_take_box
+[clear_button]
 [iscript]
 tf.model = `s4box${tf.take_box_num}`;
 tf.item = 'box' + tf.take_box_num;
@@ -132,7 +135,7 @@ tf.item = 'box' + tf.take_box_num;
 
 *balance_main
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -147,7 +150,7 @@ if (!tf.tmp_rot) {
 [endscript]
 [3d_anim name="camera" pos="-1,1,0" time="500"]
 *return_take_balance_main
-[clearfix]
+[clear_button]
 [cm][clearstack]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [show_item_button name="box1" hint="白いタイルの箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
@@ -179,6 +182,7 @@ switch(f.s4balance.mode){
 [endscript]
 [clickable x="&tf.pos.right.x" y="&tf.pos.right.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.s4balance.disc.right.box != null? 0 : 100" target="put_box_on_right_disc"]
 [clickable x="&tf.pos.left.x" y="&tf.pos.left.y" width="125" height="125" color="black" opacity="0" mouseopacity="&f.s4balance.disc.left.box != null? 0 : 100" target="put_box_on_left_disc"]
+[cbk dir="down" storage="box/box_4/system.ks" target="back_main"]
 [s]
 
 *put_box_on_right_disc
@@ -197,7 +201,7 @@ tf.put = 'left';
 
 *common_put_box_on_disc
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [if exp="!!f.s4balance.disc[tf.put]['box']"]
     [iscript]
     tf.item = f.s4balance.disc[tf.put]['box'];
@@ -250,8 +254,8 @@ tf.put = 'left';
 
 
 *back_main
-[cm][clearfix]
-[clearfix]
+[cm][clear_button]
+[clear_button]
 [3d_anim name="camera" pos="0,0,0" rot="&tf.tmp_rot" time="500"]
 [eval exp="tf.tmp_rot = null"]
 [show_message]

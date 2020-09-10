@@ -10,7 +10,13 @@
         『え？
         _ どこから話しかけているかって？』[p]
         『後ろだよ、後ろー』[p]
-        『[graph storage="left_sub.png"]か[graph storage="right_sub.png"]で左右に振り向けるよ』[p]
+        『[graph storage="left_sub.png"]か[graph storage="right_sub.png"]で左右に振り向けるよ
+        [if exp="$.userenv() == 'pc'"]
+        [r]
+        矢印キーかW・A・S・Dキーでも大丈夫だよ
+        [endif]
+        』
+        [p]
         #
         [eval exp="sf.stage_data.box_0.status++"]
     [case is="1"]
@@ -158,11 +164,12 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
 [playse storage="&sf.se.storage.click"]
 *panel
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 *return_panel
 [hide_message]
 [button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_0/system.ks" target="back_main"]
 [for name="tf.i" from="0" len="3" deep="0"]
     [for name="tf.j" from="0" len="3" deep="1"]
         [iscript]
@@ -180,7 +187,7 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
 
 *push_num
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [iscript]
 $.log(`push ${tf.push_num}`);
 tf.num_obj = `s0num${tf.push_num}`;
@@ -214,7 +221,7 @@ switch (f.ans_nums.length) {
 
 *ok
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [jump target="correct" cond="f.ans_nums.join(',') == f.answer"]
 [playse storage="&sf.se.storage.incorrect"]
 [for name="tf.i" from="0" len="&f.ans_model.length"]
@@ -230,7 +237,7 @@ f.ans_model = [];
 
 *back
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [if exp="f.ans_nums.length != 0"]
     [eval exp="tf.model = f.ans_model[f.ans_model.length-1]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
@@ -258,11 +265,12 @@ $.log('--> correct');
 
 *hint
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [playse storage="&sf.se.storage.click"]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [hide_message]
 [button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_0/system.ks" target="back_main"]
 [s]
 
 
@@ -271,7 +279,7 @@ $.log('--> correct');
 
 *back_main
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="0,0,0" time="500"]
 [show_message]
 [jump storage="main.ks" target="return"]

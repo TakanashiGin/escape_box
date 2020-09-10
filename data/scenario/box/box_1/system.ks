@@ -39,23 +39,24 @@
 
 *colors
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [playse storage="&sf.se.storage.click"]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 [hide_message]
 [button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="down" storage="box/box_1/system.ks" target="back_main"]
 [s]
 
 
 *start_event
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [3d_anim name="camera" pos="1,0,0"]
 *return_event
 ;[eval exp="$.log(f.item)"]
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [clickable x="220" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box1"]
 [clickable x="520" y="330" width="240" height="230" color="black" opacity="0" mouseopacity="0" target="click_box2"]
 [clickable x="790" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box3"]
@@ -63,6 +64,7 @@
 [show_item_button name="box1" hint="白いタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [show_item_button name="box2" hint="茶色のタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [show_item_button name="box3" hint="丸いタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
+[cbk dir="down" storage="box/box_1/system.ks" target="back_main"]
 [s]
 
 
@@ -89,7 +91,7 @@ tf.num = 2;
 
 *common_box
 [cm][clearstack]
-[clearfix]
+[clear_button]
 ;[eval exp="$.log(f.item.current == 'box1' || f.item.current == 'box2' || f.item.current == 'box3')"]
 [if exp="f.s1qbox.box[tf.num] != null"]
     [get_item name="&f.s1qbox.box[tf.num]"]
@@ -121,7 +123,7 @@ tf.num = 2;
 
 
 *back_main
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="0,0,0"]
 [show_message]
 [jump storage="main.ks" target="return"]

@@ -44,7 +44,7 @@
 
 *roof
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -64,7 +64,7 @@ tf.pos = {
 [endscript]
 [3d_anim name="camera" pos="0,-4,0" time="500"]
 *return_roof
-[clearfix]
+[clear_button]
 [cm][clearstack]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [if exp="sf.stage_data.box_2.status == 0"]
@@ -72,10 +72,11 @@ tf.pos = {
     [show_item_button name="bar" hint="棒を持つ" storage="box/box_2/system.ks" target="return_roof"]
     [clickable x="&tf.pos.x" y="&tf.pos.y" width="150" height="150" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="fall_box"]
 [endif]
+[cbk dir="down" storage="box/box_2/system.ks" target="back_main"]
 [s]
 
 *fall_box
-[clearfix]
+[clear_button]
 [cm][clearstack]
 [jump target="no_item_roof" cond="f.item.hold.length == 0"]
 [jump target="match_item" cond="f.item.current == 'bar'"]
@@ -122,7 +123,7 @@ tf.pos = {
 
 *item
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -143,18 +144,19 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [clickable x="550" y="310" width="280" height="150" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="get_scissors" cond="!f.item.checkGotItem('scissors')"]
 [clickable x="275" y="0" width="140" height="450" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="get_bar" cond="!f.item.checkGotItem('bar')"]
+[cbk dir="down" storage="box/box_2/system.ks" target="back_main"]
 [s]
 
 *get_scissors
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [get_item name="scissors"]
 [3d_hide name="scissors" time="10"]
 [jump target="return_item"]
 
 *get_bar
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [get_item name="bar"]
 [3d_hide name="bar" time="10"]
 [jump target="return_item"]
@@ -165,7 +167,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 
 *bomb_view1
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [show_message]
 [playse storage="&sf.se.storage.click"]
 [iscript]
@@ -183,7 +185,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [endscript]
 *return_bomb_view1
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [3d_anim name="camera" pos="-2,0,0" rot="&tf.rot.join(',')" time="500"]
 [nowait]
 [if exp="sf.stage_data.box_2.status == 0"]
@@ -196,6 +198,8 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [endnowait]
 [button name="left" target="bomb_view2" exp="f.to_direction='left';tf.rot[1] += getRadian(-90);" graphic="left.png" x="&sf.button.left.x" y="&sf.button.left.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[cbk dir="left" storage="box/box_2/system.ks" target="bomb_view2" exp="tf.rot[1] += getRadian(-90)"]
+[cbk dir="down" storage="box/box_2/system.ks" target="back_main"]
 [s]
 
 
@@ -204,13 +208,13 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 
 *bomb_view2
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [playse storage="&sf.se.storage.click"]
 [3d_anim name="camera" pos="-7.75,0,4" rot="&tf.rot.join(',')" time="500"]
 *return_bomb_view2
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [hide_message]
 [button name="right" target="back_bomb_view1" exp="f.to_direction='right';tf.rot[1] -= getRadian(-90);" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
 [show_item_button name="scissors" hint="ハサミを持つ" storage="box/box_2/system.ks" target="return_bomb_view2"]
@@ -218,11 +222,12 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [clickable x="565" y="320" width="30" height="230" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="cut_wire_r"]
 [clickable x="615" y="320" width="30" height="230" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="cut_wire_b"]
 [clickable x="665" y="320" width="30" height="230" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="cut_wire_y"]
+[cbk dir="right" storage="box/box_2/system.ks" target="back_bomb_view1" exp="tf.rot[1] -= getRadian(-90)"]
 [s]
 
 *back_bomb_view1
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [show_message]
 [playse storage="&sf.se.storage.click"]
 [jump target="return_bomb_view1"]
@@ -239,7 +244,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [jump target="cut_wire"][s]
 *cut_wire
 [cm][clearstack]
-[clearfix]
+[clear_button]
 [jump target="no_item" cond="f.item.hold.length == 0"]
 [jump target="no_match_item_in_bomb" cond="f.item.current != 'scissors'"]
 [playse storage="&sf.se.storage.cut"]
@@ -290,8 +295,8 @@ delete tf.tmp_rot;
 
 
 *back_main
-[cm][clearfix]
-[clearfix]
+[cm][clear_button]
+[clear_button]
 [3d_anim name="camera" pos="0,0,0" rot="&tf.tmp_rot" time="500"]
 [eval exp="tf.tmp_rot = null"]
 [show_message]
