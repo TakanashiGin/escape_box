@@ -46,7 +46,7 @@
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 const o = tf.orientation[0];
@@ -66,7 +66,7 @@ tf.pos = {
 *return_roof
 [clear_button]
 [cm][clearstack]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [if exp="sf.stage_data.box_2.status == 0"]
     [show_item_button name="scissors" hint="ハサミを持つ" storage="box/box_2/system.ks" target="return_roof"]
     [show_item_button name="bar" hint="棒を持つ" storage="box/box_2/system.ks" target="return_roof"]
@@ -108,10 +108,10 @@ tf.pos = {
 [3d_hide name="s2hint_box" time="10" wait="false"]
 [eval exp="tf.model = 's2hint_' + f.s2correct"]
 [3d_show name="&tf.model" pos="2,-9,2" rot="&getRotate(90,0,20)" time="10" wait="false"]
-[playse storage="&sf.se.storage.fall_box"]
+[pse name="fall_box"]
 [wse]
 [wait time="500"]
-[playse storage="&sf.se.storage.break_box"]
+[pse name="break_box"]
 [wse]
 [mask_off]
 [ctrl_circle_timer name="game_timer" content="start" cond="sf.system.var.on_timer"]
@@ -125,7 +125,7 @@ tf.pos = {
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 if (!tf.tmp_rot) {
@@ -141,7 +141,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [endscript]
 [3d_anim name="camera" pos="2,0,0" rot="&tf.rot.join(',')" time="500"]
 *return_item
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [clickable x="550" y="310" width="280" height="150" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="get_scissors" cond="!f.item.checkGotItem('scissors')"]
 [clickable x="275" y="0" width="140" height="450" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="get_bar" cond="!f.item.checkGotItem('bar')"]
 [cbk dir="down" storage="box/box_2/system.ks" target="back_main"]
@@ -169,7 +169,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [cm][clearstack]
 [clear_button]
 [show_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 if (!tf.tmp_rot) {
@@ -196,8 +196,8 @@ tf.tmp_rot = tf.tmp_rot.join(',');
     でもどのワイヤーを切ればいいんだ？
 [endif]
 [endnowait]
-[button name="left" target="bomb_view2" exp="f.to_direction='left';tf.rot[1] += getRadian(-90);" graphic="left.png" x="&sf.button.left.x" y="&sf.button.left.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="left" target="bomb_view2" exp="f.to_direction='left';tf.rot[1] += getRadian(-90);" graphic="left.png" x="&sf.button.left.x" y="&sf.button.left.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="left" storage="box/box_2/system.ks" target="bomb_view2" exp="tf.rot[1] += getRadian(-90)"]
 [cbk dir="down" storage="box/box_2/system.ks" target="back_main"]
 [s]
@@ -210,13 +210,13 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [3d_anim name="camera" pos="-7.75,0,4" rot="&tf.rot.join(',')" time="500"]
 *return_bomb_view2
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[button name="right" target="back_bomb_view1" exp="f.to_direction='right';tf.rot[1] -= getRadian(-90);" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="right" target="back_bomb_view1" exp="f.to_direction='right';tf.rot[1] -= getRadian(-90);" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [show_item_button name="scissors" hint="ハサミを持つ" storage="box/box_2/system.ks" target="return_bomb_view2"]
 [show_item_button name="bar" hint="棒を持つ" storage="box/box_2/system.ks" target="return_bomb_view2"]
 [clickable x="565" y="320" width="30" height="230" color="black" opacity="0" mouseopacity="0" storage="box/box_2/system.ks" target="cut_wire_r"]
@@ -229,7 +229,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [cm][clearstack]
 [clear_button]
 [show_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [jump target="return_bomb_view1"]
 [s]
 
@@ -247,7 +247,7 @@ tf.tmp_rot = tf.tmp_rot.join(',');
 [clear_button]
 [jump target="no_item" cond="f.item.hold.length == 0"]
 [jump target="no_match_item_in_bomb" cond="f.item.current != 'scissors'"]
-[playse storage="&sf.se.storage.cut"]
+[pse name="cut"]
 [wse]
 [iscript]
 tf.model = 'bomb_wire_' + tf.cut_wire;
@@ -256,7 +256,7 @@ $.log('cut: ' + tf.cut_wire)
 [3d_hide name="&tf.model" time="100"]
 [wait time="1000"]
 [jump target="correct" cond="tf.cut_wire == f.s2correct"]
-[playse storage="&sf.se.storage.incorrect"]
+[pse name="incorrect"]
 [jump storage="main.ks" target="faild"][s]
 
 *no_item
@@ -279,7 +279,7 @@ $.log('cut: ' + tf.cut_wire)
 [iscript]
 $.log('--> correct');
 [endscript]
-[playse storage="&sf.se.storage.correct"]
+[pse name="correct"]
 [3d_anim name="camera" pos="0,0,0" rot="&tf.tmp_rot"]
 [wait time="100"]
 [iscript]

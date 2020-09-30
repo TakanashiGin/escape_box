@@ -49,10 +49,10 @@
     for (let key in sf.button) sf.button[key]['y'] -= dif/2;
     tf.get_orientation = getOrientation()[1];
     [endscript]
-    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&sf.se.storage.click"]
-    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&sf.se.storage.click"]
-    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'up'" clickse="&sf.se.storage.click"]
-    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'down'" clickse="&sf.se.storage.click"]
+    [button name="right" target="control_camera" exp="f.to_direction='right'" graphic="right.png" x="&sf.button.right.x" y="&sf.button.right.y" width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&getSe()"]
+    [button name="left"  target="control_camera" exp="f.to_direction='left'"  graphic="left.png"  x="&sf.button.left.x"  y="&sf.button.left.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation == 'horizontal'" clickse="&getSe()"]
+    [button name="up"    target="control_camera" exp="f.to_direction='up'"    graphic="up.png"    x="&sf.button.top.x"   y="&sf.button.top.y"   width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'up'" clickse="&getSe()"]
+    [button name="down"  target="control_camera" exp="f.to_direction='down'"  graphic="down.png"  x="&sf.button.down.x"  y="&sf.button.down.y"  width="&sf.button_size" height="&sf.button_size" fix="true" cond="tf.get_orientation != 'down'" clickse="&getSe()"]
     [cbk all="true"]
 [endmacro]
 

@@ -90,7 +90,7 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
 
 ; タイマーを起動（ついでにナンバー配列も初期化・akaneオブジェクトを削除・BGMスタート）
 [if exp="sf.stage_data.box_0.status == 2"]
-    [playbgm storage="&sf.bgm.storage.game1"]
+    [pbgm name="game1"]
     [start_timer cond="sf.system.var.on_timer == true"]
     [iscript]
     f.answer = '4,1,2,3';
@@ -161,14 +161,14 @@ if (sf.system.skip.tutorial && sf.stage_data.box_0.status == 0) sf.stage_data.bo
 
 ; == [panel] ===========================================================
 *panel_first
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 *panel
 [cm][clearstack]
 [clear_button]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 *return_panel
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_0/system.ks" target="back_main"]
 [for name="tf.i" from="0" len="3" deep="0"]
     [for name="tf.j" from="0" len="3" deep="1"]
@@ -202,7 +202,7 @@ switch (f.ans_nums.length) {
 }
 [endscript]
 [if exp="f.ans_nums.length == 5 || tf.bool"]
-    [playse storage="&sf.se.storage.incorrect"]
+    [pse name="incorrect"]
     [for name="tf.i" from="0" len="&f.ans_model.length" deep="1"]
         [eval exp="tf.model = f.ans_model[tf.i]"]
         [3d_hide name="&tf.model" time="10" wait="false"]
@@ -213,7 +213,7 @@ switch (f.ans_nums.length) {
     f.ans_model = [];
     [endscript]
 [else]
-    [playse storage="&sf.se.storage.push_button"]
+    [pse name="push_button"]
     [3d_show name="&tf.num_obj" pos="&tf.pos" rot="&getRotate(0,90,0)" scale="0.85,0.85,0.01" time="10" wait="false"]
     [wait time="10"]
 [endif]
@@ -223,7 +223,7 @@ switch (f.ans_nums.length) {
 [cm][clearstack]
 [clear_button]
 [jump target="correct" cond="f.ans_nums.join(',') == f.answer"]
-[playse storage="&sf.se.storage.incorrect"]
+[pse name="incorrect"]
 [for name="tf.i" from="0" len="&f.ans_model.length"]
     [eval exp="tf.model = f.ans_model[tf.i]"]
     [3d_hide name="&tf.model" time="10" wait="false"]
@@ -253,7 +253,7 @@ f.ans_model = [];
 [iscript]
 $.log('--> correct');
 [endscript]
-[playse storage="&sf.se.storage.correct"]
+[pse name="correct"]
 [3d_anim name="camera" pos="0,0,0"]
 [eval exp="f.to_direction = 'right'"]
 [direction_manager]
@@ -266,10 +266,10 @@ $.log('--> correct');
 *hint
 [cm][clearstack]
 [clear_button]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_0/system.ks" target="back_main"]
 [s]
 

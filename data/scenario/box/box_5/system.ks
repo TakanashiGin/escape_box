@@ -25,7 +25,7 @@ $.log(f.s5room_system);
 [endscript]
 
 [if exp="f.s5room_system.incorrect_se"]
-    [playse storage="&sf.se.storage.incorrect" cond="tf.box5_pass_first"]
+    [pse name="incorrect" cond="tf.box5_pass_first"]
     [eval exp="f.s5room_system.incorrect_se = false"]
 [endif]
 [eval exp="if (!tf.box5_first) tf.box5_pass_first = true"]
@@ -74,10 +74,10 @@ $.log(f.s5room_system);
 *arrows
 [cm][clearstack]
 [clear_button]
-[playse storage="&sf.se.storage.click"]
+[pse]
 [3d_anim name="camera" pos="1,0,0" time="500"]
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_5/system.ks" target="back_main"]
 [s]
 
@@ -94,7 +94,7 @@ $.log(f.s5room_system);
 
 *clear
 [eval exp="$.log('-->_correct')"]
-[playse storage="&sf.se.storage.correct"]
+[pse name="correct"]
 [wait time="500"]
 [to_front]
 [jump storage="main.ks" target="next_room"]

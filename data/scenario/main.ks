@@ -152,7 +152,7 @@ if (f.current < f.rooms.length-1) {
 [jump target="clear_game" cond="tf.clear"]
 ; 次の部屋に進む場合の処理
 [3d_anim name="camera" pos="0,0,-5" time="3000" wait="false"]
-[playse storage="&sf.se.storage.walk"]
+[pse name="walk"]
 [wait time="1000"]
 ; 暗転
 [eval exp="f.loading_text = getLoadingText()"]
@@ -209,7 +209,7 @@ if (camera.position.z != -30) {  // 追い打ち
 [endscript]
 ; メッセージウィンドウを表示
 [show_message]
-[fadeinbgm storage="&sf.bgm.storage.game3" time="1000"]
+[fbgm name="game3" time="1000"]
 [mask_off time="1000"]
 
 ; 最初にカメラでふりふり
@@ -259,7 +259,7 @@ _ 秒」……』[p]
 
 *timeout
 [fadeoutbgm time="1000"]
-[playse storage="&sf.se.storage.explosion"]
+[pse name="explosion"]
 ; ホワイトアウト
 [mask color="white" time="1000"]
 [cm][clearstack]
@@ -292,7 +292,7 @@ $.log('--> time out');
 あっ…………
 [fadeoutbgm time="1000"]
 [wait time="1000"]
-[playse storage="&sf.se.storage.explosion"]
+[pse name="explosion"]
 ; ホワイトアウト
 [mask color="white" time="1000"]
 [cm][clearstack]

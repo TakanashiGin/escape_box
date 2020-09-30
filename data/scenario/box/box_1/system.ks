@@ -40,10 +40,10 @@
 *colors
 [cm][clearstack]
 [clear_button]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_1/system.ks" target="back_main"]
 [s]
 
@@ -51,7 +51,7 @@
 *start_event
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 [3d_anim name="camera" pos="1,0,0"]
 *return_event
 ;[eval exp="$.log(f.item)"]
@@ -60,7 +60,7 @@
 [clickable x="220" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box1"]
 [clickable x="520" y="330" width="240" height="230" color="black" opacity="0" mouseopacity="0" target="click_box2"]
 [clickable x="790" y="330" width="270" height="230" color="black" opacity="0" mouseopacity="0" target="click_box3"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [show_item_button name="box1" hint="白いタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [show_item_button name="box2" hint="茶色のタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
 [show_item_button name="box3" hint="丸いタイルの箱を持つ" storage="box/box_1/system.ks" target="return_event"]
@@ -108,7 +108,7 @@ tf.num = 2;
     tf.p = f.s1qbox.pos[tf.num];
     [endscript]
     [delete_item name="&tf.item"]
-    [playse storage="&sf.se.storage.put_block"]
+    [pse name="put_block"]
     [3d_show name="&tf.n" pos="&tf.p" time="10"]
 [else]
     [no_hold_item_text]
@@ -117,7 +117,7 @@ tf.num = 2;
 [iscript]
 [endscript]
 [jump target="correct" cond="f.s1qbox.correct.filter((v,i)=>v!=f.s1qbox.box[i]).length==0"]
-[playse storage="&sf.se.storage.incorrect" cond="f.s1qbox.box.filter(v => !!v).length == 3"]
+[pse name="incorrect" cond="f.s1qbox.box.filter(v => !!v).length == 3"]
 [jump target="return_event"]
 [s]
 
@@ -133,7 +133,7 @@ tf.num = 2;
 [iscript]
 $.log('--> correct');
 [endscript]
-[playse storage="&sf.se.storage.correct"]
+[pse name="correct"]
 [3d_anim name="camera" pos="0,0,0"]
 [eval exp="f.to_direction = 'left'"]
 [direction_manager]

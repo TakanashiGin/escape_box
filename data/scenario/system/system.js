@@ -9,7 +9,7 @@
     sf.system = {
 
         var: {
-            debug: true,
+            debug: false,
             reset_var: false,
             userenv: $.userenv(),
             browser: $.getBrowser(),
@@ -22,8 +22,8 @@
         },
 
         skip: {
-            title: true,
-            tutorial: true,
+            title: false,
+            tutorial: false,
             box_0: true,  // 数字4ケタ（チュートリアル）=>完成
             box_1: false,  // 箱並び替え（ヒント：パネル）{2D：ヒント用パネル}=>完成
             box_2: false,  // 爆弾の銅線カット（ヒント：）{3D：爆弾・銅線・はさみ}{2D：はさみ} =>完成

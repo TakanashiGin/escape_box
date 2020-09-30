@@ -78,6 +78,15 @@ function getLoadingText(){
     return array;
 }
 
+function getMediaFile(type, name){
+    const browser = !($.isTyranoPlayer() || $.isElectron() || $.isNWJS());
+    const format = type=='bgm'||type=="se"? browser? 'm4a' : 'ogg' : browser? 'mp4' : 'webm';
+    return `${format}/${name}.${format}`;
+};
+function getSe(name='click'){
+    return getMediaFile('se', name);
+}
+
 $.showSystemButton = () => {
     $('#tyrano_base').append($(`<img id="back_title_button" src="./data/image/back_title.png">`).css({
         position: 'absolute',

@@ -69,7 +69,7 @@
 
 
 *start_event
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 *return_event
 [cm][clearstack]
 [clear_button]
@@ -84,7 +84,7 @@
 [clickable x="760" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box7" cond="!!f.s3boxies.map[2][0]"]
 [clickable x="580" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box8" cond="!!f.s3boxies.map[2][1]"]
 [clickable x="400" y="480" width="120" height="120" color="black" opacity="0" mouseopacity="0" storage="box/box_3/system.ks" target="box9" cond="!!f.s3boxies.map[2][2]"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_3/system.ks" target="back_main"]
 [s]
 
@@ -128,7 +128,7 @@ tf.obj = 's3' + tf.box;
 f.s3boxies.map[index][box] = null;
 $.log(f.s3boxies);
 [endscript]
-[playse storage="&sf.se.storage.break_box"]
+[pse name="break_box"]
 [3d_hide name="&tf.obj" time="10"]
 [eval exp="sf.stage_data.box_3.status++"]
 [jump target="return_event"]
@@ -143,14 +143,14 @@ $.log(f.s3boxies);
 
 
 *panel_first
-[playse storage="&sf.se.storage.click"]
+[pse name="click"]
 *panel
 [cm][clearstack]
 [clear_button]
 [3d_anim name="camera" pos="-1,0,0" time="500"]
 *return_panel
 [hide_message]
-[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [for name="tf.i" from="0" len="3" deep="0"]
     [for name="tf.j" from="0" len="3" deep="1"]
         [iscript]
@@ -184,7 +184,7 @@ switch (f.s3panel.pushed_num.length) {
 }
 [endscript]
 [jump target="incorrect" cond="f.s3panel.pushed_num.length == 5 || tf.bool"]
-[playse storage="&sf.se.storage.push_button"]
+[pse name="push_button"]
 [3d_show name="&tf.num_obj" pos="&tf.pos" rot="&getRotate(0,90,0)" scale="0.85,0.85,0.01" time="10" wait="false"]
 [wait time="10"]
 [jump target="return_panel"]
@@ -213,14 +213,14 @@ switch (f.s3panel.pushed_num.length) {
 [iscript]
 $.log('--> correct');
 [endscript]
-[playse storage="&sf.se.storage.correct"]
+[pse name="correct"]
 [3d_anim name="camera" pos="0,0,0"]
 [eval exp="f.to_direction = 'right'"]
 [direction_manager]
 [jump storage="main.ks" target="next_room"]
 
 *incorrect
-[playse storage="&sf.se.storage.incorrect"]
+[pse name="incorrect"]
 [for name="tf.i" from="0" len="&f.s3panel.pushed_obj.length" deep="1"]
     [eval exp="tf.model = f.s3panel.pushed_obj[tf.i]"]
     [3d_hide name="&tf.model" time="10" wait="false"]

@@ -44,7 +44,7 @@
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 if (!tf.tmp_rot) {
@@ -56,7 +56,7 @@ if (!tf.tmp_rot) {
 }
 [endscript]
 [3d_anim name="camera" pos="1,0,0" time="500"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_4/system.ks" target="back_main"]
 [s]
 
@@ -68,7 +68,7 @@ if (!tf.tmp_rot) {
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 if (!tf.tmp_rot) {
@@ -95,7 +95,7 @@ tf.to_rot = [-0.94,0.46,0].map((to,i) => {
 [clickable x="460" y="360" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box3" cond="f.item.hold.filter(v => v.name == 'box3').length != 1"]
 [clickable x="630" y="320" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box4" cond="f.item.hold.filter(v => v.name == 'box4').length != 1"]
 [clickable x="550" y="240" width="100" height="100" color="black" opacity="0" mouseopacity="0" target="take_box5" cond="f.item.hold.filter(v => v.name == 'box5').length != 1"]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [cbk dir="down" storage="box/box_4/system.ks" target="back_main" view="item"]
 [s]
 
@@ -137,7 +137,7 @@ tf.item = 'box' + tf.take_box_num;
 [cm][clearstack]
 [clear_button]
 [hide_message]
-[playse storage="&sf.se.storage.click"]
+[pse]
 [iscript]
 const camera = tyrano.plugin.kag.tmp.three.camera;
 if (!tf.tmp_rot) {
@@ -152,7 +152,7 @@ if (!tf.tmp_rot) {
 *return_take_balance_main
 [clear_button]
 [cm][clearstack]
-[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&sf.se.storage.click"]
+[button name="down" target="back_main" exp="f.to_direction='down'" graphic="down.png" x="&sf.button.down.x" y="&sf.button.down.y" width="&sf.button_size" height="&sf.button_size" fix="true" clickse="&getSe()"]
 [show_item_button name="box1" hint="白いタイルの箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
 [show_item_button name="box2" hint="茶色のタイルの箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
 [show_item_button name="box3" hint="丸いタイルの箱を持つ" storage="box/box_4/system.ks" target="return_take_balance_main"]
@@ -217,7 +217,7 @@ tf.put = 'left';
     f.s4balance.disc[tf.put]['box'] = tf.item;
     tf.model = 's4' + tf.item;
     [endscript]
-    [playse storage="&sf.se.storage.put_block"]
+    [pse name="put_block"]
     [3d_show name="&tf.model" pos="&tf.tmp_pos" rot="0" time="10"]
     [delete_item name="&tf.item"]
 [endif]
@@ -231,13 +231,13 @@ tf.put = 'left';
 [else]
     [if exp="f.s4balance.boxies[f.s4balance.disc.right.box].weight > f.s4balance.boxies[f.s4balance.disc.left.box].weight"]
         [balance weight="right"]
-        [playse storage="&sf.se.storage.incorrect"]
+        [pse name="incorrect"]
     [elsif exp="f.s4balance.boxies[f.s4balance.disc.right.box].weight < f.s4balance.boxies[f.s4balance.disc.left.box].weight"]
         [balance weight="left"]
-        [playse storage="&sf.se.storage.incorrect"]
+        [pse name="incorrect"]
     [else]
         [balance weight="horizon"]
-        [playse storage="&sf.se.storage.correct"]
+        [pse name="correct"]
         [eval exp="tf.correct = true"]
     [endif]
 [endif]

@@ -1,7 +1,8 @@
 (function(){
-    const TG = tyrano.plugin.kag;
-    TG.variable.sf.preload = [
+    const sf = tyrano.plugin.kag.variable.sf;
+    sf.preload = [
         // ====================================================================
+        /*
         "./data/bgimage/room.jpg",
         "./data/bgimage/rouka.jpg",
         "./data/bgimage/sky_day.jpg",
@@ -246,12 +247,12 @@
         "./tyrano/images/system/thumbnail.png",
         "./tyrano/images/system/thumbnail_save.png",
         "./tyrano/images/system/transparent.png",
+        */
         // ====================================================================
     ];
-    ['bgm','se'].forEach(sound => {
-        const data = TG.variable.sf[sound];
-        const folder = sound == 'bgm'? 'bgm' : 'sound';
-        for (let key in data.storage) TG.variable.sf.preload.push(`./data/${folder}/${data.storage[key]}`);
-    });
-    //console.log(TG.variable.sf.preload);
+    for (let type in sf.media_files) {
+        const folder = type=='se'? 'sound' : type=="movie"? 'video' : 'bgm';
+        sf.media_files[type].forEach(name => sf.preload.push(`./data/${folder}/${getMediaFile(type, name)}`));
+    }
+    //$.log(sf.preload);
 }());
